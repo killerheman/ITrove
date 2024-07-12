@@ -1,4 +1,4 @@
-# Innovation Trove Website
+# Innovation Trove WebApp
 
 Welcome to the official repository for the Innovation Trove website. This project is the main hub for showcasing our products, services, and company information.
 

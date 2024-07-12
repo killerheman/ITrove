@@ -19,28 +19,28 @@
 </script>
 <title>Best IT Company In Lucknow | Innovation Trove</title>
 <meta name="keywords"
-        content="Invitation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!">
+        content="Innovation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!">
 <meta name="description"
-        content="Invitation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!" />
+        content="Innovation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!" />
 <meta property="og:title" content="Best IT Company In Lucknow | Innovation Trove" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://innovationtrove.in/" />
 <meta property="og:description"
-        content="Invitation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!" />
-<meta property="og:site_name" content="Invitation Trove" />
+        content="Innovation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!" />
+<meta property="og:site_name" content="Innovation Trove" />
 <meta property="og:image" content="{{ asset('frontend/assets/images/logo/logo.png') }}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="675" />
 <meta property="og:image:alt" content="Person designing a website on a laptop" />
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Best IT Company In Lucknow | Invitation Trove" />
+<meta name="twitter:title" content="Best IT Company In Lucknow | Innovation Trove" />
 <meta name="twitter:description"
-        content="Invitation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!" />
+        content="Innovation Trove: Your premier destination for comprehensive IT solutions. From MLM software to web & app development, digital marketing, and beyond, we've got you covered. Let's elevate your business journey together!" />
  <meta name="twitter:url" content="https://twitter.com/InnovationTrove" />
 <meta name="twitter:image:src" content="{{ asset('frontend/assets/images/logo/logo.png') }}" />
 <meta name="twitter:image:alt" content="Person designing a website on a laptop" />
 <meta name="twitter:creator" content="@unknown" />
-<meta name="twitter:site" content="@invitation trove" />
+<meta name="twitter:site" content="@innovationtrove" />
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://innovationtrove.in/">
 

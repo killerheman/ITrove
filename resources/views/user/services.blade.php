@@ -23,24 +23,27 @@
                     <h2>Information science answers for <br />startup furthermore, ventures</h2>
                     <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);"></div>
                 </div>
+                {{-- @dd($serviceData) --}}
                 <div class="row clearfix">
+                    @foreach ($serviceData as $data)
                     <div class="col-lg-6 col-md-12 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <figure class="image-box"><img src="assets/images/service/service-8.png" alt=""></figure>
+                                <figure class="image-box"><img src="" alt=""></figure>
                                 <div class="text">
                                     <div class="icon-box">
-                                        <i class="flaticon-science"></i>
+                                        <i class="{{$data->pic??''}}"></i>
                                         <div class="hover-shape"></div>
                                     </div>
-                                    <h3><a href="{{ route('home') }}">Software Development</a></h3>
-                                    <p>Custom software solutions tailored to specific business needs,
-                                         including web, mobile, and desktop applications.</p>
+                                    <h3><a href="{{ route('home') }}">{{$data->title??''}}</a></h3>
+                                    <p>{{$data->description}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 service-block">
+                    @endforeach
+                    
+                    {{-- <div class="col-lg-6 col-md-12 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated" data-wow-delay="200ms" data-wow-duration="1500ms">
                             <div class="inner-box">
                                 <figure class="image-box"><img src="assets/images/service/service-9.png" alt=""></figure>
@@ -114,7 +117,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>

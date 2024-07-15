@@ -39,18 +39,23 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         //
+    
+
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
-            'service_img'=>'image',
+            'service_img'=>'required',
         ]);
         try{
-              $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
-                $request->service_img->move(public_path('upload/services/'),$spic);
+            //   $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
+            //     $request->service_img->move(public_path('upload/services/'),$spic);
                 $data =Service::create([
                     'title' => $request->service_title,
                     'description' => $request->service_description,
-                    'pic'=>'upload/services/'.$spic
+                    'pic'=>$request->service_img, 'meta_title' => $request->meta_title,
+                    'slug' => $request->slug,
+                    'meta_keyword' => $request->meta_keyword,
+                    'meta_description' => $request->meta_desc,
                 ]);
                 if($data)
                 {
@@ -108,19 +113,20 @@ class ServicesController extends Controller
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
-            // 'service_img'=>'image',
+            'service_img'=>'required',
         ]);
-        if($request->hasFile('service_img'))
-            {
-                $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
-                $request->service_img->move(public_path('upload/services/'),$spic);
-                Service::find(Crypt::decrypt($id))->update(['pic'=>'upload/services/'.$spic]);
-            }
+       
             try{
                 $service=Service::find(Crypt::decrypt($id));
+                //return $service;
                 $data= $service->update([
                    'title' => $request->service_title,
                    'description' => $request->service_description,
+                   'pic' => $request->service_img,
+                   'meta_title' => $request->meta_title,
+                   'slug' => $request->slug,
+                   'meta_keyword' => $request->meta_keyword,
+                   'meta_description' => $request->meta_desc
                ]);
                if($data)
                {

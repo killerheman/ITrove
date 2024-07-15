@@ -31,14 +31,31 @@
                         aria-label="service_title" aria-describedby="basic-addon-title" required />
                 </div>
                 <div class="col-md-6 mb-1">
-                    <label class="form-label" for="service_img">Image</label>
-                    <input type="file" name='service_img' id="service_img" class="form-control " aria-label=""
+                    <label class="form-label" for="service_img">Icon</label>
+                    <input type="text" name='service_img' id="service_img" placeholder="Enter icon code"  value="{{$editservice->pic??''}}" class="form-control " aria-label=""
                         aria-describedby="service_img" />
-                        @if (isset($editservice))
-                        <div class="col-sm-6">
-                            <img src="{{asset($editservice->pic ) }}" class="bg-light-info" alt="" style="height:100px;width:100px;">
-                        </div>
-                    @endif
+                </div>
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="meta_title">Meta Title</label>
+                    <input type="text" name='meta_title' id="meta_title" placeholder="Enter meta title"  value="{{$editservice->meta_title??''}}" class="form-control " aria-label=""
+                        aria-describedby="meta_title" />
+                </div>
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="slug">Slug</label>
+                    <input type="text" name='slug' id="slug" placeholder="Enter meta title"  value="{{$editservice->slug??''}}" class="form-control " aria-label=""
+                        aria-describedby="slug" />
+                </div>
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="meta_title">Meta Keyword</label>
+                    <input type="text" name='meta_keyword' id="meta_keyword" placeholder="Enter meta keyword"  value="{{$editservice->meta_keyword??''}}" class="form-control " aria-label=""
+                        aria-describedby="meta_keyword" />
+                </div>
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="meta_desc">Meta Description</label>
+                    <textarea name='meta_desc' id="meta_desc" placeholder="Enter meta description"   class="form-control " aria-label=""
+                        aria-describedby="meta_desc">
+                        {{$editservice->meta_description??''}}
+                    </textarea>
                 </div>
                 <div class="col-md-12  mb-1">
                     <label class="form-label" for="basic-addon-name">Description</label>
@@ -67,8 +84,12 @@
             <thead>
                 <tr>
                     <th>Sr.No</th>
-                    <th>Image</th>
+                    <th>Icon Code</th>
                     <th>Title</th>
+                    <th>Meta Title</th>
+                    <th>Meta Keyword</th>
+                    <th>Slug</th>
+                    <th>Meta Description</th>
                     <th>Description</th>  
                     <th>Action</th>
 
@@ -80,10 +101,13 @@
                     <tr>
                         <td>{{ $loop->index+1 }}</td>
                         <td>
-                            <img src="{{ asset($service->pic) }}" class="me-75 bg-light-danger"
-                                style="height:60px;width:60px;" />
+                          {{ $service->pic}}
                         </td>
                         <td>{{ $service->title }}</td>
+                        <td>{{ $service->meat_title }}</td>
+                        <td>{{ $service->meta_keyword }}</td>
+                        <td>{{ $service->slug }}</td>
+                        <td>{{ $service->meta_description}}</td>
                         <td>{{ $service->description }}</td>
                         <td>
                             {{-- <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">

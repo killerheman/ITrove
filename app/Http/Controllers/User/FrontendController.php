@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DiplomaCollege;
 use App\Models\Technology;
 use App\Models\NewsLetter;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Mail\UserContactMail;
@@ -52,7 +53,8 @@ class FrontendController extends Controller
         }
     }
     public function services(){
-        return view('user.services');
+       $serviceData= Service::get();
+        return view('user.services',compact('serviceData'));
     }
     public function works(){
         return view('user.works');

@@ -35,6 +35,7 @@ Route::get('/contact-us',[FrontendController::class,'contact'])->name('contact')
 Route::post('/contact-us',[FrontendController::class,'enquiry'])->name('enquiry');
 Route::get('/services',[FrontendController::class,'services'])->name('services');
 Route::get('/works',[FrontendController::class,'works'])->name('works');
+Route::get('/project-details/{slug}',[FrontendController::class,'projectDetails'])->name('project-details');
 Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::post('news-letter',[FrontendController::class,'news_letter'])->name('newsletter');
 //Backend Routes

@@ -8,8 +8,8 @@
             <div class="content-box">
                 <h1>About Company</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index.html">Home</a></li>
-                    <li>About Company</li>
+                    <li><a href="{{url('/')}}">Home</a></li>
+                    <li><a href="#">About Company</a></li>
                 </ul>
             </div>
         </div>

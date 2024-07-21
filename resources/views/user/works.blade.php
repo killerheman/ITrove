@@ -8,8 +8,8 @@
                 <div class="content-box">
                     <h1>Our Project</h1>
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Project</li>
+                        <li><a href="{{url('/')}}">Home</a></li>
+                        <li><a href="#">Project</a></li>
                     </ul>
                 </div>
             </div>
@@ -20,25 +20,34 @@
         <section class="project-style-three project-page-2 centred">
             <div class="auto-container">
                 <div class="row clearfix">
+                    @if($data)
+                    @foreach ($data as $workdata)
                     <div class="col-lg-4 col-md-6 col-sm-12 project-block">
                         <div class="project-block-three">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="{{ asset('frontend/assets/images/gallery/project-4.jpg')}}" alt="">
-                                    <a href="project-details.html" class="link"><i class="fas fa-expand-arrows-alt"></i></a>
+                                    <img src="{{$workdata->image??''}}" alt="">
+                                    <a href="{{route('project-details',$workdata->slug)}}" class="link"><i class="fas fa-expand-arrows-alt"></i></a>
                                 </figure>
                                 <div class="lower-content">
-                                    <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-17.png')}}" alt=""></figure>
-                                    <h3><a href="project-details.html">ITrove Bills Software</a></h3>
-                                    <p>Billing software is designed to handle the billing process, automating and streamlining the creation of invoices and managing accounts receivable. Such software is essential for businesses of all sizes to ensure efficient, accurate, and timely billing of products or services.</p>
+                                    <figure class="icon-box"><img src="{{$workdata->thumbnail??''}}" alt=""></figure>
+                                    <h3><a href="project-details.html">{{$workdata->title??''}}</a></h3>
+                                    <p>{{$workdata->short_description??''}}</p>
                                     <div class="btn-box">
-                                        <a href="project-details.html" class="theme-btn btn-eight">Read More</a>
+                                        <a href="#" class="theme-btn btn-eight">Read More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+                    
+                    @else
                     <div class="col-lg-4 col-md-6 col-sm-12 project-block">
+                        <p>Data not avaible</p>
+                    </div>
+                    @endif
+                    {{-- <div class="col-lg-4 col-md-6 col-sm-12 project-block">
                         <div class="project-block-three">
                             <div class="inner-box">
                                 <figure class="image-box">
@@ -164,7 +173,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="pagination-wrapper centred">
                     <ul class="pagination clearfix">
@@ -178,7 +187,4 @@
             </div>
         </section>
         <!-- project-style-three end -->
-
-      
-
 @endsection

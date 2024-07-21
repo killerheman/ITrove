@@ -7,6 +7,7 @@ use App\Models\DiplomaCollege;
 use App\Models\Technology;
 use App\Models\NewsLetter;
 use App\Models\Service;
+use App\Models\Work;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Mail\UserContactMail;
@@ -57,7 +58,8 @@ class FrontendController extends Controller
         return view('user.services',compact('serviceData'));
     }
     public function works(){
-        return view('user.works');
+        $data=Work::get();
+        return view('user.works',compact('data'));
     }
     public function about(){
         return view('user.about');
@@ -197,5 +199,11 @@ class FrontendController extends Controller
         // dd($img);
 
         return $img;
+    }
+
+
+    public function projectDetails($slug){
+       $data=Work::where('slug',$slug)->firstOrFail();
+       return view('user.project_details',compact('data'));
     }
 }

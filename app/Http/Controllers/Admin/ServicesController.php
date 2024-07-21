@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Str;
 class ServicesController extends Controller
 {
     /**
@@ -28,6 +29,8 @@ class ServicesController extends Controller
     public function create()
     {
         //
+        $service= Service::get();
+        return view('admin.service.manage',compact('service'));
     }
 
     /**
@@ -52,8 +55,9 @@ class ServicesController extends Controller
                 $data =Service::create([
                     'title' => $request->service_title,
                     'description' => $request->service_description,
-                    'pic'=>$request->service_img, 'meta_title' => $request->meta_title,
-                    'slug' => $request->slug,
+                    'pic'=>$request->service_img, 
+                    'meta_title' => $request->meta_title,
+                    'slug' => Str::slug($request->slug),
                     'meta_keyword' => $request->meta_keyword,
                     'meta_description' => $request->meta_desc,
                 ]);
@@ -91,10 +95,11 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
-        $editservice=Service::find(Crypt::decrypt($id));
+        $editservice = Service::where('slug', $slug)->firstOrFail();
+        // return  $editservice;
         $service= Service::get();
          return view('admin.service.service',compact('service','editservice'));
     }
@@ -150,9 +155,26 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
-        return Crypt::decrypt($id);
+        // Find the item by slug
+        $item = Service::where('slug', $slug)->first();
+    
+        // Check if the item exists
+        if ($item) {
+           
+                // Delete the item
+                $item->delete();
+                
+                session()->flash('success', 'Service deleted successfully');
+          
+        } else {
+            
+            session()->flash('error', 'Service not found');
+        }
+    
+        
+        return redirect()->back();
     }
+    
 }

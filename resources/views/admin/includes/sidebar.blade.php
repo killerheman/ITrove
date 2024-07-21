@@ -82,6 +82,9 @@
                         <li><a href="{{ route('admin.service.index') }}"><i></i><span class="menu-item"
                                     data-i18n="Blog">Add</span></a>
                         </li>
+                        <li><a href="{{ route('admin.service.create') }}"><i></i><span class="menu-item"
+                                    data-i18n="Blog">Manage</span></a>
+                        </li>
                     </ul>
                 </ul>
             </li>
@@ -92,6 +95,9 @@
                         <li><a href="{{ route('admin.work.index') }}"><i></i><span class="menu-item"
                                     data-i18n="work">Add</span></a>
                         </li>
+                        <li><a href="{{ route('admin.work.create') }}"><i></i><span class="menu-item"
+                            data-i18n="work">Manage</span></a>
+                         </li>
                     </ul>
                 </ul>
             </li>

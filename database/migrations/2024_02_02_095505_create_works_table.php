@@ -18,11 +18,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('image');
             $table->string('technology');
-            $table->string('time_period');
-            $table->string('website');
-            $table->string('result');
-            $table->string('short_description');
-            $table->string('full_desription');
+            $table->string('thumbnail');
+            $table->string('screenshot_img');
+            $table->string('slug')->unique();
+            $table->string('meta_keyword');
+            $table->string('meta_title');
+            $table->text('meta_description');
+            $table->text('short_description');
+            $table->text('full_description');
             $table->timestamps();
         });
     }

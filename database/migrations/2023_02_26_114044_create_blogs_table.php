@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('blog_title')->nullable();
             $table->string('blog_img')->nullable();
             $table->longText('blog_description')->nullable();
+            $table->text('meta_title');
+            $table->text('slug')->unique();
+            $table->text('meta_keyword');
+            $table->string('meta_description');
             $table->string('create_date');
             $table->softDeletes();
             $table->timestamps();

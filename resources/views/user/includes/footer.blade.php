@@ -53,8 +53,12 @@
                         </div>
                         <div class="widget-content">
                             <ul class="links-list clearfix">
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Agency</a></li>
+                                @foreach (App\Models\Service::take(10)->get() as $ser)
+                                <li><a href="{{route('service_details',$ser->slug)}}">{{$ser->title}}</a></li>
+                            @endforeach
+                            
+                             
+                                {{-- <li><a href="#">Agency</a></li>
                                 <li><a href="#">Social Media</a></li>
                                 <li><a href="#">Branding</a></li>
                                 <li><a href="#">Design</a></li>
@@ -62,7 +66,7 @@
                                 <li><a href="#">Online support</a></li>
                                 <li><a href="#">Development</a></li>
                                 <li><a href="#">Pay per click</a></li>
-                                <li><a href="#">Event activation</a></li>
+                                <li><a href="#">Event activation</a></li> --}}
                             </ul>
                         </div>
                     </div>

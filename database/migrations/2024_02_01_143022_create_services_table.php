@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('fa_icon');
             $table->string('pic');
             $table->text('meta_title');
-            $table->text('slug')->unique();;
+            $table->string('sequence')->unique();
+            $table->text('slug')->unique();
             $table->text('meta_keyword');
             $table->string('meta_description');
             $table->string('description');
+            $table->string('full_description');
             $table->timestamps();
         });
     }

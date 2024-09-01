@@ -7,6 +7,7 @@ use App\Models\DiplomaCollege;
 use App\Models\Technology;
 use App\Models\NewsLetter;
 use App\Models\Service;
+use App\Models\Blog;
 use App\Models\Work;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -21,7 +22,9 @@ class FrontendController extends Controller
 
     public function home()
     {
-        return view('user.index');
+        $services=Service::get();
+        // dd($services);
+        return view('user.index',compact('services'));
     }
 
     public function contact()
@@ -55,7 +58,13 @@ class FrontendController extends Controller
     }
     public function services(){
        $serviceData= Service::get();
-        return view('user.services',compact('serviceData'));
+        return view('user.service.services',compact('serviceData'));
+    }
+
+    public function serviceDetails($slug){
+        $serviceData= Service::get();
+      $servicedetail=Service::where('slug',$slug)->first();
+      return view('user.service.service_detail',compact('servicedetail','serviceData'));
     }
     public function works(){
         $data=Work::get();
@@ -205,5 +214,17 @@ class FrontendController extends Controller
     public function projectDetails($slug){
        $data=Work::where('slug',$slug)->firstOrFail();
        return view('user.project_details',compact('data'));
+    }
+
+    public function blog(){
+        $blog=Blog::get();
+        return view('user.blog.blog',compact('blog'));
+    }
+
+    public function blogDetails($id){
+
+        $blogdetails=Blog::where('id',decrypt($id))->firstOrFail();
+        // return $blogdetail;
+        return view('user.blog.blog_description',compact('blogdetails'));
     }
 }

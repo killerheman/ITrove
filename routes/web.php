@@ -34,10 +34,13 @@ Route::get('/training-certificate', [FrontendController::class, 'trainingCertifi
 Route::get('/contact-us',[FrontendController::class,'contact'])->name('contact');
 Route::post('/contact-us',[FrontendController::class,'enquiry'])->name('enquiry');
 Route::get('/services',[FrontendController::class,'services'])->name('services');
+Route::get('service-details/{slug}',[FrontendController::class,'serviceDetails'])->name('service_details');
 Route::get('/works',[FrontendController::class,'works'])->name('works');
 Route::get('/project-details/{slug}',[FrontendController::class,'projectDetails'])->name('project-details');
 Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::post('news-letter',[FrontendController::class,'news_letter'])->name('newsletter');
+Route::get('blog',[FrontendController::class,'blog'])->name('blog');
+Route::get('blog-details/{id}',[FrontendController::class,'blogDetails'])->name('blog-details');
 //Backend Routes
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::post('/login', [AdminController::class, 'login'])->name('login');
@@ -62,6 +65,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'],function
     Route::post('blog-store',[BlogController::class,'store'])->name('blog-store');
     Route::post('blog-delete/{id}',[BlogController::class,'destroy'])->name('blog-delete');
     Route::get('blog-edit/{id}',[BlogController::class,'edit'])->name('blog-edit');
+    Route::patch('blog-update/{slug}',[BlogController::class,'update'])->name('blog-update');
     Route::resource('student',AdminStudentController::class);
     Route::resource('service',ServicesController::class);
     Route::resource('work',WorkController::class);

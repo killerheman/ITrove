@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-md-12  mb-1">
                     <label class="form-label" for="basic-addon-name">Full Description</label>
-                    <textarea name="full_description" id="editor"  class="form-control " cols="70" rows="2"> {{$editwork->full_desription??''}}</textarea>
+                    <textarea name="full_description" id="editor"  class="form-control " cols="70" rows="2"> {!!$editwork->full_desription??''!!}</textarea>
                 </div>
                 
             </div>

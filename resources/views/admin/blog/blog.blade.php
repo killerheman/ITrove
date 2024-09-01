@@ -13,78 +13,51 @@
     <div class="card">
         <div class="card-header">
             <h3>
-                Add New Blog Category
-            </h3>
+              {{isset($editcategory)?'Update Blog Category':'Add New Blog Category'}}</h3>
         </div>
         <div class="card-body">
-            <form class="needs-validation" action="{{ isset($editcategory) ? '#' : route('admin.blog-category') }}" method='post'
-                enctype="multipart/form-data">
+            <form class="needs-validation" 
+      action="{{ isset($editcategory) ? route('admin.blog-category.update', $editcategory->id) : route('admin.blog-category.store') }}" 
+      method="post">
                 @if (isset($editcategory))
                     @method('patch')
                 @endif
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-1">
-                        <label class="form-label" for="basic-addon-name">Name</label>
-
-                        <input type="text" id="basic-addon-name" name='name' class="form-control"
-                            value="{{ $editcategory->name ?? '' }}" placeholder="Enter Title" aria-label="blog_title"
+                        <label class="form-label" for="basic-addon-name">Category Name</label>
+                        <input type="text" id="basic-addon-name" name='category_name' class="form-control"
+                            value="{{ $editcategory->category_name ?? '' }}" placeholder="Enter Blog Category" aria-label="blog_title"
                             aria-describedby="basic-addon-title" required />
                     </div>
-                    <div class="col-md-6 mb-1">
-                        <label class="form-label" for="blog_img">Image</label>
-                        <input type="file" name='image' id="blog_img" class="form-control " aria-label=""
-                            aria-describedby="blog_img" />
-                    </div>
-                    <div class="col-md-6 mb-1">
-                        <label class="form-label" for="basic-addon-name">Description</label>
-                        <textarea name="description" id="blog_description" cols="70" rows="2">{{ $editcategory->description ?? '' }}</textarea>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-primary waves-effect waves-float waves-light">Add</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-float waves-light mt-1">Add</button>
                     </div>
-                    @if (isset($editcategory))
-                        <div class="col-sm-6">
-                            <img src="{{ asset($editcategory->image) }}" class="bg-light-info" alt=""
-                                style="height:100px;width:100px;">
-                        </div>
-                    @endif
                 </div>
-
             </form>
         </div>
     </div>
 
     <div class="card">
         <div class="card-header">
-            <h3>Manage Blogs</h3>
+            <h3>Manage Blogs Category </h3>
         </div>
         <div class="card-body" style="overflow-y: auto;">
             <table class="datatables-basic table datatable ">
                 <thead>
                     <tr>
                         <th>Sr.No</th>
-                        <th>Image</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        
                         <th>Action</th>
                     </tr>
 
                 </thead>
                 <tbody>
-                    @foreach ($blogs as $blog)
+                    @foreach ($categories as $blog)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>
-                                <img src="{{ asset($blog->image) }}" class="me-75 bg-light-danger"
-                                    style="height:60px;width:60px;" />
-                            </td>
-                            <td>{{ $blog->name }}</td>
-                            <td>{{ $blog->description }}</td>
-
-
+                            <td>{{ $blog->category_name }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle mr-1" type="button"
@@ -111,7 +84,7 @@
 
                         </tr>
 
-                        <form id="delete-form-{{ $bid }}" action="{{ route('admin.blog-category.delete', $bid) }}"
+                        <form id="delete-form-{{ $bid }}" action=""
                             method="post" style="display: none;">
                             @csrf
                         </form>

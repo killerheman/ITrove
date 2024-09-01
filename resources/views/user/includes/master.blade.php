@@ -6,14 +6,9 @@
    @yield('head')
 </head>
 
-
 <!-- page wrapper -->
-
 <body>
-
     <div class="boxed_wrapper">
-
-
         <!-- preloader -->
         {{-- <div class="loader-wrap">
             <div class="preloader">

@@ -13,12 +13,17 @@
     <div class="card">
         <div class="card-header">
             <h3>
-                    Add New Blog
+                @if(isset($editBlog))
+                Update Blog
+            @else
+                Add New Blog
+            @endif
+            
             </h3>
         </div>
         <div class="card-body">
             <form class="needs-validation"
-            action="{{ isset($editblog) ? "#" :route('admin.blog-store') }}"
+            action="{{ isset($editblog) ? route('admin.blog-update',$editblog->slug) :route('admin.blog-store') }}"
                 method='post' enctype="multipart/form-data">
                 @if (isset($editblog))
                 @method('patch')
@@ -28,32 +33,62 @@
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="basic-addon-name">Title</label>
 
-                        <input type="text" id="basic-addon-name" name='blog_title' class="form-control"
-                            value="{{$editblog->blog_title ?? ''}}" placeholder="Enter Title"
+                        <input type="text" id="basic-addon-name" name="blog_title" class="form-control"
+                            value="{{ isset($editBlog) ? $editBlog->blog_title : '' }}" placeholder="Enter Title"
                             aria-label="blog_title" aria-describedby="basic-addon-title" required />
+
                     </div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="blog_img">Image</label>
                         <input type="file" name='blog_img' id="blog_img" class="form-control " aria-label=""
                             aria-describedby="blog_img" />
+                            @if (isset($editBlog))
+                            <div class="col-sm-6">
+                                <img src="{{asset($editBlog->blog_img)??'' }}" class="bg-light-info" alt="" style="height:100px;width:100px;">
+                            </div>
+                            <input type="hidden"  name="old_img" value="{{$editBlog->blog_img}}"/>
+
+                        @endif
                     </div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="basic-addon-name">Created Date</label>
                         <input type="date" id="basic-addon-name" name='create_date' class="form-control"
-                            value="{{$editblog->create_date ?? ''}}" aria-label="blog_title" aria-describedby="basic-addon-create_date" required />
+                            value="{{$editBlog->create_date ?? ''}}" aria-label="blog_title" aria-describedby="basic-addon-create_date" required />
                     </div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="desc">Category</label>
                         <select class="form-control select2 form-select" id="blog_category_id"  name="blog_category_id" required>
                             <option selected disabled value="">--Select Category--</option>
                             @foreach ($categories as $category)
-                                <option value="{{$category->id}} {{isset($editblog) ?($category->id==$editblog->blog_category_id ? 'selected' : ''):'' }}">{{$category->blog_category}}</option>
+                                <option value="{{$category->id}} " {{isset($editBlog) ?($category->id==$editBlog->blog_category_id ? 'selected' : ''):'' }} >{{$category->category_name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-6 mb-1">
+                        <label class="form-label" for="meta_title">Meta Title</label>
+                        <input type="text" name='meta_title' id="meta_title" placeholder="Enter meta title"  value="{{$editBlog->meta_title??''}}" class="form-control " aria-label=""
+                            aria-describedby="meta_title" />
+                    </div>
+                    <div class="col-md-6 mb-1">
+                        <label class="form-label" for="slug">Slug</label>
+                        <input type="text" name='slug' id="slug" placeholder="Enter meta title"  value="{{$editBlog->slug??''}}" class="form-control " aria-label=""
+                            aria-describedby="slug" />
+                    </div>
+                    <div class="col-md-6 mb-1">
+                        <label class="form-label" for="meta_title">Meta Keyword</label>
+                        <input type="text" name='meta_keyword' id="meta_keyword" placeholder="Enter meta keyword"  value="{{$editBlog->meta_keyword??''}}" class="form-control " aria-label=""
+                            aria-describedby="meta_keyword" />
+                    </div>
+                    <div class="col-md-12 mb-1">
+                        <label class="form-label" for="meta_desc">Meta Description</label>
+                        <textarea name='meta_desc' id="meta_desc" placeholder="Enter meta description"   class="form-control " aria-label=""
+                            aria-describedby="meta_desc">
+                            {{$editBlog->meta_description??''}}
+                        </textarea>
+                    </div>
+                    <div class="col-md-12 mb-1">
                         <label class="form-label" for="basic-addon-name">Description</label>
-                        <textarea name="blog_description" id="blog_description" cols="70" rows="2">{{$editblog->blog_description ??''}}</textarea>
+                        <textarea name="blog_description"  id="blog_description" cols="70" rows="2">{!!$editBlog->blog_description ??''!!}</textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -61,11 +96,7 @@
                         <button type="submit"
                             class="btn btn-primary waves-effect waves-float waves-light">Add</button>
                     </div>
-                    @if (isset($editblog))
-                        <div class="col-sm-6">
-                            <img src="{{asset($editblog->blog_img) }}" class="bg-light-info" alt="" style="height:100px;width:100px;">
-                        </div>
-                    @endif
+                  
                 </div>
 
             </form>
@@ -101,51 +132,23 @@
                             </td>
                             <td>{{ $blog->blog_title }}</td>
                             <td>{{ $blog->create_date }}</td>
-                            <td>{{ $blog->blog_description }}</td>
-                            <td>{{ $blog->blogCategory->blog_category }}</td>
-
-
+                            <td>{!! $blog->blog_description !!}</td>
+                            <td>{{ $blog->blogCategory->category_name }}</td>
                             <td>
-                                {{-- <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
-                                    <div class="mb-1 breadcrumb-right">
-                                        <div class="dropdown">
-                                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle"
-                                                type="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"><i class="fa fa-car"></i></button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                @php $eid=Crypt::encrypt($employee->id); @endphp
-
-                                                <a class="dropdown-item" href="{{ route('admin.user.edit', $eid) }}"><i
-                                                        class="me-1" data-feather="check-square"></i><span
-                                                        class="align-middle">Edit</span>
-                                                </a>
-
-
-                                                <a class="dropdown-item" href=""
-                                                onclick="event.preventDefault();document.getElementById('delete-form-{{ $eid }}').submit();"><i
-                                                    class="me-1" data-feather="message-square"></i><span
-                                                    class="align-middle">Delete</span>
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="feather icon-settings"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        @php $bid=Crypt::encrypt($blog->id); @endphp
+                                        {{-- @php $bid=Crypt::encrypt($blog->id); @endphp --}}
 
-                                        <a class="dropdown-item" href="{{ route('admin.blog-edit', $bid) }}"><i
+                                        <a class="dropdown-item" href="{{ route('admin.blog-edit',$blog->slug) }}"><i
                                             class="me-1" data-feather="check-square"></i><span
                                             class="align-middle">Edit</span>
                                     </a>
 
                                         <a class="dropdown-item" href=""
-                                        onclick="event.preventDefault();document.getElementById('delete-form-{{ $bid }}').submit();"><i
+                                        onclick="event.preventDefault();document.getElementById('delete-form-{{ $blog->slug }}').submit();"><i
                                             class="me-1" data-feather="message-square"></i><span
                                             class="align-middle">Delete</span>
                                         </a>
@@ -155,7 +158,7 @@
 
                         </tr>
 
-                        <form id="delete-form-{{ $bid }}" action="{{ route('admin.blog-delete', $bid) }}"
+                        <form id="delete-form-{{ $blog->slug }}" action="{{ route('admin.blog-delete', $blog->slug) }}"
                             method="post" style="display: none;">
                             @csrf
                         </form>
@@ -178,4 +181,11 @@
     <script src="{{ asset('backend/assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{asset('backend/assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
     <script src="{{asset('backend/assets/js/scripts/forms/form-select2.js')}}"></script>
+    <script>
+        ClassicEditor.create( document.querySelector( '#blog_description' ) )
+               .catch( error => {
+                   console.error( error );
+               } );
+   </script>
+   
 @endsection

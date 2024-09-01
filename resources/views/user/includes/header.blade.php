@@ -27,7 +27,7 @@
                                 </li>
                                 <li class=""><a href="{{ route('works') }}">Works</a>
                                 </li>
-                                <li class=""><a href="#">Blog</a>
+                                <li class=""><a href="{{route('blog')}}">Blog</a>
                                 </li>
                             </ul>
                         </div>

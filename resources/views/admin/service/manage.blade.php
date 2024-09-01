@@ -34,10 +34,16 @@
                     <tr>
                         <td>{{ $loop->index+1 }}</td>
                         <td>
-                            <i class="{{$service->pic}}"></i>
+                            <div class="icon-box">
+                                <i class="{{$service->pic}}"></i>
+                            </div>
+                           
+                        </td>
+                        <td>
+                            <img src="{{asset($service->pic)}}" height="50px" width="50px" />
                         </td>
                         <td>{{ $service->title }}</td>
-                        <td>{{ $service->meat_title }}</td>
+                        <td>{{ $service->meta_title }}</td>
                         <td>{{ $service->meta_keyword }}</td>
                         <td>{{ $service->slug }}</td>
                         <td>{{ $service->meta_description}}</td>

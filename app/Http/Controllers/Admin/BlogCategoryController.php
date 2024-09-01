@@ -21,7 +21,7 @@ class BlogCategoryController extends Controller
     public function index()
     {
         $categories = BlogCategory::get();
-        return view('admin.blog.blog_category', compact('categories'));
+        return view('admin.blog.blog', compact('categories'));
     }
 
     /**
@@ -42,20 +42,15 @@ class BlogCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-        ]);
-        try{
-            if($request->hasFile('image'))
-            {
-                $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
-                $request->service_img->move(public_path('upload/blog-category/'),$spic);
-            }
+        // return $request->all();
 
+        $request->validate([
+            'category_name'=>'required',
+        ]);
+        
             $data =BlogCategory::create([
-                'name' => $request->name,
-                'image'=> isset($spic) ? 'upload/blog-category/'.$spic : Null,
-                'description' => $request->description,
+                'category_name' => $request->category_name,
+               
             ]);
             if($data)
             {
@@ -65,12 +60,7 @@ class BlogCategoryController extends Controller
             {
                 session()->flash('error','Blog Category not added ');
             }
-        }
-        catch(Exception $ex){
-            $url=URL::current();
-            Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-            Session::flash('error','Server Error ');
-        }
+        
         return redirect()->back();
     }
 
@@ -94,8 +84,9 @@ class BlogCategoryController extends Controller
     public function edit($id)
     {
         $editcategory=BlogCategory::find(Crypt::decrypt($id));
+        // return $editcategory;
         $categories= BlogCategory::get();
-         return view('admin.blog.blog_category',compact('categories','editcategory'));
+         return view('admin.blog.blog',compact('categories','editcategory'));
     }
 
     /**
@@ -108,20 +99,12 @@ class BlogCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required',
+            'category_name'=>'required',
         ]);
-        try{
-            if($request->hasFile('image'))
-            {
-                $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
-                $request->service_img->move(public_path('upload/blog-category/'),$spic);
-                BlogCategory::find(Crypt::decrypt($id))->update(['image'=>'upload/blog-category/'.$spic]);
-            }
 
-            $service=BlogCategory::find(Crypt::decrypt($id));
-            $data= $service->update([
-                'name' => $request->name,
-                'description' => $request->description,
+            $blogcategory=BlogCategory::find($id);
+            $data= $blogcategory->update([
+                'category_name' => $request->category_name,
             ]);
             if($data)
             {
@@ -131,11 +114,7 @@ class BlogCategoryController extends Controller
             {
                 session()->flash('error','Service not updated ');
             }
-        }catch(Exception $ex){
-            $url=URL::current();
-            Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-            Session::flash('error','Server Error ');
-        }
+        
         return redirect()->back();
     }
 

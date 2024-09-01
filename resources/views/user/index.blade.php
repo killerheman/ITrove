@@ -193,123 +193,26 @@
             </div>
         </div>
         <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-5.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">Website Design & Development</a></h3>
-                    <p>This is the visual and interactive aspect of a website.
-                         It involves creating a layout, choosing colors, fonts, images,
-                         and graphics to ensure the site is aesthetically pleasing and user-friendly.
-                         Designers typically use tools like Adobe Photoshop, Illustrator, and Sketch,
-                         and they focus on UX (User Experience) and UI (User Interface) design principles.</p>
-                    <div class="btn-box"><a href="">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-6.png') }}" alt="">
-                    </figure>
-                    <h3><a href="">Software & Mobile App Development</a></h3>
-                    <p>Software and mobile application development is a dynamic field that requires keeping up with the
-                        latest technologies, programming languages, and development methodologies.
-                        It plays a crucial role in the digital economy, driving innovation in virtually all
-                        sectors from business and healthcare to entertainment and education.</p>
-                    <div class="btn-box"><a href="">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-7.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">E-Governance Solution</a></h3>
-                    <p>E-governance solutions are integral to modernizing government functions,
-                         improving service delivery, enhancing transparency and accountability,
-                         and fostering greater citizen engagement in governance. They represent a
-                         significant shift from traditional, paper-based methods to more efficient,
-                          paperless, and digital approaches in governing processes.</p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-5.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">IT Consultancy Services</a></h3>
-                    <p>
-                        IT consultancy services offer expert guidance and practical solutions to help
-                         organizations navigate the complex world of technology, optimize their IT operations,
-                          and leverage technology for business growth and efficiency.</p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-6.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">E-Learning</a></h3>
-                    <p>E-learning is widely used in various settings, including academic
-                         education, corporate training, and continuing professional development.
-                         It is particularly valued for its flexibility, scalability, and the potential for a more
-                          personalized and interactive learning experience compared to traditional classroom-based education.</p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-7.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">Digital Evaluation</a></h3>
-                    <p>Digital evolution is a dynamic and ongoing process,
-                         marked by rapid changes and innovations that continuously reshape how we
-                         interact, work, learn, and live in an increasingly digital world. </p>                   </p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-6.png') }}" alt="">
-                    </figure>
-                    <h3><a href="c">Online Examination</a></h3>
-                    <p>Online examinations are a significant aspect of e-learning and the
-                         digitalization of education and assessment processes. They offer numerous
-                          advantages in terms of efficiency, accessibility, and scalability, although
-                           they also require careful consideration of technological, security,
-                            and accessibility issues.</p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-7.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">Logo & Graphic Designing</a></h3>
-                    <p>Logo and graphic design are not just about making things look attractive;
-                        they play a crucial role in communication and can significantly impact brand
-                        perception, marketing effectiveness, and user experience.</p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
-            <div class="service-block-five">
-                <div class="inner-box">
-                    <figure class="image-box"><img
-                            src="{{ asset('frontend/assets/images/service/service-5.png') }}" alt="">
-                    </figure>
-                    <h3><a href="#">Social Media Management</a></h3>
-                    <p>Social media management is crucial for businesses and brands in today
-                         digital world, as it helps them connect with their audience, increase brand
-                         awareness, and ultimately drive sales or other desired outcomes.</p>
-                    <div class="btn-box"><a href="#">Read More</a></div>
-                </div>
-            </div>
+          
+                @foreach ($services as $service)
+                    <div class="service-block-five">
+                        <div class="inner-box">
+                            
+                            <figure class="image-box">
+                                <img
+                                    src="{{ asset($service->pic??'') }}" alt="" style="height:300px;">
+                            </figure>
+                            <h3><a href="{{route('service_details',$service->slug)}}">{{$service->title}}</a></h3>
+                            {{-- <p>{{$service->description??''}}</p> --}}
+                            <p>{{ Str::limit($service->description ?? '', 400) }}</p>
+
+                            <div class="btn-box"><a href="{{route('service_details',$service->slug)}}">Read More</a></div>
+                        </div>
+                    </div>
+                @endforeach
+        
+            
+       
         </div>
     </div>
 </section>
@@ -712,163 +615,6 @@
 </section>
 <!-- video-section end -->
 
-
-<!-- testimonial-style-four -->
-{{-- <section class="testimonial-style-four centred">
-    <div class="auto-container">
-        <div class="sec-title style-two">
-            <h5>CONNECTING CHANNELS</h5>
-            <h2>Keep discussions going across <br />channel whenever</h2>
-            <div class="divider" style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png')}});"></div>
-        </div>
-        <div class="testimonial-content">
-            <!--Client Thumbs Carousel-->
-            <div class="client-thumb-outer">
-                <div class="client-thumbs-carousel owl-carousel owl-theme">
-                    <div class="thumb-item">
-                        <figure class="thumb-box"><img src="{{ asset('frontend/assets/images/resource/testimonial-4.png')}}" alt=""></figure>
-                    </div>
-                    <div class="thumb-item">
-                        <figure class="thumb-box"><img src="{{ asset('frontend/assets/images/resource/testimonial-5.png')}}" alt=""></figure>
-                    </div>
-                    <div class="thumb-item">
-                        <figure class="thumb-box"><img src="{{ asset('frontend/assets/images/resource/testimonial-6.png')}}" alt=""></figure>
-                    </div>
-                    <div class="thumb-item">
-                        <figure class="thumb-box"><img src="{{ asset('frontend/assets/images/resource/testimonial-7.png')}}" alt=""></figure>
-                    </div>
-                    <div class="thumb-item">
-                        <figure class="thumb-box"><img src="{{ asset('frontend/assets/images/resource/testimonial-8.png')}}" alt=""></figure>
-                    </div>
-                </div>
-            </div>
-            <div class="client-testimonial-carousel owl-carousel owl-theme">
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="author">
-                            <h3>Nicolas Lawson</h3>
-                            <span class="designation">STO Expert Bussiness</span>
-                        </div>
-                        <div class="text">
-                            <div class="icon-box"><i class="fas fa-quote-right"></i></div>
-                            <p>Lorem ipsum dolor amet consectetur adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam quis nostrud exercitation.</p>
-                            <ul class="rating clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="author">
-                            <h3>Nicolas Lawson</h3>
-                            <span class="designation">STO Expert Bussiness</span>
-                        </div>
-                        <div class="text">
-                            <div class="icon-box"><i class="fas fa-quote-right"></i></div>
-                            <p>Lorem ipsum dolor amet consectetur adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam quis nostrud exercitation.</p>
-                            <ul class="rating clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="author">
-                            <h3>Nicolas Lawson</h3>
-                            <span class="designation">STO Expert Bussiness</span>
-                        </div>
-                        <div class="text">
-                            <div class="icon-box"><i class="fas fa-quote-right"></i></div>
-                            <p>Lorem ipsum dolor amet consectetur adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam quis nostrud exercitation.</p>
-                            <ul class="rating clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="author">
-                            <h3>Nicolas Lawson</h3>
-                            <span class="designation">STO Expert Bussiness</span>
-                        </div>
-                        <div class="text">
-                            <div class="icon-box"><i class="fas fa-quote-right"></i></div>
-                            <p>Lorem ipsum dolor amet consectetur adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam quis nostrud exercitation.</p>
-                            <ul class="rating clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-block">
-                    <div class="inner-box">
-                        <div class="author">
-                            <h3>Nicolas Lawson</h3>
-                            <span class="designation">STO Expert Bussiness</span>
-                        </div>
-                        <div class="text">
-                            <div class="icon-box"><i class="fas fa-quote-right"></i></div>
-                            <p>Lorem ipsum dolor amet consectetur adipisicing elit sed eiusmod tempor incididunt ut labore et dolore magna aliqua.enim ad minim veniam quis nostrud exercitation.</p>
-                            <ul class="rating clearfix">
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                                <li><i class="fas fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
-<!-- testimonial-style-four end -->
-
-
-<!-- clients-style-four -->
-{{-- <section class="clients-style-four centred">
-    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-58.png);"></div>
-    <div class="auto-container">
-        <ul class="five-item-carousel owl-carousel owl-theme owl-dots-none owl-nav-none">
-            <li class="clients-logo-box">
-                <a href="#"><img src="assets/images/clients/clients-logo-16.png" alt=""></a>
-            </li>
-            <li class="clients-logo-box">
-                <a href="#"><img src="assets/images/clients/clients-logo-17.png" alt=""></a>
-            </li>
-            <li class="clients-logo-box">
-                <a href="#"><img src="assets/images/clients/clients-logo-18.png" alt=""></a>
-            </li>
-            <li class="clients-logo-box">
-                <a href="#"><img src="assets/images/clients/clients-logo-19.png" alt=""></a>
-            </li>
-            <li class="clients-logo-box">
-                <a href="#"><img src="assets/images/clients/clients-logo-20.png" alt=""></a>
-            </li>
-        </ul>
-    </div>
-</section> --}}
-<!-- clients-style-four end -->
 
 
 <!-- project-style-four -->

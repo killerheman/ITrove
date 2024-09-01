@@ -14,7 +14,7 @@
     </div>
     <div class="card-body">
         <form class="needs-validation"
-        action="{{isset($editservice)?route('admin.service.update',Crypt::encrypt($editservice->id)):route('admin.service.store') }}"
+        action="{{isset($editservice)?route('admin.service.update',$editservice->slug):route('admin.service.store') }}"
             method='post' enctype="multipart/form-data">
             @if (isset($editservice))
             @method('patch')
@@ -29,9 +29,23 @@
                 </div>
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="service_img">Icon</label>
-                    <input type="text" name='service_img' id="service_img" placeholder="Enter icon code"  value="{{$editservice->pic??''}}" class="form-control " aria-label=""
+                    <input type="text" name='fa_icon' id="service_img" placeholder="Enter icon code"  value="{{$editservice->pic??''}}" class="form-control " aria-label=""
                         aria-describedby="service_img" />
                 </div>
+                <div class="col-md-12 mb-1">
+                    <label class="form-label" for="sequence">Sequence Service</label>
+                    <select class="form-control" id="sequence" name="sequence">
+                        @for ($i = 1; $i <= 10; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>
+                </div>
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="service_img">service image</label>
+                    <input type="file" name='service_img' id="service_img"  class="form-control"
+                        aria-describedby="service_img" />
+                </div>
+               
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="meta_title">Meta Title</label>
                     <input type="text" name='meta_title' id="meta_title" placeholder="Enter meta title"  value="{{$editservice->meta_title??''}}" class="form-control " aria-label=""
@@ -47,7 +61,7 @@
                     <input type="text" name='meta_keyword' id="meta_keyword" placeholder="Enter meta keyword"  value="{{$editservice->meta_keyword??''}}" class="form-control " aria-label=""
                         aria-describedby="meta_keyword" />
                 </div>
-                <div class="col-md-6 mb-1">
+                <div class="col-md-12 mb-1">
                     <label class="form-label" for="meta_desc">Meta Description</label>
                     <textarea name='meta_desc' id="meta_desc" placeholder="Enter meta description"   class="form-control " aria-label=""
                         aria-describedby="meta_desc">
@@ -55,8 +69,12 @@
                     </textarea>
                 </div>
                 <div class="col-md-12  mb-1">
-                    <label class="form-label" for="basic-addon-name">Description</label>
+                    <label class="form-label" for="basic-addon-name">Short Description</label>
                     <textarea name="service_description" id="service_description"  class="form-control " cols="70" rows="2">{{$editservice->description??''}}</textarea>
+                </div>
+                <div class="col-md-12  mb-1">
+                    <label class="form-label"   for="basic-addon-name">Full Description</label>
+                    <textarea name="full_description"  id="editor" class="form-control " cols="70" rows="2"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -82,4 +100,11 @@
     <script src="{{ asset('backend/assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{asset('backend/assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
     <script src="{{asset('backend/assets/js/scripts/forms/form-select2.js')}}"></script>
+    <script>
+         ClassicEditor.create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+    </script>
+    
 @endsection

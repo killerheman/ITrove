@@ -141,8 +141,8 @@ class WorkController extends Controller
     public function update(Request $request, $id)
     {
         //
-         
-        $request->validate([
+         dd($id);
+         $request->validate([
             'work_title'=>'required',
             'technology'=>'required',
             'time_period'=>'required',

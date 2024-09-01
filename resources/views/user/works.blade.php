@@ -31,10 +31,10 @@
                                 </figure>
                                 <div class="lower-content">
                                     <figure class="icon-box"><img src="{{$workdata->thumbnail??''}}" alt=""></figure>
-                                    <h3><a href="project-details.html">{{$workdata->title??''}}</a></h3>
+                                    <h3><a href="{{route('project-details',$workdata->slug)}}">{{$workdata->title??''}}</a></h3>
                                     <p>{{$workdata->short_description??''}}</p>
                                     <div class="btn-box">
-                                        <a href="#" class="theme-btn btn-eight">Read More</a>
+                                        <a href="{{route('project-details',$workdata->slug)}}" class="theme-btn btn-eight">Read More</a>
                                     </div>
                                 </div>
                             </div>

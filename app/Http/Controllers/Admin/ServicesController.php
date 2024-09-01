@@ -42,24 +42,30 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         //
-    
-
+        // return $request->sequence;
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
             'service_img'=>'required',
+            'sequence'=>'required|unique:services',
+            'full_description'=>'required',
         ]);
         try{
-            //   $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
-            //     $request->service_img->move(public_path('upload/services/'),$spic);
+              $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
+                $request->service_img->move(public_path('upload/services/'),$spic);
+
                 $data =Service::create([
                     'title' => $request->service_title,
                     'description' => $request->service_description,
-                    'pic'=>$request->service_img, 
+                    'fa_icon'=>$request->fa_icon, 
+                    'pic'=>'upload/services/'.$spic, 
                     'meta_title' => $request->meta_title,
+                    'sequence' => $request->sequence,
                     'slug' => Str::slug($request->slug),
                     'meta_keyword' => $request->meta_keyword,
                     'meta_description' => $request->meta_desc,
+                    'full_description' => $request->full_description,
+                   
                 ]);
                 if($data)
                 {
@@ -114,7 +120,7 @@ class ServicesController extends Controller
     public function update(Request $request, $id)
     {
         //
-       
+       dd($id);
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
@@ -131,7 +137,8 @@ class ServicesController extends Controller
                    'meta_title' => $request->meta_title,
                    'slug' => $request->slug,
                    'meta_keyword' => $request->meta_keyword,
-                   'meta_description' => $request->meta_desc
+                   'meta_description' => $request->meta_desc,
+                   'full_description' => $request->full_description,
                ]);
                if($data)
                {

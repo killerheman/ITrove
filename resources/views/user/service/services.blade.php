@@ -26,19 +26,22 @@
                 {{-- @dd($serviceData) --}}
                 <div class="row clearfix">
                     @foreach ($serviceData as $data)
+                   
                     <div class="col-lg-6 col-md-12 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <div class="inner-box">
-                                <figure class="image-box"><img src="" alt=""></figure>
-                                <div class="text">
-                                    <div class="icon-box">
-                                        <i class="{{$data->pic??''}}"></i>
-                                        <div class="hover-shape"></div>
+                            <a href="{{route('service_details',$data->slug)}}">
+                                <div class="inner-box">
+                                    <figure class="image-box"><img src="{{asset('frontend/assets/images/service/service-8.png')}}" alt=""></figure>
+                                    <div class="text">
+                                        <div class="icon-box">
+                                            <i class=" {{$data->fa_icon??''}}"></i>
+                                            <div class="hover-shape"></div>
+                                        </div>
+                                        <h3>{{$data->title??''}}</h3>
+                                        <p>{{$data->description}}</p>
                                     </div>
-                                    <h3><a href="{{ route('home') }}">{{$data->title??''}}</a></h3>
-                                    <p>{{$data->description}}</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     @endforeach

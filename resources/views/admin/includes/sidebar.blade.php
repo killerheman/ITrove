@@ -57,6 +57,9 @@
                         <li><a href="{{ route('admin.blog') }}"><i></i><span class="menu-item"
                                     data-i18n="Blog">Add</span></a>
                         </li>
+                        <li><a href="{{route('admin.blog-category.index')}}"><i></i><span class="menu-item"
+                            data-i18n="Blog">Blog category</span></a>
+                        </li>
                     </ul>
                 </ul>
             </li>

@@ -1,6 +1,6 @@
 <section class="clients-style-three centred">
     <div class="auto-container">
-        <div class="inner-container">
+        <div class="inner-container d-none">
             <ul class="clients-logo-list clearfix">
                 <li class="clients-logo-box">
                     <a href="index.html"><img src="{{ asset('frontend/assets/images/logo/up.png')}}"  style="height:120px;width:120px"alt=""></a>
@@ -23,7 +23,8 @@
 </section>
 <footer class="main-footer footer-style-six">
     <div class="pattern-layer"
-        style="background-image: url({{ asset('frontend/assets/images/shape/shape-60.png') }});"></div>
+        style="background-image: url({{ asset('frontend/assets/images/shape/shape-60.png') }});">
+    </div>
     <div class="auto-container">
         <div class="footer-top-two">
             <div class="row clearfix">

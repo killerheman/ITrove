@@ -94,7 +94,10 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <button type="submit"
-                            class="btn btn-primary waves-effect waves-float waves-light">Add</button>
+                          class="btn btn-primary waves-effect waves-float waves-light">
+                            {{ isset($ditBlog) ? 'Update' : 'Add' }}
+                        </button>
+                
                     </div>
                   
                 </div>

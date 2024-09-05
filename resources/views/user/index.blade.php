@@ -49,7 +49,8 @@
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                 <div class="content-box wow fadeInUp animated" data-wow-delay="00ms"
                     data-wow-duration="1500ms">
-                    <h2>Build something innovative</h2>
+                    <h1>Best IT Company in India</h1>
+                    <h5>Build Something Innovative</h5>
                     <p>Let technology accelerate your business. One Stop Solution for all your IT Needs.</p>
                     <div class="btn-box">
                         <a href="{{ route('home') }}" class="theme-btn btn-ten">Contact Team</a>
@@ -138,15 +139,16 @@
                     <div class="content-box">
                         <div class="sec-title style-two">
                             <h5>ABOUT COMPANY</h5>
-                            <h2>Let Technology Accelerate Your Business</h2>
+                            {{-- <h2>Let Technology Accelerate Your Business</h2> --}}
+                            <h2>Top IT Companies in Lucknow</h2>
                             <div class="divider"
                                 style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
                             </div>
                         </div>
                         <div class="text">
-                            <p>Creating and delivering highly effective, user-friendly and customized solutions to our clients.</p>
+                            <p>At <b>ITrove</b>, we pride ourselves on being <b>Lucknow's best IT company</b>, delivering cutting-edge technology solutions tailored to meet the diverse needs of businesses across industries. With years of expertise and a team of skilled professionals, we help organizations thrive in the digital age through innovative IT services.</p>
                         </div>
-                        <div class="inner-box">
+                        {{-- <div class="inner-box">
                             <div class="row clearfix">
                                 <div class="col-lg-6 col-md-6 col-sm-12 single-column">
                                     <div class="single-item">
@@ -169,7 +171,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="btn-box">
                             <a href="{{ route('about') }}" class="theme-btn btn-ten">Know More</a>
                         </div>
@@ -193,11 +195,11 @@
             </div>
         </div>
         <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-          
+
                 @foreach ($services as $service)
                     <div class="service-block-five">
                         <div class="inner-box">
-                            
+
                             <figure class="image-box">
                                 <img
                                     src="{{ asset($service->pic??'') }}" alt="" style="height:300px;">
@@ -210,9 +212,9 @@
                         </div>
                     </div>
                 @endforeach
-        
-            
-       
+
+
+
         </div>
     </div>
 </section>
@@ -305,7 +307,7 @@
 
 
 <!-- team-section -->
-<section class="team-section">
+{{-- <section class="team-section">
     <div class="auto-container">
         <div class="sec-title style-two">
             <h5>TEAM MEMBERS</h5>
@@ -582,7 +584,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- team-section end -->
 
 <!-- video-section -->

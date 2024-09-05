@@ -9496,6 +9496,22 @@ h3 a:hover{
   margin-bottom: 19px;
 }
 
+.banner-style-six .content-box h1{
+    font-size: 60px;
+    line-height: 60px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-top: 19px;
+  }
+
+  .banner-style-six .content-box h5{
+    font-size: 30px;
+    line-height: 50px;
+    color: #ffffff;
+    font-weight: 300;
+    margin-top: 19px;
+  }
+
 .banner-style-six .content-box p{
   font-size: 16px;
   line-height: 30px;

@@ -43,7 +43,7 @@
                                   <li><a href="{{route('service_details',$data->slug)}}" class="{{ $loop->first ? 'current' : '' }}">{{$data->title??''}}<i class="fas fa-long-arrow-alt-right"></i></a></li>
                                 @endforeach
                             @endif
-                          
+
                         </ul>
                     </div>
                     <div class="download-widget d-none">
@@ -71,7 +71,7 @@
                             <div class="shape" style="background-image: url(assets/images/shape/shape-90.png);"></div>
                             <h2>Award Winning Service</h2>
                             <div class="trophy-box">
-                                <span class="curved-circle">Bithlo The Best Servic Provider 2020</span>
+                                <span class="curved-circle">ITrove The Best Servic Provider 2024</span>
                                 <figure class="trophy"><img src="{{asset('frontend/assets/images/icons/trophy-1.png')}}" alt=""></figure>
                             </div>
                             <p>To take a trivial example, which idea of ever undertakes.</p>

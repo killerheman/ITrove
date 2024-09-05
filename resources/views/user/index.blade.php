@@ -206,7 +206,7 @@
                             </figure>
                             <h3><a href="{{route('service_details',$service->slug)}}">{{$service->title}}</a></h3>
                             {{-- <p>{{$service->description??''}}</p> --}}
-                            <p>{{ Str::limit($service->description ?? '', 400) }}</p>
+                            <p style="text-align: justify";>{{ Str::limit($service->description ?? '', 400) }}</p>
 
                             <div class="btn-box"><a href="{{route('service_details',$service->slug)}}">Read More</a></div>
                         </div>

@@ -1,4 +1,7 @@
 @extends('user.includes.master')
+@section('title','Works| Best it company in Lucknow | Top it companies in Lucknow | Lucknow\'s best company | It Company -  Innovation trove ')
+@section('meta_description','Check out our \'Works\' section at Innovation Trove, where we showcase why we\'re the best IT company in Lucknow. As a top IT company in the city, we offer outstanding projects and solutions. Discover how we stand out as Lucknow\'s best company for innovative IT services.')
+@section('keywords','Best IT company in Lucknow, Top IT companies in Lucknow, Lucknow\'s best company')
 @section('title', 'Contact-us')
 @section('content')
 <!-- Page Title -->
@@ -6,10 +9,10 @@
             <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-87.png);"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h1>Our Project</h1>
+                    <h1>Works</h1>
                     <ul class="bread-crumb clearfix">
                         <li><a href="{{url('/')}}">Home</a></li>
-                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Works</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +44,7 @@
                         </div>
                     </div>
                     @endforeach
-                    
+
                     @else
                     <div class="col-lg-4 col-md-6 col-sm-12 project-block">
                         <p>Data not avaible</p>

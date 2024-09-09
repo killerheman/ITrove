@@ -1,4 +1,7 @@
 @extends('user.includes.master')
+@section('title','About us | Best it company in Lucknow | Top it companies in Lucknow | Lucknow\'s best company | It Company -  Innovation trove ')
+@section('meta_keywords','Best it company in Lucknow,Top it companies in Lucknow,Lucknow\'s best company')
+@section('meta_description','About us | As the best IT company in Lucknow, we pride ourselves on being among the top IT companies in the city. Our expert team delivers exceptional solutions, making us Lucknow\'s best company for all your IT needs. Discover what sets us apart!')
 @section('title', 'Contact-us')
 @section('content')
     <!-- Page Title -->
@@ -6,10 +9,10 @@
         <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-87.png);"></div>
         <div class="auto-container">
             <div class="content-box">
-                <h1>About Company</h1>
+                <h1>About Us</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="#">About Company</a></li>
+                    <li><a href="#">About Us</a></li>
                 </ul>
             </div>
         </div>

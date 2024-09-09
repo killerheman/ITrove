@@ -57,15 +57,15 @@ class ServicesController extends Controller
                 $data =Service::create([
                     'title' => $request->service_title,
                     'description' => $request->service_description,
-                    'fa_icon'=>$request->fa_icon, 
-                    'pic'=>'upload/services/'.$spic, 
+                    'fa_icon'=>$request->fa_icon,
+                    'pic'=>'upload/services/'.$spic,
                     'meta_title' => $request->meta_title,
                     'sequence' => $request->sequence,
                     'slug' => Str::slug($request->slug),
                     'meta_keyword' => $request->meta_keyword,
                     'meta_description' => $request->meta_desc,
                     'full_description' => $request->full_description,
-                   
+
                 ]);
                 if($data)
                 {
@@ -79,7 +79,7 @@ class ServicesController extends Controller
         catch(Exception $ex){
             $url=URL::current();
             Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-            Session::flash('error','Server Error ');  
+            Session::flash('error','Server Error ');
         }
         return redirect()->back();
     }
@@ -120,13 +120,13 @@ class ServicesController extends Controller
     public function update(Request $request, $id)
     {
         //
-       dd($id);
+
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
             'service_img'=>'required',
         ]);
-       
+
             try{
                 $service=Service::find(Crypt::decrypt($id));
                 //return $service;
@@ -151,7 +151,7 @@ class ServicesController extends Controller
             }catch(Exception $ex){
                 $url=URL::current();
                 Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-                Session::flash('error','Server Error ');  
+                Session::flash('error','Server Error ');
             }
             return redirect()->back();
     }
@@ -166,22 +166,22 @@ class ServicesController extends Controller
     {
         // Find the item by slug
         $item = Service::where('slug', $slug)->first();
-    
+
         // Check if the item exists
         if ($item) {
-           
+
                 // Delete the item
                 $item->delete();
-                
+
                 session()->flash('success', 'Service deleted successfully');
-          
+
         } else {
-            
+
             session()->flash('error', 'Service not found');
         }
-    
-        
+
+
         return redirect()->back();
     }
-    
+
 }

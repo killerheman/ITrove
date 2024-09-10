@@ -1,8 +1,8 @@
 @extends('user.includes.master')
-@section('meta_title','Find Best IT Firm and top it companies in Lucknow - Innovation trove')
-@section('meta_keywords','Best it company in Lucknow,Top it companies in Lucknow,Lucknow\'s best company')
+@section('meta_title','Find Best IT Firm and top IT companies in Lucknow - Innovation trove')
+@section('meta_keywords','Best IT company in Lucknow,Top it companies in Lucknow,Lucknow\'s best company')
 @section('meta_description','Explore the top IT companies in Lucknow and find the best IT company for your needs. Discover the Lucknow best company offering innovative tech solutions and exceptional service.')
-@section('title', 'Home')
+@section('title', 'Best IT company in Lucknow')
 @section('content')
  <!-- banner-section -->
  <section class="banner-style-six">

@@ -17,8 +17,8 @@
   }
 }
 </script>
-<title>@yield('title')</title>
-
+<meta name="title"
+        content="@yield('meta_title')">
 <meta name="keywords"
         content="@yield('meta_keywords')">
 <meta name="description"

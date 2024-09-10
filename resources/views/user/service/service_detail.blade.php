@@ -1,5 +1,8 @@
 @extends('user.includes.master')
-@section('title', 'Project Details')
+@section('title', 'Service Details')
+@section('meta_title', $servicedetail->meta_title)
+@section('meta_description', $servicedetail->meta_description)
+@section('meta_keywords', $servicedetail->meta_title )
 @section('head')
 <style>
    .service-details-content .title-content .text h2 {

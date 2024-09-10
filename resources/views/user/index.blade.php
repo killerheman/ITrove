@@ -1,5 +1,5 @@
 @extends('user.includes.master')
-@section('title','Find Best IT Firm and top it companies in Lucknow - Innovation trove')
+@section('meta_title','Find Best IT Firm and top it companies in Lucknow - Innovation trove')
 @section('meta_keywords','Best it company in Lucknow,Top it companies in Lucknow,Lucknow\'s best company')
 @section('meta_description','Explore the top IT companies in Lucknow and find the best IT company for your needs. Discover the Lucknow best company offering innovative tech solutions and exceptional service.')
 @section('title', 'Home')

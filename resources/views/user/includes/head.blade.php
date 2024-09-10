@@ -32,15 +32,15 @@
 <meta property="og:image" content="{{ asset('frontend/assets/images/logo/logo.png') }}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="675" />
-<meta property="og:image:alt" content="Person designing a website on a laptop" />
+<meta property="og:image:alt" content="Best IT Company in Lucknow" />
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="" />
+<meta name="twitter:title" content="@yield('meta_title')" />
 <meta name="twitter:description"
-        content="" />
+        content="@yield('meta_description')" />
  <meta name="twitter:url" content="https://twitter.com/InnovationTrove" />
 <meta name="twitter:image:src" content="{{ asset('frontend/assets/images/logo/logo.png') }}" />
-<meta name="twitter:image:alt" content="Person designing a website on a laptop" />
-<meta name="twitter:creator" content="@unknown" />
+<meta name="twitter:image:alt" content="Best IT Company in Lucknow" />
+<meta name="twitter:creator" content="@ITrove" />
 <meta name="twitter:site" content="@innovationtrove" />
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://innovationtrove.in/">

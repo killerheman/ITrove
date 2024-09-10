@@ -119,23 +119,20 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
 
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
-            'service_img'=>'required',
+            'service_img'=>'nullable',
         ]);
 
             try{
-                $service=Service::find(Crypt::decrypt($id));
+                $service=Service::find($id);
                 //return $service;
                 $data= $service->update([
                    'title' => $request->service_title,
                    'description' => $request->service_description,
-                   'pic' => $request->service_img,
                    'meta_title' => $request->meta_title,
-                   'slug' => $request->slug,
                    'meta_keyword' => $request->meta_keyword,
                    'meta_description' => $request->meta_desc,
                    'full_description' => $request->full_description,

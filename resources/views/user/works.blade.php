@@ -2,7 +2,7 @@
 @section('title','Works| Best it company in Lucknow | Top it companies in Lucknow | Lucknow\'s best company | It Company -  Innovation trove ')
 @section('meta_description','Check out our \'Works\' section at Innovation Trove, where we showcase why we\'re the best IT company in Lucknow. As a top IT company in the city, we offer outstanding projects and solutions. Discover how we stand out as Lucknow\'s best company for innovative IT services.')
 @section('keywords','Best IT company in Lucknow, Top IT companies in Lucknow, Lucknow\'s best company')
-@section('title', 'Contact-us')
+@section('title', 'Contact-Us')
 @section('content')
 <!-- Page Title -->
         <section class="page-title centred">

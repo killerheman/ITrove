@@ -61,10 +61,11 @@ class FrontendController extends Controller
         return view('user.service.services',compact('serviceData'));
     }
 
-    public function serviceDetails($slug){
+    public function serviceDetails($slug)
+    {
         $serviceData= Service::get();
-      $servicedetail=Service::where('slug',$slug)->first();
-      return view('user.service.service_detail',compact('servicedetail','serviceData'));
+        $servicedetail=Service::where('slug',$slug)->first();
+        return view('user.service.service_detail',compact('servicedetail','serviceData'));
     }
     public function works(){
         $data=Work::get();
@@ -73,7 +74,7 @@ class FrontendController extends Controller
     public function about(){
         return view('user.about');
     }
-    // News letter 
+    // News letter
     public function news_letter(Request $request){
         $validate=$request->validate([
             'email' => 'required|email',

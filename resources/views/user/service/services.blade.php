@@ -1,5 +1,5 @@
 @extends('user.includes.master')
-@section('title','Services| Best it company in Lucknow | Top it companies in Lucknow | Lucknow\'s best company | It Company -  Innovation trove ')
+@section('meta_title','Services| Best it company in Lucknow | Top it companies in Lucknow | Lucknow\'s best company | It Company -  Innovation trove ')
 @section('meta_description','Explore our services at Innovation Trove, where we stand as the best IT company in Lucknow. As one of the top IT companies in the city, we offer cutting-edge solutions tailored to your needs. Discover why we are Lucknow\'s best company for innovative IT services.')
 @section('meta_keywords','Best it company in Lucknow,Top it companies in Lucknow,Lucknow\'s best company')
 @section('title', 'Contact-us')

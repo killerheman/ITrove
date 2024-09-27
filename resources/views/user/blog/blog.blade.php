@@ -52,11 +52,11 @@
         </div>
         <div class="pagination-wrapper centred">
             <ul class="pagination clearfix">
-                <li><a href="blog.html"><i class="fas fa-angle-left"></i></a></li>
-                <li><a href="blog.html">1</a></li>
-                <li><a href="blog.html" class="current">2</a></li>
-                <li><a href="blog.html">3</a></li>
-                <li><a href="blog.html"><i class="fas fa-angle-right"></i></a></li>
+                <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#" class="current">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
             </ul>
         </div>
     </div>

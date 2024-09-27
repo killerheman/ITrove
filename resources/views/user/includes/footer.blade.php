@@ -57,8 +57,8 @@
                                 @foreach (App\Models\Service::take(10)->get() as $ser)
                                 <li><a href="{{route('service_details',$ser->slug)}}">{{$ser->title}}</a></li>
                             @endforeach
-                            
-                             
+
+
                                 {{-- <li><a href="#">Agency</a></li>
                                 <li><a href="#">Social Media</a></li>
                                 <li><a href="#">Branding</a></li>
@@ -81,7 +81,7 @@
                             <ul class="info-list clearfix">
                                 <li>
                                     <h4>Phone No.</h4>
-                                    <p><a href="tel:9434601912">+91-9434601912</a></p>
+                                    <p><a href="tel:9434601912">+91-9648391515 , 9648471515 </a></p>
                                 </li>
                                 <li>
                                     <h4>Email Address</h4>

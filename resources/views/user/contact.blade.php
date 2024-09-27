@@ -21,7 +21,7 @@
     <div class="auto-container">
         <div class="sec-title style-two">
             <h5>SEND MESSAGE</h5>
-            <h2>We’d love to hear from you <br />for your massage</h2>
+            <h2>We’d love to hear from you <br />for your message</h2>
             <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);"></div>
         </div>
         <div class="row clearfix">

@@ -8,6 +8,7 @@ use App\Models\Technology;
 use App\Models\NewsLetter;
 use App\Models\Service;
 use App\Models\Blog;
+use App\Models\Enquiry;
 use App\Models\Work;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -48,7 +49,7 @@ class FrontendController extends Controller
            'message'=>$request->message,
         ]);
         Mail::to($request->email)->send(new UserContactMail($data));
-        Mail::to('shivam786098jais00@gmail.om')->send(new AdminContactMail($data));
+        Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
         if($data) {
             return redirect()->back()->with('toast_success','Your message has been completed successfully.');
         }
@@ -56,6 +57,36 @@ class FrontendController extends Controller
             return redirect()->back()->with('toast_error', 'Something went wrong..');
         }
     }
+
+    public function getQuote()
+    {
+        return view('user.get-quote');
+    }
+    public function quote(Request $request){
+          // Validate the incoming request data
+          $valid=$request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|max:13',
+            'email' => 'required|email|max:255',
+            'message' => 'required'
+        ]);
+         $data= Enquiry::create([
+           'name'=>$request->name,
+           'phone'=>$request->phone,
+           'email'=>$request->email,
+           'message'=>$request->message,
+        ]);
+        Mail::to($request->email)->send(new UserContactMail($data));
+        Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
+        if($data) {
+            return redirect()->back()->with('toast_success','Your message has been completed successfully.');
+        }
+        else {
+            return redirect()->back()->with('toast_error', 'Something went wrong..');
+        }
+    }
+
+
     public function services(){
        $serviceData= Service::get();
         return view('user.service.services',compact('serviceData'));

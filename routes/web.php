@@ -33,6 +33,10 @@ Route::resource('/student-register', StudentController::class);
 Route::get('/training-certificate', [FrontendController::class, 'trainingCertificate'])->name('trainingCertificate');
 Route::get('/contact-us',[FrontendController::class,'contact'])->name('contact');
 Route::post('/contact-us',[FrontendController::class,'enquiry'])->name('enquiry');
+
+Route::get('/get-quote',[FrontendController::class,'getQuote'])->name('get-quote');
+Route::post('/get-quote',[FrontendController::class,'quote'])->name('quote');
+
 Route::get('/services',[FrontendController::class,'services'])->name('services');
 Route::get('service-details/{slug}',[FrontendController::class,'serviceDetails'])->name('service_details');
 Route::get('/works',[FrontendController::class,'works'])->name('works');

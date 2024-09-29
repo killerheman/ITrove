@@ -56,7 +56,7 @@
                     <h5>Build Something Innovative</h5>
                     <p>Let technology accelerate your business. One Stop Solution for all your IT Needs.</p>
                     <div class="btn-box">
-                        <a href="{{ route('contact') }}" class="theme-btn btn-ten">Get Quote</a>
+                        <a href="{{ route('get-quote') }}" class="theme-btn btn-ten">Get Quote</a>
                     </div>
                 </div>
             </div>

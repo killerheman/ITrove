@@ -13,23 +13,13 @@ class NewsLetterMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public $data;
+
     public function __construct($data)
     {
-        //
-        $this->data=$data;
+        $this->data = $data;
     }
 
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
     public function envelope()
     {
         return new Envelope(
@@ -37,23 +27,14 @@ class NewsLetterMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
     public function content()
     {
         return new Content(
-            view: 'emailview.news_letter',with: ['data' =>$this->data],
+            markdown: 'emailviews.news_letter', // Use the path of your Markdown view
+            with: ['data' => $this->data],
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
     public function attachments()
     {
         return [];

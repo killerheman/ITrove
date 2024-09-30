@@ -51,7 +51,7 @@ class AdminContactMail extends Mailable
     // }
     public function build()
     {
-        return $this->view('emailview.admincontact')->with(['data' => $this->data]);
+        return $this->markdown('emailview.admincontact')->with(['data' => $this->data]);
     }
     /**
      * Get the attachments for the message.

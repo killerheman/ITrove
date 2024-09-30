@@ -37,7 +37,7 @@ class FrontendController extends Controller
           // Validate the incoming request data
           $valid=$request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|max:13',
+            'phone' => 'required|min:10',
             'email' => 'required|email|max:255',
             'subject' => 'required',
             'message' => 'required',

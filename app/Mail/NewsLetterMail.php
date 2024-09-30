@@ -30,7 +30,7 @@ class NewsLetterMail extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emailviews.news_letter', // Use the path of your Markdown view
+            markdown: 'mail.news_letter', // Use the path of your Markdown view
             with: ['data' => $this->data],
         );
     }

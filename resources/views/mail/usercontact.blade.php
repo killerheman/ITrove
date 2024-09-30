@@ -9,7 +9,6 @@ We have received your message and our support team will get back to you as soon 
 | **Name**    | {{ $data->name }}   |
 | **Email**   | {{ $data->email }}  |
 | **Phone**   | {{ $data->phone }}  |
-| **Message** | {{ $data->message }}|
 @endcomponent
 
 @component('mail::panel')

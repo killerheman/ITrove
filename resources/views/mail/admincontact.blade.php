@@ -11,7 +11,6 @@ You have received a new contact us form submission. Here are the details:
 | **Name**    | {{ $data->name ?? 'N/A' }} |
 | **Email**   | {{ $data->email ?? 'N/A' }} |
 | **Phone**   | {{ $data->phone ?? 'N/A' }} |
-| **Message** | {{ $data->message ?? 'N/A' }} |
 @endcomponent
 
 @component('mail::panel')

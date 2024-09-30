@@ -1,6 +1,6 @@
 @extends('user.includes.master')
 @section('meta_title','Works| Best it company in Lucknow | Top it companies in Lucknow | Lucknow\'s best company | It Company -  Innovation trove ')
-@section('meta_description','Check out our \'Works\' section at Innovation Trove, where we showcase why we\'re the best IT company in Lucknow. As a top IT company in the city, we offer outstanding projects and solutions. Discover how we stand out as Lucknow\'s best company for innovative IT services.')
+@section('meta_description','Check out our \'Works\' section at Innovation Trove, where we showcase why we\'re the best IT company in Lucknow. As a top IT company in the city, we offer outstanding works and solutions. Discover how we stand out as Lucknow\'s best company for innovative IT services.')
 @section('meta_keywords','Best IT company in Lucknow, Top IT companies in Lucknow, Lucknow\'s best company')
 @section('title', 'Contact-Us')
 @section('content')
@@ -23,8 +23,8 @@
         <section class="project-style-three project-page-2 centred">
             <div class="auto-container">
                 <div class="row clearfix">
-                    @if($data)
-                    @foreach ($data as $workdata)
+
+                    @forelse ($works as $workdata)
                     <div class="col-lg-4 col-md-6 col-sm-12 project-block">
                         <div class="project-block-three">
                             <div class="inner-box">
@@ -43,14 +43,8 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
-
-                    @else
-                    <div class="col-lg-4 col-md-6 col-sm-12 project-block">
-                        <p>Data not avaible</p>
-                    </div>
-                    @endif
-                    {{-- <div class="col-lg-4 col-md-6 col-sm-12 project-block">
+                    @empty
+                     <div class="col-lg-4 col-md-6 col-sm-12 project-block">
                         <div class="project-block-three">
                             <div class="inner-box">
                                 <figure class="image-box">
@@ -176,17 +170,40 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+                    @endforelse
                 </div>
+
+                @isset($works)
                 <div class="pagination-wrapper centred">
                     <ul class="pagination clearfix">
-                        <li><a href="project.html"><i class="fas fa-angle-left"></i></a></li>
-                        <li><a href="project.html">1</a></li>
-                        <li><a href="project.html" class="current">2</a></li>
-                        <li><a href="project.html">3</a></li>
-                        <li><a href="project.html"><i class="fas fa-angle-right"></i></a></li>
+                        {{-- Previous Page Link --}}
+                        @if ($works->onFirstPage())
+                            <li class="disabled"><a><i class="fas fa-angle-left"></i></a></li>
+                        @else
+                            <li><a href="{{ $works->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a></li>
+                        @endif
+
+                        {{-- Pagination Elements --}}
+                        @foreach ($works as $project)
+                            <li>
+                                <a href="{{ $project->url }}">
+                                    {{ $project->currentPage() == $project->getPage() ? $project->getPage() : $project->getPage() }}
+                                </a>
+                            </li>
+                        @endforeach
+
+                        {{-- Next Page Link --}}
+                        @if ($works->hasMorePages())
+                            <li><a href="{{ $works->nextPageUrl() }}"><i class="fas fa-angle-right"></i></a></li>
+                        @else
+                            <li class="disabled"><a><i class="fas fa-angle-right"></i></a></li>
+                        @endif
                     </ul>
                 </div>
+                @endisset
+
+
             </div>
         </section>
         <!-- project-style-three end -->

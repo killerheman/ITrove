@@ -65,7 +65,6 @@
 </section>
 <!-- banner-section end -->
 
-
 <!-- feature-style-two -->
 <section class="feature-style-two centred">
     <div class="auto-container">
@@ -86,7 +85,7 @@
                         </figure>
                         <h3>User Prespective</h3>
                         <div class="text">
-                            <p>To take a trivial example, which idea of our ever undertakes.</p>
+                            <p>Understand and prioritize the needs of your clients, delivering personalized solutions that enhance their experience and satisfaction.</p>
                         </div>
                     </div>
                 </div>
@@ -100,7 +99,7 @@
                         </figure>
                         <h3>Business Prespective</h3>
                         <div class="text">
-                            <p>To take a trivial example, which idea of our ever undertakes.</p>
+                            <p>Align your services with client goals, fostering trust and long-term relationships that drive business growth.</p>
                         </div>
                     </div>
                 </div>
@@ -114,7 +113,7 @@
                         </figure>
                         <h3>Expert Prespective</h3>
                         <div class="text">
-                            <p>To take a trivial example, which idea of our ever undertakes.</p>
+                            <p>Utilize expertise and innovation to provide the right solutions at the right time, ensuring high-quality results and client success.</p>
                         </div>
                     </div>
                 </div>
@@ -150,31 +149,8 @@
                         </div>
                         <div class="text">
                             <p>At <b>ITrove</b>, we pride ourselves on being <b>Lucknow's best IT company</b>, delivering cutting-edge technology solutions tailored to meet the diverse needs of businesses across industries. With years of expertise and a team of skilled professionals, we help organizations thrive in the digital age through innovative IT services.</p>
+                            <p>From <b>custom software development</b> to <b>web and mobile application design</b>, our solutions are crafted to enhance operational efficiency, drive growth, and improve user engagement. Whether you're a small startup or a large enterprise, we understand the challenges you face and work closely with you to create scalable, secure, and future-ready IT solutions.</p>
                         </div>
-                        {{-- <div class="inner-box">
-                            <div class="row clearfix">
-                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                    <div class="single-item">
-                                        <figure class="icon-box"><img
-                                                src="{{ asset('frontend/assets/images/icons/icon-6.png') }}"
-                                                alt=""></figure>
-                                        <h3>Worldwide Experience</h3>
-                                        <p>Nor again is there any individual who loves or seeks after agony
-                                            of...</p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                    <div class="single-item">
-                                        <figure class="icon-box"><img
-                                                src="{{ asset('frontend/assets/images/icons/icon-7.png') }}"
-                                                alt=""></figure>
-                                        <h3>Incentive for Results</h3>
-                                        <p>Aside from get a few focal points from ithas any to criticize an
-                                            outcomes.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="btn-box">
                             <a href="{{ route('about') }}" class="theme-btn btn-ten">Know More</a>
                         </div>
@@ -185,7 +161,6 @@
     </div>
 </section>
 <!-- about-style-five end -->
-
 
 <!-- service-style-five -->
 <section class="service-style-five centred">
@@ -621,13 +596,12 @@
 <!-- video-section end -->
 
 
-
 <!-- project-style-four -->
 <section class="project-style-four">
     <div class="auto-container">
         <div class="sec-title style-two">
             <h5>CASE STUDIES</h5>
-            <h2>Our successful project</h2>
+            <h2>Our successful works</h2>
             <div class="divider"
                 style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
             </div>
@@ -635,6 +609,22 @@
     </div>
     <div class="outer-container">
         <div class="four-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
+            @forelse ($works as $work)
+            <div class="project-block-four">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <img src="{{ asset($work->thumbnail) }}"
+                            alt="">
+                        <div class="icon-box"><img
+                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
+                        </div>
+                    </figure>
+                    <div class="text">
+                        <h5><a href="project-details.html">{{ $work->title }}</a></h5>
+                    </div>
+                </div>
+            </div>
+            @empty
             <div class="project-block-four">
                 <div class="inner-box">
                     <figure class="image-box">
@@ -649,272 +639,8 @@
                     </div>
                 </div>
             </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Data Scientest Code</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Artificial Intelligence</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Data Scientest Code</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Artificial Intelligence</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Data Scientest Code</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Artificial Intelligence</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Data Scientest Code</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Artificial Intelligence</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
-                        </div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Technology Vision Science</a></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="project-block-four">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}"
-                                alt=""></div>
-                    </figure>
-                    <div class="text">
-                        <h5><a href="project-details.html">Data Scientest Code</a></h5>
-                    </div>
-                </div>
-            </div>
+            @endforelse
+
         </div>
     </div>
 </section>
@@ -1043,66 +769,49 @@
             </div>
         </div>
         <div class="row clearfix">
-            <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-                <div class="news-block-one wow fadeInUp animated" data-wow-delay="00ms"
-                    data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <figure class="image-box">
-                            <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="">
-                            <a href="blog-details.html"><i class="fas fa-link"></i></a>
-                        </figure>
-                        <div class="lower-content">
-                            <div class="category"><i class="far fa-folder-open"></i><a
-                                    href="blog-details.html">Technology News</a></div>
-                            <h3><a href="blog-details.html">Named as a Worldwide Innovator For Information</a>
-                            </h3>
-                            <span class="post-date">DECEMBER 29, 2020</span>
-                            <div class="link-box"><a href="blog-details.html"><i
-                                        class="fas fa-long-arrow-alt-right"></i></a></div>
+            @forelse ($blogs as $blog)
+                <div class="col-lg-4 col-md-6 col-sm-12 news-block">
+                    <div class="news-block-one wow fadeInUp animated" data-wow-delay="00ms"
+                        data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <figure class="image-box">
+                                <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="">
+                                <a href="{{ route('blog-details', $blog->id) }}"><i class="fas fa-link"></i></a>
+                            </figure>
+                            <div class="lower-content">
+                                <div class="category"><i class="far fa-folder-open"></i><a
+                                        href="{{ route('blog-details', $blog->id) }}">Technology News</a></div>
+                                <h3><a href="{{ route('blog-details', $blog->id) }}">{{ $blog->blog_title }}</a>
+                                </h3>
+                                <span class="post-date">{{ Carbon/Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
+                                <div class="link-box"><a href="{{ route('blog-details', $blog->id) }}"><i
+                                            class="fas fa-long-arrow-alt-right"></i></a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-                <div class="news-block-one wow fadeInUp animated" data-wow-delay="300ms"
-                    data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <figure class="image-box">
-                            <img src="{{ asset('frontend/assets/images/news/news-5.jpg') }}" alt="">
-                            <a href="blog-details.html"><i class="fas fa-link"></i></a>
-                        </figure>
-                        <div class="lower-content">
-                            <div class="category"><i class="far fa-folder-open"></i><a
-                                    href="blog-details.html">Technology News</a></div>
-                            <h3><a href="blog-details.html">Present status of Man-made reasoning
-                                    Infographic.</a></h3>
-                            <span class="post-date">DECEMBER 28, 2020</span>
-                            <div class="link-box"><a href="blog-details.html"><i
-                                        class="fas fa-long-arrow-alt-right"></i></a></div>
+            @empty
+                <div class="col-lg-4 col-md-6 col-sm-12 news-block">
+                    <div class="news-block-one wow fadeInUp animated" data-wow-delay="00ms"
+                        data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <figure class="image-box">
+                                <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="">
+                                <a href="#"><i class="fas fa-link"></i></a>
+                            </figure>
+                            <div class="lower-content">
+                                <div class="category"><i class="far fa-folder-open"></i><a
+                                        href="#">Technology News</a></div>
+                                <h3><a href="#">Named as a Worldwide Innovator For Information</a>
+                                </h3>
+                                <span class="post-date">DECEMBER 29, 2020</span>
+                                <div class="link-box"><a href="#"><i
+                                            class="fas fa-long-arrow-alt-right"></i></a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 news-block">
-                <div class="news-block-one wow fadeInUp animated" data-wow-delay="600ms"
-                    data-wow-duration="1500ms">
-                    <div class="inner-box">
-                        <figure class="image-box">
-                            <img src="{{ asset('frontend/assets/images/news/news-6.jpg') }}" alt="">
-                            <a href="blog-details.html"><i class="fas fa-link"></i></a>
-                        </figure>
-                        <div class="lower-content">
-                            <div class="category"><i class="far fa-folder-open"></i><a
-                                    href="blog-details.html">Technology News</a></div>
-                            <h3><a href="blog-details.html">Bteach as the Champs in the Worldwide Office
-                                    Award</a></h3>
-                            <span class="post-date">DECEMBER 27, 2020</span>
-                            <div class="link-box"><a href="blog-details.html"><i
-                                        class="fas fa-long-arrow-alt-right"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>

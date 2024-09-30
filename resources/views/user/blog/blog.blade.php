@@ -12,7 +12,7 @@
             <h1>Blog </h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{route('home')}}">Home</a></li>
-                <li ><a href="{{route('blog')}}">Blog</a></li>
+                <li ><a href="{{route('blog')}}">Blogs</a></li>
             </ul>
         </div>
     </div>
@@ -22,7 +22,7 @@
   <section class="blog-grid">
     <div class="auto-container">
         <div class="row clearfix">
-            @foreach ($blog as  $blog)
+            @forelse ($blogs as  $blog)
             <div class="col-lg-4 col-md-6 col-sm-12 news-block">
                 <div class="news-block-two wow fadeInLeft animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box">
@@ -45,20 +45,41 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <p class="text-center">No blog available...</p>
+            @endforelse
 
 
 
         </div>
-        <div class="pagination-wrapper centred">
-            <ul class="pagination clearfix">
-                <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#" class="current">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
-            </ul>
-        </div>
+        @isset($blogs)
+            <div class="pagination-wrapper centred">
+                <ul class="pagination clearfix">
+                    {{-- Previous Page Link --}}
+                    @if ($blogs->onFirstPage())
+                        <li class="disabled"><a><i class="fas fa-angle-left"></i></a></li>
+                    @else
+                        <li><a href="{{ $blogs->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a></li>
+                    @endif
+
+                    {{-- Pagination Elements --}}
+                    @foreach ($blogs as $project)
+                        <li>
+                            <a href="{{ $project->url }}">
+                                {{ $project->currentPage() == $project->getPage() ? $project->getPage() : $project->getPage() }}
+                            </a>
+                        </li>
+                    @endforeach
+
+                    {{-- Next Page Link --}}
+                    @if ($blogs->hasMorePages())
+                        <li><a href="{{ $blogs->nextPageUrl() }}"><i class="fas fa-angle-right"></i></a></li>
+                    @else
+                        <li class="disabled"><a><i class="fas fa-angle-right"></i></a></li>
+                    @endif
+                </ul>
+            </div>
+        @endisset
     </div>
 </section>
 <!-- blog-grid end -->

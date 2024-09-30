@@ -24,8 +24,9 @@ class FrontendController extends Controller
     public function home()
     {
         $services=Service::get();
-        // dd($services);
-        return view('user.index',compact('services'));
+        $works=Work::get();
+        $blogs=Blog::get();
+        return view('user.index',compact('services','works','blogs'));
     }
 
     public function contact()
@@ -51,7 +52,7 @@ class FrontendController extends Controller
         Mail::to($request->email)->send(new UserContactMail($data));
         Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
         if($data) {
-            return redirect()->back()->with('toast_success','Your message has been completed successfully.');
+            return redirect()->back()->with('toast_success','Your message has been sent successfully.');
         }
         else {
             return redirect()->back()->with('toast_error', 'Something went wrong..');
@@ -60,7 +61,8 @@ class FrontendController extends Controller
 
     public function getQuote()
     {
-        return view('user.get-quote');
+        $services = Service::get();
+        return view('user.get-quote', compact('services'));
     }
     public function quote(Request $request){
           // Validate the incoming request data
@@ -70,6 +72,7 @@ class FrontendController extends Controller
             'email' => 'required|email|max:255',
             'message' => 'required'
         ]);
+
          $data= Enquiry::create([
            'name'=>$request->name,
            'phone'=>$request->phone,
@@ -79,7 +82,7 @@ class FrontendController extends Controller
         Mail::to($request->email)->send(new UserContactMail($data));
         Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
         if($data) {
-            return redirect()->back()->with('toast_success','Your message has been completed successfully.');
+            return redirect()->back()->with('toast_success','Your message has been sent successfully.');
         }
         else {
             return redirect()->back()->with('toast_error', 'Something went wrong..');
@@ -99,8 +102,8 @@ class FrontendController extends Controller
         return view('user.service.service_detail',compact('servicedetail','serviceData'));
     }
     public function works(){
-        $data=Work::get();
-        return view('user.works',compact('data'));
+        $works=Work::paginate(10);
+        return view('user.works',compact('works'));
     }
     public function about(){
         return view('user.about');
@@ -249,8 +252,8 @@ class FrontendController extends Controller
     }
 
     public function blog(){
-        $blog=Blog::get();
-        return view('user.blog.blog',compact('blog'));
+        $blogs=Blog::paginate(10);
+        return view('user.blog.blog',compact('blogs'));
     }
 
     public function blogDetails($id){

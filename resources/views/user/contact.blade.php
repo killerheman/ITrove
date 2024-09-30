@@ -61,57 +61,7 @@
 </section>
 <!-- contact-style-two end -->
 <!-- contact-info-two -->
-<section class="contact-info-two">
-    <div class="auto-container">
-        <div class="row align-items-center clearfix">
-            <div class="col-lg-5 col-md-12 col-sm-12 content-column">
-                <div class="content_block_21">
-                    <div class="content-box">
-                        <h2>Contact information</h2>
-                        <div class="single-item">
-                            <div class="icon-box"><i class="fas fa-headphones"></i></div>
-                            <h3>Make a Call</h3>
-                            <span>LET’S TALK WITH OUR EXPERTS</span>
-                            <p><a href="tel:0088827240">+91-9648391515 , 9648471515 </a>, Mon - Fri: 09.00 am to 06.00 pm</p>
-                        </div>
-                        <div class="single-item">
-                            <div class="icon-box"><i class="far fa-envelope"></i></div>
-                            <h3>Send a Mail</h3>
-                            <span>DONT’S HESITATE TO MAIL</span>
-                            <p><a href="mailto:info@innovationtrove.in">info@innovationtrove.in</a>, <a href="mailto:innovationtrove@gmail.com">innovationtrove@gmail.com</a></p>
-                        </div>
-                        <div class="single-item">
-                            <div class="icon-box"><i class="far fa-paper-plane"></i></div>
-                            <h3>Location</h3>
-                            <span>VISIT TO EXPLORE THE WORLD</span>
-                            <p>Aragaon, Near Petrol Pump, Jaigaon
-                                Jalpaiguri,West bengal (736182)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7 col-md-12 col-sm-12 map-column">
-                <div class="map-inner">
-                    <div
-                        class="google-map"
-                        id="contact-google-map"
-                        data-map-lat="40.712776"
-                        data-map-lng="-74.005974"
-                        data-icon-path="assets/images/icons/map-marker.png"
-                        data-map-title="Brooklyn, New York, United Kingdom"
-                        data-map-zoom="12"
-                        data-markers='{
-                            "marker-1": [40.712776, -74.005974, "<h4>Branch Office</h4><p>77/99 New York</p>","assets/images/icons/map-marker.png"]
-                        }'>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@include('user.includes.contact-info')
 <!-- contact-info-two end -->
-
-
 
 @endsection

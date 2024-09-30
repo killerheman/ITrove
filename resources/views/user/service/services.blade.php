@@ -22,8 +22,8 @@
         <section class="service-section service-page">
             <div class="auto-container">
                 <div class="sec-title style-two centred">
-                    <h5>MORE THAN SOLUTIONS</h5>
-                    <h2>Information science answers for <br />startup furthermore, ventures</h2>
+                    <h5>Beyond Solutions</h5>
+                    <h2>Intelligent Tech for Startups and Enterprises</h2>
                     <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);"></div>
                 </div>
                 {{-- @dd($serviceData) --}}
@@ -34,7 +34,10 @@
                         <div class="service-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <a href="{{route('service_details',$data->slug)}}">
                                 <div class="inner-box">
-                                    <figure class="image-box"><img src="{{asset('frontend/assets/images/service/service-8.png')}}" alt=""></figure>
+                                    <figure class="image-box">
+                                        <img src="{{ isset($data->pic) ? asset($data->pic) : asset('frontend/assets/images/service/service-8.png') }}" alt="">
+                                    </figure>
+
                                     <div class="text">
                                         <div class="icon-box">
                                             <i class=" {{$data->fa_icon??''}}"></i>
@@ -142,12 +145,12 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 working-block">
                         <div class="working-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <div class="arrow" style="background-image: url(assets/images/shape/arrow-1.png);"></div>
+                                <div class="arrow" style="background-image: url({{ asset('frontend/assets/images/shape/arrow-1.png') }});"></div>
                                 <div class="icon-box">
                                     <i class="flaticon-cloud-network"></i>
                                     <span>01</span>
-                                    <div class="shape" style="background-image: url(assets/images/shape/shape-4.png);"></div>
-                                    <div class="overlay-shape" style="background-image: url(assets/images/shape/shape-5.png);"></div>
+                                    <div class="shape" style="background-image: url({{ asset('frontend/assets/images/shape/shape-4.png') }});"></div>
+                                    <div class="overlay-shape" style="background-image: url({{ asset('frontend/assets/images/shape/shape-5.png') }});"></div>
                                 </div>
                                 <h3>Casing the Issue</h3>
                                 <p>To take a trivial example, which idea of ever undertakes.</p>
@@ -157,11 +160,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 working-block">
                         <div class="working-block-one wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <div class="arrow" style="background-image: url(assets/images/shape/arrow-2.png);"></div>
+                                <div class="arrow" style="background-image: url({{ asset('frontend/assets/images/shape/arrow-2.png') }});"></div>
                                 <div class="icon-box">
                                     <i class="flaticon-computer"></i>
                                     <span>02</span>
-                                    <div class="shape" style="background-image: url(assets/images/shape/shape-4.png);"></div>
+                                    <div class="shape" style="background-image: url({{ asset('frontend/assets/images/shape/shape-4.png') }});"></div>
                                     <div class="overlay-shape" style="background-image: url(assets/images/shape/shape-5.png);"></div>
                                 </div>
                                 <h3>Gather the Information</h3>
@@ -175,8 +178,8 @@
                                 <div class="icon-box">
                                     <i class="flaticon-circuit"></i>
                                     <span>03</span>
-                                    <div class="shape" style="background-image: url(assets/images/shape/shape-4.png);"></div>
-                                    <div class="overlay-shape" style="background-image: url(assets/images/shape/shape-5.png);"></div>
+                                    <div class="shape" style="background-image: url({{ asset('frontend/assets/images/shape/shape-4.png') }});"></div>
+                                    <div class="overlay-shape" style="background-image: url({{ asset('frontend/assets/images/shape/shape-5.png') }});"></div>
                                 </div>
                                 <h3>Cycle the Information</h3>
                                 <p>Have to be repudiated annoyances accepted the wise.</p>
@@ -190,7 +193,7 @@
 
         <!-- newsletter-section -->
         <section class="newsletter-section">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-28.png);"></div>
+            <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-28.png') }});"></div>
             <div class="auto-container">
                 <div class="row clearfix">
                     <div class="col-lg-7 col-md-12 col-sm-12 content-column">
@@ -199,10 +202,10 @@
                                  <div class="sec-title style-two light">
                                     <h5>SUBSCRIBE US</h5>
                                     <h2>Join our global community and take latest update</h2>
-                                    <div class="divider" style="background-image: url(assets/images/icons/divider-2.png);"></div>
+                                    <div class="divider" style="background-image: url({{ asset('frontend/assets/images/icons/divider-2.png') }});"></div>
                                 </div>
                                 <div class="form-inner">
-                                    <form action="https://azim.commonsupport.com/Bithlo/contact.html" method="post" class="newsletter-form">
+                                    <form action="#" method="post" class="newsletter-form">
                                         <div class="form-group">
                                             <div class="single-checkbox">
                                                 <input type="radio" name="check-box" id="check1">

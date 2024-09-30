@@ -33,17 +33,14 @@
                     <div class="content_block_20">
                         <div class="content-box">
                             <div class="sec-title style-two">
-                                <h5>ABOUT COMPANY</h5>
-                                <h2>Mission is to bring force of simulated intelligence to business</h2>
+                                <h5>WHO WE ARE</h5>
+                                <h3>Welcome to Innovation Trove!</h3>
+                                <h1>Best IT Company in Lucknow</h1>
                                 <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);">
                                 </div>
                             </div>
                             <div class="text">
-                                <p>To take a trivial example, which of us ever undertakes laborious physical exercise,
-                                    except to obtain some advantage from it but right to find fault with a man who chooses
-                                    enjoy.for your business work.</p>
-                                <p>Which of us ever undertakes laborious physical exercise, except to obtain advantage from
-                                    it who do not know how to pursue pleasure.</p>
+                                <p>Welcome to <b>Innovation Trove</b>, the <b>leading and Best IT company in Lucknow</b>, known for delivering top-notch software development and IT services. Whether you're a startup or an established business, we provide tailor-made digital solutions to meet your unique requirements. Our team of highly skilled professionals ensures that we stay ahead of the curve in the ever-evolving world of technology..</p>
                             </div>
                             <div class="video-inner">
                                 <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image"
@@ -63,7 +60,7 @@
         <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-13.png);"></div>
         <div class="auto-container">
             <div class="sec-title style-two">
-                <h5>HOW IT WORKS</h5>
+                <h5>HOW WE WORKS</h5>
                 <h2>Easy and simple work process</h2>
                 <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);"></div>
             </div>
@@ -81,7 +78,7 @@
                                 <span class="dot-2"></span>
                             </div>
                             <div class="icon-box">
-                                <div class="icon-bg" style="background-image: url(assets/images/icons/icon-bg-1.png);">
+                                <div class="icon-bg" style="background-image: url({{ asset('frontend/assets/images/icons/icon-bg-1.png') }});">
                                 </div>
                                 <i class="flaticon-cloud-network"></i>
                             </div>
@@ -101,7 +98,7 @@
                                 <span class="dot-2"></span>
                             </div>
                             <div class="icon-box">
-                                <div class="icon-bg" style="background-image: url(assets/images/icons/icon-bg-2.png);">
+                                <div class="icon-bg" style="background-image: url({{ asset('frontend/assets/images/icons/icon-bg-2.png') }});">
                                 </div>
                                 <i class="flaticon-computer"></i>
                             </div>
@@ -121,7 +118,7 @@
                                 <span class="dot-2"></span>
                             </div>
                             <div class="icon-box">
-                                <div class="icon-bg" style="background-image: url(assets/images/icons/icon-bg-3.png);">
+                                <div class="icon-bg" style="background-image: url({{ asset('frontend/assets/images/icons/icon-bg-3.png')}});">
                                 </div>
                                 <i class="flaticon-circuit"></i>
                             </div>
@@ -138,7 +135,7 @@
         <div class="auto-container">
             <div class="sec-title style-two">
                 <h5>Why chooose us</h5>
-                <h2>Why people select us</h2>
+                <h2>Why Choose Innovation Trove?</h2>
                 <div class="divider"
                     style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});"></div>
             </div>
@@ -147,10 +144,10 @@
                     <div class="chooseus-block-two wow fadeInLeft animated" data-wow-delay="00ms"
                         data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-6.png') }}"
+                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/1_eg-SSb86RN3FL1D0F6FTQw.png') }}"
                                     alt=""></figure>
-                            <h3>Worldwide Experience</h3>
-                            <p>Nor again is there any individual who loves or seeks after agony of itself, since conditions.
+                            <h3>Tailored Software Solutions</h3>
+                            <p>Our custom software is designed to meet the specific needs of various industries, ensuring business success.
                             </p>
                         </div>
                     </div>
@@ -158,10 +155,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
                     <div class="chooseus-block-two wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-7.png') }}"
+                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/62fb8b26a2f30e313f7213d8_launching-high-performance-mobile-games.jpg') }}"
                                     alt=""></figure>
-                            <h3>Incentive for Results</h3>
-                            <p>Aside from get a few focal points from ithas any to criticize an outcomes.</p>
+                            <h3>High-Performance Web and Mobile Applications</h3>
+                            <p>We build responsive, secure, and user-friendly web and mobile apps that enhance digital experiences.</p>
                         </div>
                     </div>
                 </div>
@@ -169,10 +166,45 @@
                     <div class="chooseus-block-two wow fadeInRight animated" data-wow-delay="00ms"
                         data-wow-duration="1500ms">
                         <div class="inner-box">
-                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-9.png') }}"
+                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/male-presenting-customer-relationship-management-system-for-managing-interactions-with-current-and-future-customers-flat-illustration-vector.jpg') }}"
                                     alt=""></figure>
-                            <h3>High-Quality Results</h3>
-                            <p>This mistakens idea of denouncing and was born complete system.</p>
+                            <h3>Client-Centric Approach</h3>
+                            <p>We focus on understanding client needs and delivering IT solutions that drive measurable results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                    <div class="chooseus-block-two wow fadeInLeft animated" data-wow-delay="00ms"
+                        data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/agile-development.jpg') }}"
+                                    alt=""></figure>
+                            <h3>Agile Development for Fast Delivery</h3>
+                            <p>Our agile methodology ensures flexible, timely delivery without compromising on quality.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                    <div class="chooseus-block-two wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/proven-track-record.jpg') }}"
+                                    alt=""></figure>
+                            <h3>Proven Track Record of Success</h3>
+                            <p>We have a history of successful projects, making us a trusted partner for businesses worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                    <div class="chooseus-block-two wow fadeInRight animated" data-wow-delay="00ms"
+                        data-wow-duration="1500ms">
+                        <div class="inner-box">
+                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/skilled-team.png') }}"
+                                    alt=""></figure>
+                            <h3>Skilled and Innovative Team</h3>
+                            <p>Our team of experts is dedicated to solving complex challenges with creative and innovative solutions.</p>
                         </div>
                     </div>
                 </div>

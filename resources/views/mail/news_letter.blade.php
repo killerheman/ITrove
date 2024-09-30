@@ -1,7 +1,7 @@
 @component('mail::message')
 # Thank You for Subscribing!
 
-Dear **{{ $data->name }}**,
+Dear **{{ $data->email }}**,
 
 Thank you for subscribing to our newsletter at **Innovation Trove**. We're excited to keep you updated with our latest news, updates, and special offers.
 

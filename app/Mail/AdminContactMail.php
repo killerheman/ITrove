@@ -43,12 +43,7 @@ class AdminContactMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Content
      */
-    // public function content()
-    // {
-    //     return new Content(
-    //         view: 'view.name',
-    //     );
-    // }
+  
     public function build()
     {
         return $this->markdown('mail.admincontact')->with(['data' => $this->data]);

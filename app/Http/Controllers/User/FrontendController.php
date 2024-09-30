@@ -15,6 +15,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\Mail\UserContactMail;
 use App\Mail\NewsLetterMail;
 use App\Mail\AdminContactMail;
+use App\Mail\SendQuoteMail;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -68,21 +69,21 @@ class FrontendController extends Controller
           // Validate the incoming request data
           $valid=$request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|max:13',
+            'phone' => 'required|min:10',
             'email' => 'required|email|max:255',
-            'message' => 'required'
+            'description' => 'required'
         ]);
 
          $data= Enquiry::create([
            'name'=>$request->name,
            'phone'=>$request->phone,
            'email'=>$request->email,
-           'message'=>$request->message,
+           'service'=>$request->service,
+           'description'=>$request->description,
         ]);
-        Mail::to($request->email)->send(new UserContactMail($data));
-        Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
+        Mail::to($request->email)->send(new SendQuoteMail($data));
         if($data) {
-            return redirect()->back()->with('toast_success','Your message has been sent successfully.');
+            return redirect()->back()->with('toast_success','Your quote has been sent successfully.');
         }
         else {
             return redirect()->back()->with('toast_error', 'Something went wrong..');

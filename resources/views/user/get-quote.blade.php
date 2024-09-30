@@ -42,7 +42,7 @@
                                 <i class="fas fa-phone"></i>
                                 <input type="text" name="phone" required="" placeholder="Your Contact No.">
                             </div>
-                            <select class="col-lg-6 col-md-6 col-sm-12 form-group quote-select">
+                            <select class="col-lg-6 col-md-6 col-sm-12 form-group quote-select" name="service">
                                 <option value=" " selected disabled>Select Services</option>
                                 @foreach ($services as $service)
                                     <option value="{{ $service->id }}" >{{ $service->title }}</option>
@@ -51,7 +51,7 @@
 
 
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <textarea name="message" placeholder="Description"></textarea>
+                                <textarea name="description" placeholder="Description"></textarea>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
                                 <button class="theme-btn btn-seven" type="submit" name="submit-form">Send Quote</button>

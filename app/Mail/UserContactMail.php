@@ -46,7 +46,7 @@ class UserContactMail extends Mailable
 
     public function build()
     {
-        return $this->view('emailview.usercontact')->with(['data' => $this->data]);
+        return $this->markdown('mail.usercontact')->with(['data' => $this->data]);
     }
     /**
      * Get the attachments for the message.

@@ -39,10 +39,10 @@
                                     <h4>Head Office Location</h4>
                                     <p>Aragaon, Near Petrol Pump, Jaigaon <br/>Jalpaiguri,West bengal (736182)</p>
                                 </li>
-                                {{-- <li>
-                                    <h4>Branch Office Location</h4>
-                                    <p>Munshipulia,Lucknow ,U.P., India</p>
-                                </li> --}}
+                                <li>
+                                    <h4>Remote Office Location</h4>
+                                    <p>Munshipulia, Lucknow,U.P., India</p>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -56,18 +56,7 @@
                             <ul class="links-list clearfix">
                                 @foreach (App\Models\Service::take(10)->get() as $ser)
                                 <li><a href="{{route('service_details',$ser->slug)}}">{{$ser->title}}</a></li>
-                            @endforeach
-
-
-                                {{-- <li><a href="#">Agency</a></li>
-                                <li><a href="#">Social Media</a></li>
-                                <li><a href="#">Branding</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Search engine</a></li>
-                                <li><a href="#">Online support</a></li>
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">Pay per click</a></li>
-                                <li><a href="#">Event activation</a></li> --}}
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -115,17 +104,17 @@
         </div>
         <div class="footer-bottom">
             <div class="bottom-inner">
-                <figure class="footer-logo"><a href="#"><img
+                <figure class="footer-logo"><a href="{{ route('home') }}"><img
                             src="{{ asset('frontend/assets/images/logo/logo6.png') }}"
                             alt=""></a></figure>
                 <div class="copyright">
-                    <p>Copyright &copy; <a href="#">Innovation Trove</a>, All Rights Reserved.</p>
+                    <p>Copyright &copy; <a href="{{ route('home') }}">Innovation Trove</a>, All Rights Reserved.</p>
                 </div>
                 <ul class="social-links clearfix">
                     <li><a href="https://www.facebook.com/profile.php?id=100089113158762"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.instagram.com/innovationtrove/"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/posts/innovation-trove-llp_happynewyear-activity-7147578868239970305-_yy9"><i class="fab fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/innovation-trove-llp"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="https://x.com/InnovationTrove"><i class="fab fa-twitter"></i></a></li>
                 </ul>
             </div>
         </div>

@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewsLetterMail extends Mailable
+class SendQuoteMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -23,14 +23,14 @@ class NewsLetterMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'News Letter Mail',
+            subject: 'Send Quote Mail',
         );
     }
 
     public function content()
     {
         return new Content(
-            markdown: 'mail.news_letter', // Use the path of your Markdown view
+            markdown: 'mail.send-quote',
             with: ['data' => $this->data],
         );
     }

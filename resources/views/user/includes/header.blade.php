@@ -5,7 +5,7 @@
         <div class="auto-container">
             <div class="outer-box clearfix">
                 <div class="col-1 logo-box pull-left">
-                    <figure class="logo"><a href="#">
+                    <figure class="logo"><a href="{{ route('home') }}">
                             <img src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt=""></a>
                     </figure>
                 </div>
@@ -33,7 +33,7 @@
                         </div>
                     </nav>
                     <div class="nav-right-content clearfix">
-                        <div class="search-box-outer">
+                        {{-- <div class="search-box-outer">
                             <div class="dropdown">
                                 <button class="search-box-btn" type="button" id="dropdownMenu3"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="btn-box">
                             <a href="{{ route('contact') }}" class="theme-btn btn-ten">Contact us</a>
                         </div>
@@ -66,7 +66,7 @@
         <div class="auto-container">
             <div class="outer-box clearfix">
                 <figure class="sticky-logo pull-left">
-                    <a href="#"><img src="{{ asset('frontend/assets/images/logo/logo6.png') }}"
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/logo6.png') }}"
                             alt=""></a>
                 </figure>
                 <div class="menu-area pull-right clearfix">
@@ -86,8 +86,8 @@
     <div class="close-btn"><i class="fas fa-times"></i></div>
 
     <nav class="menu-box">
-        <div class="nav-logo"><a href="#"><img
-                    src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt="InnovationTrove Logo"
+        <div class="nav-logo"><a href="{{ route('home') }}"><img
+                    src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt="Innovation Trove"
                     title="Logo"></a></div>
         <div class="menu-outer">
             <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

@@ -13,7 +13,7 @@
     <div class="pattern-layer" style="background-image: url({{asset('frontend/assets/images/shape/shape-87.png')}});"></div>
     <div class="auto-container">
         <div class="content-box">
-            <figure class="icon-box"><img src="{{asset($data->thumbnail??'')}}" class="thumbnail" alt=""></figure>
+            <figure class="icon-box"><img src="{{asset($data->thumbnail??'')}}" class="thumbnail" alt="Innovation trove"></figure>
             <h2>Project Details</h2>
             <p>{{$data->title??''}}</p>
         </div>
@@ -58,7 +58,7 @@
                             <h2>Information catch and ML counseling administrations to outline the path to a custom</h2>
                             <p>Must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born will give you a complete account of the system pain can procure him some great pleasure expound the actual of the master-builder of human happiness.</p>
                         </div>
-                        <figure class="image-box"><img src="assets/images/gallery/project-14.jpg" alt=""></figure>
+                        <figure class="image-box"><img src="assets/images/gallery/project-14.jpg" alt="Innovation trove"></figure>
                     </div>
                     <div class="two-column">
                         <div class="row clearfix">

@@ -61,7 +61,7 @@
                             </li>
                             <li>
                                 <a href="advertising-marketing.html">
-                                    <img src="assets/images/icons/icon-37.png" alt="">
+                                    <img src="assets/images/icons/icon-37.png" alt="Innovation trove">
                                     <h5>Service Details.txt</h5>
                                     <span>45 KB</span>
                                     <i class="fas fa-download"></i>
@@ -75,7 +75,7 @@
                             <h2>Award Winning Service</h2>
                             <div class="trophy-box">
                                 <span class="curved-circle">ITrove The Best Servic Provider 2024</span>
-                                <figure class="trophy"><img src="{{asset('frontend/assets/images/icons/trophy-1.png')}}" alt=""></figure>
+                                <figure class="trophy"><img src="{{asset('frontend/assets/images/icons/trophy-1.png')}}" alt="Innovation trove"></figure>
                             </div>
                             <p>To take a trivial example, which idea of ever undertakes.</p>
                         </div>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="content-one">
-                        <figure class="image-box"><img src="{{asset($servicedetail->pic??'')}}" style="height:500px"alt=""></figure>
+                        <figure class="image-box"><img src="{{asset($servicedetail->pic??'')}}" style="height:500px"alt="Innovation trove"></figure>
                     </div>
                     <div class="content-two">
                         {!!$servicedetail->full_description??''!!}

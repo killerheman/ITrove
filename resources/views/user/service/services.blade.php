@@ -248,7 +248,7 @@
                         <div class="thumb-box">
                             <figure class="testimonial-thumb">
                                 <div class="shape" style="background-image: url(assets/images/shape/shape-26.png);"></div>
-                                <img src="{{ asset('frontend/assets/images/resource/testimonial-3.png')}}" alt="">
+                                <img src="{{ asset('frontend/assets/images/resource/testimonial-3.png')}}" alt="Innovation trove">
                             </figure>
                             <div class="dotted-box">
                                 <div class="dotted dotted-1"></div>

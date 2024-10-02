@@ -16,8 +16,8 @@
               {{isset($editcategory)?'Update Blog Category':'Add New Blog Category'}}</h3>
         </div>
         <div class="card-body">
-            <form class="needs-validation" 
-      action="{{ isset($editcategory) ? route('admin.blog-category.update', $editcategory->id) : route('admin.blog-category.store') }}" 
+            <form class="needs-validation"
+      action="{{ isset($editcategory) ? route('admin.blog-category.update', $editcategory->id) : route('admin.blog-category.store') }}"
       method="post">
                 @if (isset($editcategory))
                     @method('patch')
@@ -47,8 +47,7 @@
                 <thead>
                     <tr>
                         <th>Sr.No</th>
-                        <th>Name</th>
-                        
+                        <th>Name</th> 
                         <th>Action</th>
                     </tr>
 

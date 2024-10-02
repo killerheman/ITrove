@@ -64,7 +64,7 @@
                                         <h5 class="card-text pb-2" style="color:#dc37e4;font-weight:bolder;">WE ARE
                                             LAUNCHING SOON.</h5>
                                         <!--<span style="color:white ;letter-spacing: 6px;font-size: 100px;font-family: Alumni Sans Collegiate One;">Innovation Trove</span>-->
-                                        <img src="{{ asset('frontend/app-assets/images/trove.png')}}" height="300px" width="600px" />
+                                        <img src="{{ asset('frontend/app-assets/images/trove.png')}}" height="300px" width="600px" alt="Innovation trove" />
                                         <div id="clockImage"
                                             class="card-text getting-started mt-3 white d-inline-block"></div>
                                         <div class="col-12 pt-1">

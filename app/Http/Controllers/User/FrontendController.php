@@ -46,7 +46,7 @@ class FrontendController extends Controller
            'phone'=>$request->phone,
            'email'=>$request->email,
            'subject'=>$request->subject,
-           'message'=>$request->message,
+           'message'=>$request->message
         ]);
         Mail::to($request->email)->send(new UserContactMail($data));
         Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));

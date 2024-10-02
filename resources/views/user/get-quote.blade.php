@@ -42,6 +42,7 @@
                                 <i class="fas fa-phone"></i>
                                 <input type="text" name="phone" required="" placeholder="Your Contact No.">
                             </div>
+
                             <Select class="col-lg-6 col-md-6 col-sm-12 form-group">
                                 <option value="0">Select Services</option>
                                 <option value="Custom Software Development">Custom Software Development</option>
@@ -52,7 +53,7 @@
                                 <option value="System Administrator">System Administrator</option>
                                 <option value="IT Support">IT Support</option>
                             </Select>
-
+                        
 
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                 <textarea name="message" placeholder="Description"></textarea>

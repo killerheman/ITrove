@@ -18,7 +18,7 @@
             @else
                 Add New Blog
             @endif
-            
+
             </h3>
         </div>
         <div class="card-body">
@@ -44,7 +44,7 @@
                             aria-describedby="blog_img" />
                             @if (isset($editBlog))
                             <div class="col-sm-6">
-                                <img src="{{asset($editBlog->blog_img)??'' }}" class="bg-light-info" alt="" style="height:100px;width:100px;">
+                                <img src="{{asset($editBlog->blog_img)??'' }}" class="bg-light-info" alt="Innovation trove" style="height:100px;width:100px;">
                             </div>
                             <input type="hidden"  name="old_img" value="{{$editBlog->blog_img}}"/>
 
@@ -97,9 +97,9 @@
                           class="btn btn-primary waves-effect waves-float waves-light">
                             {{ isset($ditBlog) ? 'Update' : 'Add' }}
                         </button>
-                
+
                     </div>
-                  
+
                 </div>
 
             </form>
@@ -190,5 +190,5 @@
                    console.error( error );
                } );
    </script>
-   
+
 @endsection

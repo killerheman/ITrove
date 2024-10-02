@@ -26,7 +26,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                     <div class="image-box">
                         <figure class="image clearfix js-tilt"><img
-                                src="{{ asset('frontend/assets/images/resource/about-7.png') }}" alt=""></figure>
+                                src="{{ asset('frontend/assets/images/resource/about-7.png') }}" alt="Innovation Trove"></figure>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 content-column">
@@ -148,7 +148,7 @@
                         data-wow-duration="1500ms">
                         <div class="inner-box">
                             <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-6.png') }}"
-                                    alt=""></figure>
+                                    alt="Innovation trove"></figure>
                             <h3>Worldwide Experience</h3>
                             <p>Nor again is there any individual who loves or seeks after agony of itself, since conditions.
                             </p>
@@ -159,7 +159,7 @@
                     <div class="chooseus-block-two wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
                             <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-7.png') }}"
-                                    alt=""></figure>
+                                    alt="Innovation trove"></figure>
                             <h3>Incentive for Results</h3>
                             <p>Aside from get a few focal points from ithas any to criticize an outcomes.</p>
                         </div>
@@ -170,7 +170,7 @@
                         data-wow-duration="1500ms">
                         <div class="inner-box">
                             <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-9.png') }}"
-                                    alt=""></figure>
+                                    alt="Innovation trove"></figure>
                             <h3>High-Quality Results</h3>
                             <p>This mistakens idea of denouncing and was born complete system.</p>
                         </div>
@@ -248,7 +248,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                     <div class="image-box" data-wow-duration="1500ms">
                         <figure class="image js-tilt"><img
-                                src="{{ asset('frontend/assets/images/resource/skills-1.png') }}" alt=""></figure>
+                                src="{{ asset('frontend/assets/images/resource/skills-1.png') }}" alt="Innovation trove"></figure>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 content-column">

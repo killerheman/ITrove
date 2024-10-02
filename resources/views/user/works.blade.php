@@ -29,11 +29,11 @@
                         <div class="project-block-three">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="{{$workdata->image??''}}" alt="">
+                                    <img src="{{$workdata->image??''}}" alt="Innovation trove">
                                     <a href="{{route('project-details',$workdata->slug)}}" class="link"><i class="fas fa-expand-arrows-alt"></i></a>
                                 </figure>
                                 <div class="lower-content">
-                                    <figure class="icon-box"><img src="{{$workdata->thumbnail??''}}" alt=""></figure>
+                                    <figure class="icon-box"><img src="{{$workdata->thumbnail??''}}" alt="Innovation trove"></figure>
                                     <h3><a href="{{route('project-details',$workdata->slug)}}">{{$workdata->title??''}}</a></h3>
                                     <p>{{$workdata->short_description??''}}</p>
                                     <div class="btn-box">

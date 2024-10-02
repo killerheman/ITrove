@@ -13,39 +13,39 @@
             <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                 <div class="image-box">
                     <figure class="image image-1"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-11.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-11.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-2"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-12.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-12.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-3"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-13.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-13.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-4 wow zoomIn animated" data-wow-delay="300ms"
                         data-wow-duration="1500ms"><img
-                            src="{{ asset('frontend/assets/images/icons/chat-1.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/icons/chat-1.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-5"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-14.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-14.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-6 wow zoomIn animated" data-wow-delay="300ms"
-                        data-wow-duration="1500ms"><img src="assets/images/icons/chat-2.png" alt="">
+                        data-wow-duration="1500ms"><img src="assets/images/icons/chat-2.png" alt="Innovation trove">
                     </figure>
                     <figure class="image image-7"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-15.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-15.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-8 float-bob-y"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-16.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-16.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-9 wow zoomIn animated" data-wow-delay="300ms"
                         data-wow-duration="1500ms"><img
-                            src="{{ asset('frontend/assets/images/icons/chat-3.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/icons/chat-3.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-10 float-bob-y" data-wow-duration="1500ms"><img
-                            src="{{ asset('frontend/assets/images/banner/banner-17.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/banner/banner-17.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-11 float-bob-y" data-wow-duration="1500ms"><img
-                            src="{{ asset('frontend/assets/images/icons/icon-20.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/icons/icon-20.png') }}" alt="Innovation trove">
                     </figure>
                 </div>
             </div>
@@ -133,7 +133,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                 <div class="image-box">
                     <figure class="image js-tilt"><img
-                            src="{{ asset('frontend/assets/images/resource/about-3.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/resource/about-3.png') }}" alt="Innovation trove">
                     </figure>
                 </div>
             </div>
@@ -205,7 +205,7 @@
 
                             <figure class="image-box">
                                 <img
-                                    src="{{ asset($service->pic??'') }}" alt="" style="height:300px;">
+                                    src="{{ asset($service->pic??'') }}" alt="Innovation trove" style="height:300px;">
                             </figure>
                             <h3><a href="{{route('service_details',$service->slug)}}">{{$service->title}}</a></h3>
                             {{-- <p>{{$service->description??''}}</p> --}}
@@ -601,7 +601,7 @@
                     <div class="bg-shape-2"></div>
                     <figure class="image"><img
                             src="{{ asset('frontend/assets/images/resource/illestration-1.png') }}"
-                            alt=""></figure>
+                            alt="Innovation trove"></figure>
                     <div class="video-btn">
                         <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image"
                             data-caption=""><i class="fas fa-play"></i></a>
@@ -611,7 +611,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                 <div class="image-box">
                     <figure class="image"><img
-                            src="{{ asset('frontend/assets/images/resource/women-1.png') }}" alt="">
+                            src="{{ asset('frontend/assets/images/resource/women-1.png') }}" alt="Innovation trove">
                     </figure>
                 </div>
             </div>
@@ -639,7 +639,7 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
                                 src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
                         </div>
@@ -653,9 +653,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -667,9 +667,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -681,9 +681,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -695,9 +695,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -709,9 +709,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -723,9 +723,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -737,9 +737,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -751,9 +751,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -765,9 +765,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -779,9 +779,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -793,9 +793,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -807,9 +807,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -821,9 +821,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -835,9 +835,10 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="Innovation trove
+                                ">
                         </div>
                     </figure>
                     <div class="text">
@@ -849,9 +850,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-19.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -863,7 +864,7 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
                                 src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
                         </div>
@@ -877,9 +878,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-8.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-17.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -891,9 +892,9 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-9.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="">
+                                src="{{ asset('frontend/assets/images/icons/icon-18.png') }}" alt="Innovation trove">
                         </div>
                     </figure>
                     <div class="text">
@@ -905,10 +906,10 @@
                 <div class="inner-box">
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-10.jpg') }}"
-                            alt="">
+                            alt="Innovation trove">
                         <div class="icon-box"><img
                                 src="{{ asset('frontend/assets/images/icons/icon-19.png') }}"
-                                alt=""></div>
+                                alt="Innovation trove"></div>
                     </figure>
                     <div class="text">
                         <h5><a href="project-details.html">Data Scientest Code</a></h5>
@@ -1048,7 +1049,7 @@
                     data-wow-duration="1500ms">
                     <div class="inner-box">
                         <figure class="image-box">
-                            <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="">
+                            <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="Innovation trove">
                             <a href="blog-details.html"><i class="fas fa-link"></i></a>
                         </figure>
                         <div class="lower-content">
@@ -1068,7 +1069,7 @@
                     data-wow-duration="1500ms">
                     <div class="inner-box">
                         <figure class="image-box">
-                            <img src="{{ asset('frontend/assets/images/news/news-5.jpg') }}" alt="">
+                            <img src="{{ asset('frontend/assets/images/news/news-5.jpg') }}" alt="Innovation trove">
                             <a href="blog-details.html"><i class="fas fa-link"></i></a>
                         </figure>
                         <div class="lower-content">
@@ -1088,7 +1089,7 @@
                     data-wow-duration="1500ms">
                     <div class="inner-box">
                         <figure class="image-box">
-                            <img src="{{ asset('frontend/assets/images/news/news-6.jpg') }}" alt="">
+                            <img src="{{ asset('frontend/assets/images/news/news-6.jpg') }}" alt="Innovation trove">
                             <a href="blog-details.html"><i class="fas fa-link"></i></a>
                         </figure>
                         <div class="lower-content">

@@ -784,8 +784,9 @@
                                 <h3><a href="{{ route('blog-details', $blog->id) }}">{{ $blog->blog_title }}</a>
                                 </h3>
                                 @isset($blog->created_at)
-                                    <span class="post-date">{{ Carbon/Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
+                                <span class="post-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
                                 @endisset
+
                                 <div class="link-box"><a href="{{ route('blog-details', $blog->id) }}"><i
                                             class="fas fa-long-arrow-alt-right"></i></a></div>
                             </div>

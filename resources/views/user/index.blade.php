@@ -620,7 +620,7 @@
                         </div>
                     </figure>
                     <div class="text">
-                        <h5><a href="project-details.html">{{ $work->title }}</a></h5>
+                        <h5><a href="{{ route('project-details', $work->slug) }}">{{ $work->title }}</a></h5>
                     </div>
                 </div>
             </div>
@@ -635,7 +635,7 @@
                         </div>
                     </figure>
                     <div class="text">
-                        <h5><a href="project-details.html">Artificial Intelligence</a></h5>
+                        <h5><a href="#">Artificial Intelligence</a></h5>
                     </div>
                 </div>
             </div>

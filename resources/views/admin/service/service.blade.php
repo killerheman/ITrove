@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="service_img">Icon</label>
-                        <input type="text" name='fa_icon' id="service_img" placeholder="Enter icon code"
+                        <input type="file" name='fa_icon' id="service_img" placeholder="Enter icon code"
                             value="{{ $editservice->pic ?? '' }}" class="form-control " aria-label=""
                             aria-describedby="service_img" />
                     </div>

@@ -29,7 +29,7 @@
                             src="{{ asset('frontend/assets/images/banner/banner-14.png') }}" alt="Innovation trove">
                     </figure>
                     <figure class="image image-6 wow zoomIn animated" data-wow-delay="300ms"
-                        data-wow-duration="1500ms"><img src="assets/images/icons/chat-2.png" alt="Innovation trove">
+                        data-wow-duration="1500ms"><img src='{{ asset('frontend/assets/images/icons/chat-2.png') }}' alt="Innovation trove">
                     </figure>
                     <figure class="image image-7"><img
                             src="{{ asset('frontend/assets/images/banner/banner-15.png') }}" alt="Innovation trove">
@@ -599,7 +599,7 @@
 <!-- project-style-four -->
 <section class="project-style-four">
     <div class="auto-container">
-        <div class="sec-title style-two">
+        <div class="sec-title style-two centred">
             <h5>CASE STUDIES</h5>
             <h2>Our successful works</h2>
             <div class="divider"

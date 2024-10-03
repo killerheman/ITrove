@@ -58,7 +58,7 @@
                             <h2>Information catch and ML counseling administrations to outline the path to a custom</h2>
                             <p>Must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born will give you a complete account of the system pain can procure him some great pleasure expound the actual of the master-builder of human happiness.</p>
                         </div>
-                        <figure class="image-box"><img src="assets/images/gallery/project-14.jpg" alt="Innovation trove"></figure>
+                        <figure class="image-box"><img src="{{ asset('frontend/assets/images/gallery/project-14.jpg') }}" alt="Innovation trove"></figure>
                     </div>
                     <div class="two-column">
                         <div class="row clearfix">

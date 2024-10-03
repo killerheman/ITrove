@@ -783,7 +783,9 @@
                                         href="{{ route('blog-details', $blog->id) }}">Technology News</a></div>
                                 <h3><a href="{{ route('blog-details', $blog->id) }}">{{ $blog->blog_title }}</a>
                                 </h3>
-                                <span class="post-date">{{ Carbon/Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
+                                @isset($blog->created_at)
+                                    <span class="post-date">{{ Carbon/Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
+                                @endisset
                                 <div class="link-box"><a href="{{ route('blog-details', $blog->id) }}"><i
                                             class="fas fa-long-arrow-alt-right"></i></a></div>
                             </div>

@@ -144,17 +144,10 @@
                     <div class="chooseus-block-two wow fadeInLeft animated" data-wow-delay="00ms"
                         data-wow-duration="1500ms">
                         <div class="inner-box">
-<<<<<<< HEAD
-                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-6.png') }}"
-                                    alt="Innovation trove"></figure>
-                            <h3>Worldwide Experience</h3>
-                            <p>Nor again is there any individual who loves or seeks after agony of itself, since conditions.
-=======
                             <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/1_eg-SSb86RN3FL1D0F6FTQw.png') }}"
                                     alt=""></figure>
                             <h3>Tailored Software Solutions</h3>
                             <p>Our custom software is designed to meet the specific needs of various industries, ensuring business success.
->>>>>>> 93598eb5b3490898c6239885f0c7cfd68b55d456
                             </p>
                         </div>
                     </div>
@@ -162,17 +155,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
                     <div class="chooseus-block-two wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
-<<<<<<< HEAD
-                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-7.png') }}"
-                                    alt="Innovation trove"></figure>
-                            <h3>Incentive for Results</h3>
-                            <p>Aside from get a few focal points from ithas any to criticize an outcomes.</p>
-=======
                             <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/62fb8b26a2f30e313f7213d8_launching-high-performance-mobile-games.jpg') }}"
                                     alt=""></figure>
                             <h3>High-Performance Web and Mobile Applications</h3>
                             <p>We build responsive, secure, and user-friendly web and mobile apps that enhance digital experiences.</p>
->>>>>>> 93598eb5b3490898c6239885f0c7cfd68b55d456
                         </div>
                     </div>
                 </div>
@@ -180,12 +166,6 @@
                     <div class="chooseus-block-two wow fadeInRight animated" data-wow-delay="00ms"
                         data-wow-duration="1500ms">
                         <div class="inner-box">
-<<<<<<< HEAD
-                            <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/icon-9.png') }}"
-                                    alt="Innovation trove"></figure>
-                            <h3>High-Quality Results</h3>
-                            <p>This mistakens idea of denouncing and was born complete system.</p>
-=======
                             <figure class="icon-box"><img src="{{ asset('frontend/assets/images/icons/male-presenting-customer-relationship-management-system-for-managing-interactions-with-current-and-future-customers-flat-illustration-vector.jpg') }}"
                                     alt=""></figure>
                             <h3>Client-Centric Approach</h3>
@@ -225,7 +205,6 @@
                                     alt=""></figure>
                             <h3>Skilled and Innovative Team</h3>
                             <p>Our team of experts is dedicated to solving complex challenges with creative and innovative solutions.</p>
->>>>>>> 93598eb5b3490898c6239885f0c7cfd68b55d456
                         </div>
                     </div>
                 </div>

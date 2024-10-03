@@ -42,20 +42,6 @@
                                 <i class="fas fa-phone"></i>
                                 <input type="text" name="phone" required="" placeholder="Your Contact No.">
                             </div>
-<<<<<<< HEAD
-
-                            <Select class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <option value="0">Select Services</option>
-                                <option value="Custom Software Development">Custom Software Development</option>
-                                <option value="Social Media Marketing">Social Media Marketing</option>
-                                <option value="Search Engine Optimization">Search Engine Optimization</option>
-                                <option value="Website Design and Development">Website Design and Development</option>
-                                <option value="Digital Marketing">Digital Marketing</option>
-                                <option value="System Administrator">System Administrator</option>
-                                <option value="IT Support">IT Support</option>
-                            </Select>
-                        
-=======
                             <select class="col-lg-6 col-md-6 col-sm-12 form-group quote-select" name="service">
                                 <option value=" " selected disabled>Select Services</option>
                                 @foreach ($services as $service)
@@ -63,7 +49,6 @@
                                 @endforeach
                             </select>
 
->>>>>>> 93598eb5b3490898c6239885f0c7cfd68b55d456
 
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                 <textarea name="description" placeholder="Description"></textarea>

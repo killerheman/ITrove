@@ -64,7 +64,7 @@
                                     <div class="card rounded-0 mb-0 px-2">
                                         <div class="card-header pb-1">
                                             <div class="card-title">
-                                                <h4 class="mb-0">LMS Login</h4>
+                                                <h4 class="mb-0">ITrove Admin Login</h4>
                                             </div>
                                         </div>
                                         <p class="px-2">Welcome back, please login to your account.</p>

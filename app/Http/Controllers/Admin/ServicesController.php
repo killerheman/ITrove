@@ -131,6 +131,7 @@ class ServicesController extends Controller
                 //return $service;
                 $data= $service->update([
                    'title' => $request->service_title,
+                   'pic' => $request->fa_icon,
                    'description' => $request->service_description,
                    'meta_title' => $request->meta_title,
                    'meta_keyword' => $request->meta_keyword,

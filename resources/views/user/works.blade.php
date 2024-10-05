@@ -6,7 +6,7 @@
 @section('content')
 <!-- Page Title -->
         <section class="page-title centred">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-87.png);"></div>
+            <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-87.png') }});"></div>
             <div class="auto-container">
                 <div class="content-box">
                     <h1>Works</h1>

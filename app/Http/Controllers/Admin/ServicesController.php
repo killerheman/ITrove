@@ -128,10 +128,25 @@ class ServicesController extends Controller
 
             try{
                 $service=Service::find($id);
+
+                if ($request->hasFile('service_img')) {
+                    // Delete the old image if it exists
+                    if (file_exists(public_path($service->pic))) {
+                        unlink(public_path($service->pic));
+                    }
+                    // Upload the new image
+                    $spic = 'service-' . time() . '-' . rand(0, 99) . '.' . $request->service_img->extension();
+                    $request->service_img->move(public_path('upload/services/'), $spic);
+                    $servicePicPath = 'upload/services/' . $spic;
+                } else {
+                    // If no new image is uploaded, retain the old one
+                    $servicePicPath = $service->pic;
+                }
                 //return $service;
                 $data= $service->update([
                    'title' => $request->service_title,
-                   'pic' => $request->fa_icon,
+                   'pic' => $servicePicPath,
+                   'fa_icon' => $request->fa_icon,
                    'description' => $request->service_description,
                    'meta_title' => $request->meta_title,
                    'meta_keyword' => $request->meta_keyword,

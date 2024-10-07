@@ -50,7 +50,7 @@
             </li>
 
 
-            <li class=" nav-item"><a href="#"><i class="feather icon-zap"></i><span class="menu-title"
+            <li class=" nav-item"><a href="#"><i class="feather icon-phone"></i><span class="menu-title"
                         data-i18n="Starter kit">Blog</span></a>
                 <ul class="menu-content">
                     <ul class="menu-content">
@@ -64,7 +64,7 @@
                 </ul>
             </li>
 
-            <li class=" nav-item"><a href="#"><i class="feather icon-zap"></i><span class="menu-title"
+            <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
                         data-i18n="Starter kit">Students</span></a>
                 <ul class="menu-content">
                     <ul class="menu-content">
@@ -78,7 +78,7 @@
                 </ul>
             </li>
 
-            <li class=" nav-item"><a href="#"><i class="feather icon-zap"></i><span class="menu-title"
+            <li class=" nav-item"><a href="#"><i class="feather icon-edit"></i><span class="menu-title"
                         data-i18n="Starter kit">Services</span></a>
                 <ul class="menu-content">
                     <ul class="menu-content">
@@ -91,7 +91,7 @@
                     </ul>
                 </ul>
             </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-zap"></i><span class="menu-title"
+            <li class=" nav-item"><a href="#"><i class="feather icon-briefcase"></i><span class="menu-title"
                         data-i18n="Starter kit">Work</span></a>
                 <ul class="menu-content">
                     <ul class="menu-content">

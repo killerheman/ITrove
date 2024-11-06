@@ -28,7 +28,7 @@
                 </div>
                 {{-- @dd($serviceData) --}}
                 <div class="row clearfix">
-                    @foreach ($serviceData as $data)
+                      @foreach ($serviceData as $data)
 
                     <div class="col-lg-6 col-md-12 col-sm-12 service-block">
                         <div class="service-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">

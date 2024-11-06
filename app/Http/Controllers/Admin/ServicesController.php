@@ -149,6 +149,7 @@ class ServicesController extends Controller
                    'fa_icon' => $request->fa_icon,
                    'description' => $request->service_description,
                    'meta_title' => $request->meta_title,
+                   'thumbnail_img'=> $request->thumbnail_img,
                    'meta_keyword' => $request->meta_keyword,
                    'meta_description' => $request->meta_desc,
                    'full_description' => $request->full_description,

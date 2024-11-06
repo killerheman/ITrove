@@ -104,6 +104,19 @@
                     </ul>
                 </ul>
             </li>
+            <li class=" nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title"
+                data-i18n="Starter kit">Pricing</span></a>
+        <ul class="menu-content">
+            <ul class="menu-content">
+                <li><a href="{{ route('admin.work.index') }}"><i></i><span class="menu-item"
+                            data-i18n="work">Add</span></a>
+                </li>
+                <li><a href="{{ route('admin.work.create') }}"><i></i><span class="menu-item"
+                    data-i18n="work">Manage</span></a>
+                 </li>
+            </ul>
+        </ul>
+    </li>
         </ul>
     </div>
 </div>

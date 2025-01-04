@@ -37,7 +37,7 @@
                             <ul class="info-list clearfix">
                                 <li>
                                     <h4>Head Office Location</h4>
-                                    <p>Aragaon, Near Petrol Pump, Jaigaon <br/>Jalpaiguri,West bengal (736182)</p>
+                                    <p>Daragaon, Near Petrol Pump, Jaigaon <br/>Jalpaiguri,West bengal (736182)</p>
                                 </li>
                                 <li>
                                     <h4>Remote Office Location</h4>

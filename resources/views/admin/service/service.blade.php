@@ -42,12 +42,12 @@
                         </select>
                     </div>
                     <div class="col-md-6 mb-1">
-                        <label class="form-label" for="thumbnail_img">service image</label>
+                        <label class="form-label" for="thumbnail_img">Thumbnail Image</label>
                         <input type="file" name='thumbnail_img' id="thumbnail_img" class="form-control"
-                            aria-describedby="service_img" />
+                            aria-describedby="thumbnail_img" />
                     </div>
                     <div class="col-md-12 mb-1">
-                        <label class="form-label" for="service_img">Thumbnail Image </label>
+                        <label class="form-label" for="service_img">Service Image </label>
                         <input type="file" name='service_img' id="service_img"
                             value="{{ $editservice->service_img ?? '' }}" class="form-control " aria-label=""
                             aria-describedby="service_img" />

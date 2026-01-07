@@ -37,11 +37,11 @@
                             <ul class="info-list clearfix">
                                 <li>
                                     <h4>Head Office Location</h4>
-                                    <p>Aragaon, Near Petrol Pump, Jaigaon <br/>Jalpaiguri,West bengal (736182)</p>
+                                    <p>Daragaon, Near Petrol Pump, Jaigaon <br/>Jalpaiguri,West bengal (736182)</p>
                                 </li>
                                 <li>
-                                    <h4>Remote Office Location</h4>
-                                    <p>Munshipulia, Lucknow,U.P., India</p>
+                                    <h4>Business Office</h4>
+                                    <p>212 B Sahdeo mahto Marg, Boring Rd, opposite roll mafia, Sri Krishna Puri, Patna, Bihar 800001</p>
                                 </li>
                             </ul>
                         </div>
@@ -97,6 +97,11 @@
                                     <button type="submit" class="theme-btn btn-ten">Subscribe</button>
                                 </div>
                             </form>
+                            <a href="https://resultjano.com" rel="dofollow" style="color: transparent;background-color: transparent;pointer-events: none;cursor: default;text-decoration: non;">Sarkari Results</a>
+                            <a href="https://esenotes.com" rel="dofollow" style="color: transparent;background-color: transparent;pointer-events: none;cursor: default;text-decoration: none;">Ese Notes</a>
+                            <a href="https://nowshare.in" target="_blank" rel="noopener">
+                                <img src="https://nowshare.in/tools/visitor/image?style=minimal-pill&start=10000&site_id=innovationtrove.in&id=t7k6bjkv0" alt="Visitor Counter" style="max-width: 100%;">
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@
                     <input type="text" id="basic-addon-name" value=" {{$editwork->title??''}}" name='work_title' class="form-control"
                         value="" placeholder="Enter Title"
                         aria-label="work_title" aria-describedby="basic-addon-title" required />
-                       
+
                 </div>
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="work_img">Image</label>
@@ -61,11 +61,11 @@
                             @php
                             $images_data=json_decode($editwork->screenshot_img);
                          @endphp
-                            @foreach ( $images_data as $img)                          
+                            @foreach ( $images_data as $img)
                             <img src="{{asset($img)}}" class="me-75 bg-light-danger"
-                            style="height:60px;width:60px;" /> 
+                            style="height:60px;width:60px;" />
                         @endforeach
-                          
+
                         </div>
                     @endif
                 </div>
@@ -74,48 +74,48 @@
                     <input type="text" id="basic-addon-name" value=" {{$editwork->technology??''}}" name='technology' class="form-control"
                         value="" placeholder="Enter Technology"
                         aria-label="technology" aria-describedby="basic-addon-title" required />
-                </div> 
+                </div>
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="basic-addon-name">Slug</label>
                     <input type="text" id="basic-addon-name" value=" {{$editwork->slug??''}}" name='slug' class="form-control"
                         value="" placeholder="Enter Slug"
                         aria-label="time_period" aria-describedby="basic-addon-title" required />
-                </div> 
+                </div>
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="basic-addon-name">Meta Tiltle</label>
                     <input type="text" id="basic-addon-name" value=" {{$editwork->meta_title??''}}" name='meta_title' class="form-control"
                         value="" placeholder="Enter meta title"
                         aria-label="result" aria-describedby="basic-addon-title" required />
-                </div> 
+                </div>
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="basic-addon-name">Meta Keyword</label>
                     <input type="text" id="basic-addon-name" value=" {{$editwork->meta_keyword??''}}" name='meta_keyword' class="form-control"
                         value="" placeholder="Enter Meta Keyword"
                         aria-label="website" aria-describedby="basic-addon-title" required />
-                </div> 
+                </div>
                 <div class="col-md-12  mb-1">
                     <label class="form-label" for="basic-addon-name">Meta Description</label>
                     <textarea name="meta_description" id="meta_description"  class="form-control " cols="70" rows="2"> {{$editwork->meta_description??''}}</textarea>
-                   
+
                 </div>
                 <div class="col-md-12  mb-1">
                     <label class="form-label" for="basic-addon-name">Short Description</label>
                     <textarea name="short_description" id="short_description"  class="form-control " cols="70" rows="2"> {{$editwork->short_description??''}}</textarea>
-                   
+
                 </div>
                 <div class="col-md-12  mb-1">
                     <label class="form-label" for="basic-addon-name">Full Description</label>
                     <textarea name="full_description" id="editor"  class="form-control " cols="70" rows="2"> {!!$editwork->full_desription??''!!}</textarea>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-sm-2">
                     <button type="submit"
                         class="btn btn-primary waves-effect waves-float waves-light"> {{isset($editwork)?'Update':'Add'}}</button>
-                       
+
                 </div>
-               
+
             </div>
 
         </form>
@@ -139,5 +139,5 @@
                     console.error( error );
                 } );
     </script>
-    
+
 @endsection

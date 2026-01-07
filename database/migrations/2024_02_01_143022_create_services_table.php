@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('fa_icon');
             $table->string('pic');
+            $table->string('thumbnail_image');
             $table->text('meta_title');
             $table->string('sequence')->unique();
             $table->text('slug')->unique();

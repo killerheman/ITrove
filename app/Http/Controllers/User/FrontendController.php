@@ -263,4 +263,19 @@ class FrontendController extends Controller
         // return $blogdetail;
         return view('user.blog.blog_description',compact('blogdetails'));
     }
+    
+    public function privacyPolicy()
+    {
+        return view('user.privacy-policy');
+    }
+    
+    public function termsOfService()
+    {
+        return view('user.terms-of-service');
+    }
+    
+    public function dataDeletion()
+    {
+        return view('user.data-deletion');
+    }
 }

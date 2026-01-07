@@ -45,6 +45,12 @@ Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::post('news-letter',[FrontendController::class,'news_letter'])->name('newsletter');
 Route::get('blog',[FrontendController::class,'blog'])->name('blog');
 Route::get('blog-details/{id}',[FrontendController::class,'blogDetails'])->name('blog-details');
+
+//Policy URL
+Route::get('/privacy-policy',[FrontendController::class,'privacyPolicy'])->name('privacy-policy');
+Route::get('/terms-of-service',[FrontendController::class,'termsOfService'])->name('terms-of-service');
+Route::get('/data-deletion',[FrontendController::class,'dataDeletion'])->name('data-deletion');
+
 //Backend Routes
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::post('/login', [AdminController::class, 'login'])->name('login');

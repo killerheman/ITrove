@@ -1,5 +1,5 @@
 @extends('admin.includes.layout')
-@section('title', 'Services')
+@section('title', 'Pricing')
 @section('head-area')
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/form-validation.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/pickers/form-flat-pickr.css') }}">
@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <form class="needs-validation"
-                action="{{ isset($editservice) ? route('admin.service.update', $editservice->id) : route('admin.service.store') }}"
+                action="{{ isset($editservice) ? route('admin.pricing.update', $editservice->id) : route('admin.pricing.store') }}"
                 method='post' enctype="multipart/form-data">
                 @if (isset($editservice))
                     @method('patch')
@@ -29,9 +29,9 @@
                     </div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="service_img">Icon</label>
-                        <input type="text" name='fa_icon' id="fa_icon" placeholder="Enter icon code"
-                            value="{{ $editservice->fa_icon ?? '' }}" class="form-control " aria-label=""
-                            aria-describedby="fa_icon" />
+                        <input type="file" name='fa_icon' id="fa_icon" placeholder="Enter icon code"
+                            value="{{ $editservice->pic ?? '' }}" class="form-control " aria-label=""
+                            aria-describedby="service_img" />
                     </div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="sequence">Sequence Service</label>
@@ -42,16 +42,11 @@
                         </select>
                     </div>
                     <div class="col-md-6 mb-1">
-                        <label class="form-label" for="thumbnail_img">Thumbnail Image</label>
-                        <input type="file" name='thumbnail_img' id="thumbnail_img" class="form-control"
-                            aria-describedby="thumbnail_img" />
-                    </div>
-                    <div class="col-md-12 mb-1">
-                        <label class="form-label" for="service_img">Service Image </label>
-                        <input type="file" name='service_img' id="service_img"
-                            value="{{ $editservice->service_img ?? '' }}" class="form-control " aria-label=""
+                        <label class="form-label" for="service_img">service image</label>
+                        <input type="file" name='service_img' id="service_img" class="form-control"
                             aria-describedby="service_img" />
                     </div>
+
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="meta_title">Meta Title</label>
                         <input type="text" name='meta_title' id="meta_title" placeholder="Enter meta title"
@@ -64,7 +59,6 @@
                             value="{{ $editservice->slug ?? '' }}" class="form-control " aria-label=""
                             aria-describedby="slug" />
                     </div>
-
                     <div class="col-md-12 mb-1">
                         <label class="form-label" for="meta_title">Meta Keyword</label>
                         <input type="text" name='meta_keyword' id="meta_keyword" placeholder="Enter meta keyword"
@@ -81,13 +75,13 @@
                         <label class="form-label" for="basic-addon-name">Short Description</label>
                         <textarea name="service_description" id="service_description" class="form-control " cols="70" rows="2">{{ $editservice->description ?? '' }}</textarea>
                     </div>
-                    <div class="col-md-12 mb-1">
+                    <div class="col-md-12  mb-1">
                         <label class="form-label" for="basic-addon-name">Long Description</label>
                         <textarea name="full_description" id="editor" class="form-control " cols="70" rows="2">{!! $editservice->full_description ?? '' !!}</textarea>
                     </div>
-
+                </div>
                 <div class="row">
-                    <div class="col-sm-2 mx-1">
+                    <div class="col-sm-2">
                         <button type="submit"
                             class="btn btn-primary waves-effect waves-float waves-light">{{ isset($editservice) ? 'Update' : 'Add' }}</button>
                     </div>

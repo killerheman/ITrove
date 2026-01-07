@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Service;
+use App\Models\Pricing;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 class ServicesController extends Controller
@@ -41,6 +41,8 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
+        //
+        // return $request->sequence;
         $request->validate([
             'service_title'=>'required',
             'service_description'=>'required',
@@ -48,40 +50,31 @@ class ServicesController extends Controller
             'sequence'=>'required|unique:services',
             'full_description'=>'required',
         ]);
-        try
-        {
-            $service_img = 'default.jpg'
-            if($request->thumbnail_img){
-                $spic='service-thumbnail-img'.time().'-'.rand(0,99).'.'.$request->thumbnail_img->extension();
-                $request->thumbnail_img->move(public_path('upload/services/thumbnail'),$spic);
-            }
-
-            if($request->service_img){
-                $spic='service-img'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
+        try{
+              $spic='service-'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
                 $request->service_img->move(public_path('upload/services/'),$spic);
-            }
 
-            $data =Service::create([
-                'title' => $request->service_title,
-                'description' => $request->service_description,
-                'fa_icon'=>$request->fa_icon,
-                'pic'=>'upload/services/'.$spic,
-                'meta_title' => $request->meta_title,
-                'sequence' => $request->sequence,
-                'slug' => Str::slug($request->slug),
-                'meta_keyword' => $request->meta_keyword,
-                'meta_description' => $request->meta_desc,
-                'full_description' => $request->full_description,
+                $data =Service::create([
+                    'title' => $request->service_title,
+                    'description' => $request->service_description,
+                    'fa_icon'=>$request->fa_icon,
+                    'pic'=>'upload/services/'.$spic,
+                    'meta_title' => $request->meta_title,
+                    'sequence' => $request->sequence,
+                    'slug' => Str::slug($request->slug),
+                    'meta_keyword' => $request->meta_keyword,
+                    'meta_description' => $request->meta_desc,
+                    'full_description' => $request->full_description,
 
-            ]);
-            if($data)
-            {
-                session()->flash('success','Service Added Sucessfully');
-            }
-            else
-            {
-                session()->flash('error','Service not added ');
-            }
+                ]);
+                if($data)
+                {
+                    session()->flash('success','Service Added Sucessfully');
+                }
+                else
+                {
+                    session()->flash('error','Service not added ');
+                }
         }
         catch(Exception $ex){
             $url=URL::current();
@@ -156,7 +149,6 @@ class ServicesController extends Controller
                    'fa_icon' => $request->fa_icon,
                    'description' => $request->service_description,
                    'meta_title' => $request->meta_title,
-                   'thumbnail_img'=> $request->service_img,
                    'meta_keyword' => $request->meta_keyword,
                    'meta_description' => $request->meta_desc,
                    'full_description' => $request->full_description,

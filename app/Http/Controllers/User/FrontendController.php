@@ -91,10 +91,17 @@ class FrontendController extends Controller
     }
 
 
-    public function services(){
-       $serviceData= Service::get();
-        return view('user.service.services',compact('serviceData'));
-    }
+    public function services() 
+{
+    // Services ka data fetch karein
+    $serviceData = \App\Models\Service::orderBy('sequence', 'asc')->get();
+    
+    // Works table se data fetch karein (Jo aapne screenshot mein bheji thi)
+    $works = \DB::table('works')->get(); 
+    
+    // Blade file mein dono variables pass karein
+    return view('user.service.services', compact('serviceData', 'works'));
+}
 
     public function serviceDetails($slug)
     {

@@ -5,194 +5,154 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Work;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Exception;
 
 class WorkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
-        $work=Work::get();
-        return view('admin.work.work',compact('work'));
+        $work = Work::paginate(15); 
+        return view('admin.work.work', compact('work'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
-        $work=Work::get();
-        return view('admin.work.manage',compact('work'));
-      
+        $work = Work::get();
+        return view('admin.work.manage', compact('work'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-        
         $request->validate([
-            'work_title'=>'required',
-            'technology'=>'required',
-            'slug'=>'required',
-            'meta_keyword'=>'required',
-            'meta_title'=>'required',
-            'meta_description'=>'required',
-            'short_description'=>'required',
-            'full_description'=>'required',
-            'work_img'=>'image',
-            // 'thumbnail'=>'image',
-            // 'screenshot_img'=>'image',
+            'work_title' => 'required',
+            'technology' => 'required',
+            'meta_keyword' => 'required',
+            'meta_title' => 'required',
+            'meta_description' => 'required',
+            'short_description' => 'required',
+            'full_description' => 'required',
+            'work_img' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'screenshot_img.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
-       
-       
-        try{
-    
-                $wpic = 'work-' . time() . '-' . rand(0, 99) . '.' . $request->work_img->extension();
-                $request->work_img->move(public_path('upload/work/'), $wpic);
 
-                // 
-                $tpic = 'work-' . time() . '-' . rand(0, 99) . '.' . $request->thumbnail->extension();
-                $request->thumbnail->move(public_path('upload/work/thumbnail'), $tpic);
-                // 
-                $files = $request->file('screenshot_img');
+        try {
+            // Main Image - Saves in storage/app/public/works/
+            $wpath = $request->work_img->store('works', 'public');
+
+            // Thumbnail - Saves in storage/app/public/works/thumbnail/
+            $tpath = null;
+            if ($request->hasFile('thumbnail')) {
+                $tpath = $request->thumbnail->store('works/thumbnail', 'public');
+            }
+
+            // Multiple Screenshots
+            $screenshotImages = null;
+            if ($request->hasFile('screenshot_img')) {
                 $fileNames = [];
-                foreach ($files as $file) {
-                    $spic = 'work-' . time() . '-' . rand(0, 99) . '.' . $file->extension();
-                    $file->move(public_path('upload/work/images'), $spic);
-                    $fileNames[] ='upload/work/images/'.$spic;
+                foreach ($request->file('screenshot_img') as $file) {
+                    $fileNames[] = $file->store('works/screenshots', 'public');
                 }
                 $screenshotImages = json_encode($fileNames);
-
-                // Create the Work record
-                $data = Work::create([
-                    'title' => $request->work_title,
-                    'image' => 'upload/work/' . $wpic,
-                    'thumbnail' => 'upload/work/thumbnail/' . $tpic, // Added '/' to correctly form the path
-                    'screenshot_img' => $screenshotImages, // Store the JSON-encoded array of file names
-                    'technology' => $request->technology,
-                    'slug' => $request->slug,
-                    'meta_keyword' => $request->meta_keyword,
-                    'meta_title' => $request->meta_title,
-                    'meta_description' => $request->meta_description,
-                    'short_description' => $request->short_description,
-                    'full_description' => $request->full_description, // Corrected typo here
-                ]);
-            if($data)
-            {
-                session()->flash('success','Work Added Sucessfully');
-            }
-            else
-            {
-                session()->flash('error','Work not added ');
             }
 
-        }catch(Exception $ex){
+            Work::create([
+                'title' => $request->work_title,
+                'image' => $wpath,
+                'thumbnail' => $tpath,
+                'screenshot_img' => $screenshotImages,
+                'technology' => $request->technology,
+                'slug' => $request->slug ?? Str::slug($request->work_title),
+                'meta_keyword' => $request->meta_keyword,
+                'meta_title' => $request->meta_title,
+                'meta_description' => $request->meta_description,
+                'short_description' => $request->short_description,
+                'full_description' => $request->full_description,
+            ]);
 
+            session()->flash('success', 'Work Added Successfully');
+
+        } catch (Exception $ex) {
+            session()->flash('error', 'Error: ' . $ex->getMessage());
         }
+
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($slug)
-    {
-        $work=Work::get();
-        $editwork=Work::where('slug',$slug)->firstOrFail() ;
-        return view('admin.work.work',compact('work','editwork'));
-      
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
-         dd($id);
-         $request->validate([
-            'work_title'=>'required',
-            'technology'=>'required',
-            'time_period'=>'required',
-            'website'=>'required',
-            'result'=>'required',
-            'short_description'=>'required',
-            'full_description'=>'required',
-            // 'work_img'=>'image',
+        $request->validate([
+            'work_title' => 'required',
+            'short_description' => 'required',
         ]);
-        if($request->hasFile('service_img'))
-        {
-            $wpic='work-'.time().'-'.rand(0,99).'.'.$request->work_img->extension();
-            $request->work_img->move(public_path('upload/work/'),$wpic);
-            Work::find(Crypt::decrypt($id))->update(['image'=>'upload/work/'.$wpic]);
-        }
-        try{
-            $data=Work::find(Crypt::decrypt($id))->update([
-                'title'=>$request->work_title,
-                'technology'=>$request->technology,
-                'time_period'=>$request->time_period,
-                'website'=>$request->website,
-                'result'=>$request->result,
-                'short_description'=>$request->short_description,
-                'full_desription'=>$request->full_description,
-            ]);
-            if($data)
-            {
-                session()->flash('success','Work Updated Sucessfully');
-            }
-            else
-            {
-                session()->flash('error','Work not Updated ');
-            }
-        }catch(Exception $ex){
 
+        try {
+            $work = Work::findOrFail($id);
+
+            // Update Main Image
+            if ($request->hasFile('work_img')) {
+                if ($work->image && Storage::disk('public')->exists($work->image)) {
+                    Storage::disk('public')->delete($work->image);
+                }
+                $work->image = $request->work_img->store('works', 'public');
+            }
+
+            // Update Thumbnail
+            if ($request->hasFile('thumbnail')) {
+                if ($work->thumbnail && Storage::disk('public')->exists($work->thumbnail)) {
+                    Storage::disk('public')->delete($work->thumbnail);
+                }
+                $work->thumbnail = $request->thumbnail->store('works/thumbnail', 'public');
+            }
+
+            $work->update([
+                'title' => $request->work_title,
+                'technology' => $request->technology,
+                'slug' => $request->slug ?? Str::slug($request->work_title),
+                'meta_keyword' => $request->meta_keyword,
+                'meta_title' => $request->meta_title,
+                'meta_description' => $request->meta_description,
+                'short_description' => $request->short_description,
+                'full_description' => $request->full_description,
+            ]);
+
+            session()->flash('success', 'Work Updated Successfully');
+
+        } catch (Exception $ex) {
+            session()->flash('error', 'Update Error: ' . $ex->getMessage());
         }
+
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
-        return "decrypt";
-    }
+        try {
+            $work = Work::findOrFail($id);
+            
+            // Delete all associated files
+            $filesToDelete = [$work->image, $work->thumbnail];
+            
+            // Add screenshots to delete list
+            if ($work->screenshot_img) {
+                $screenshots = json_decode($work->screenshot_img, true);
+                $filesToDelete = array_merge($filesToDelete, $screenshots);
+            }
 
-    
+            foreach ($filesToDelete as $file) {
+                if ($file && Storage::disk('public')->exists($file)) {
+                    Storage::disk('public')->delete($file);
+                }
+            }
+
+            $work->delete();
+            session()->flash('success', 'Work and all images deleted successfully');
+        } catch (Exception $ex) {
+            session()->flash('error', 'Delete Error: ' . $ex->getMessage());
+        }
+
+        return redirect()->back();
+    }
 }

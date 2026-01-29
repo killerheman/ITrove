@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Service;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 class ServicesController extends Controller
 {
     /**
@@ -39,58 +40,45 @@ class ServicesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'service_title'=>'required',
-            'service_description'=>'required',
-            'service_img'=>'required',
-            'sequence'=>'required|unique:services',
-            'full_description'=>'required',
+   public function store(Request $request)
+{
+    $request->validate([
+        'service_title' => 'required',
+        'service_description' => 'required',
+        'service_img' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+        'sequence' => 'required|unique:services',
+        'full_description' => 'required',
+    ]);
+
+    try {
+        $path = ""; 
+
+        if($request->hasFile('service_img')){
+            // store() automatically creates a unique filename and saves it 
+            // inside: storage/app/public/services/
+            $path = $request->file('service_img')->store('services', 'public');
+        }
+
+        $data = Service::create([
+            'title' => $request->service_title,
+            'description' => $request->service_description,
+            'fa_icon' => $request->fa_icon,
+            'pic' => $path, // Saves path as "services/filename.jpg"
+            'meta_title' => $request->meta_title,
+            'sequence' => $request->sequence,
+            'slug' => Str::slug($request->slug ?? $request->service_title),
+            'meta_keyword' => $request->meta_keyword,
+            'meta_description' => $request->meta_desc,
+            'full_description' => $request->full_description,
         ]);
-        try
-        {
-            $service_img = 'default.jpg'
-            if($request->thumbnail_img){
-                $spic='service-thumbnail-img'.time().'-'.rand(0,99).'.'.$request->thumbnail_img->extension();
-                $request->thumbnail_img->move(public_path('upload/services/thumbnail'),$spic);
-            }
 
-            if($request->service_img){
-                $spic='service-img'.time().'-'.rand(0,99).'.'.$request->service_img->extension();
-                $request->service_img->move(public_path('upload/services/'),$spic);
-            }
-
-            $data =Service::create([
-                'title' => $request->service_title,
-                'description' => $request->service_description,
-                'fa_icon'=>$request->fa_icon,
-                'pic'=>'upload/services/'.$spic,
-                'meta_title' => $request->meta_title,
-                'sequence' => $request->sequence,
-                'slug' => Str::slug($request->slug),
-                'meta_keyword' => $request->meta_keyword,
-                'meta_description' => $request->meta_desc,
-                'full_description' => $request->full_description,
-
-            ]);
-            if($data)
-            {
-                session()->flash('success','Service Added Sucessfully');
-            }
-            else
-            {
-                session()->flash('error','Service not added ');
-            }
+        if($data) {
+            return redirect()->back()->with('success', 'Service Added Successfully');
         }
-        catch(Exception $ex){
-            $url=URL::current();
-            Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-            Session::flash('error','Server Error ');
-        }
-        return redirect()->back();
+    } catch (\Exception $ex) {
+        return redirect()->back()->with('error', 'Error: ' . $ex->getMessage());
     }
-
+}
     /**
      * Display the specified resource.
      *
@@ -125,57 +113,53 @@ class ServicesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+{
+    $request->validate([
+        'service_title' => 'required',
+        'service_description' => 'required',
+        'service_img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        'full_description' => 'required',
+    ]);
 
-        $request->validate([
-            'service_title'=>'required',
-            'service_description'=>'required',
-            'service_img'=>'nullable',
+    try {
+        $service = Service::findOrFail($id);
+        $servicePicPath = $service->pic; // Keep existing path by default
+
+        if ($request->hasFile('service_img')) {
+            // 1. Delete the old image from storage if it exists 
+            // We use the 'public' disk which points to storage/app/public
+            if ($service->pic && Storage::disk('public')->exists($service->pic)) {
+                Storage::disk('public')->delete($service->pic);
+            }
+
+            // 2. Upload the new image and get the path (e.g., services/filename.jpg)
+            $servicePicPath = $request->file('service_img')->store('services', 'public');
+        }
+
+        $data = $service->update([
+            'title' => $request->service_title,
+            'pic' => $servicePicPath,
+            'fa_icon' => $request->fa_icon,
+            'description' => $request->service_description,
+            'meta_title' => $request->meta_title,
+            'meta_keyword' => $request->meta_keyword,
+            'meta_description' => $request->meta_desc,
+            'full_description' => $request->full_description,
         ]);
 
-            try{
-                $service=Service::find($id);
+        if ($data) {
+            session()->flash('success', 'Service Updated Successfully');
+        } else {
+            session()->flash('error', 'Service not updated');
+        }
 
-                if ($request->hasFile('service_img')) {
-                    // Delete the old image if it exists
-                    if (file_exists(public_path($service->pic))) {
-                        unlink(public_path($service->pic));
-                    }
-                    // Upload the new image
-                    $spic = 'service-' . time() . '-' . rand(0, 99) . '.' . $request->service_img->extension();
-                    $request->service_img->move(public_path('upload/services/'), $spic);
-                    $servicePicPath = 'upload/services/' . $spic;
-                } else {
-                    // If no new image is uploaded, retain the old one
-                    $servicePicPath = $service->pic;
-                }
-                //return $service;
-                $data= $service->update([
-                   'title' => $request->service_title,
-                   'pic' => $servicePicPath,
-                   'fa_icon' => $request->fa_icon,
-                   'description' => $request->service_description,
-                   'meta_title' => $request->meta_title,
-                   'thumbnail_img'=> $request->service_img,
-                   'meta_keyword' => $request->meta_keyword,
-                   'meta_description' => $request->meta_desc,
-                   'full_description' => $request->full_description,
-               ]);
-               if($data)
-               {
-                   session()->flash('success','Service Updated Sucessfully');
-               }
-               else
-               {
-                   session()->flash('error','Service not updated ');
-               }
-            }catch(Exception $ex){
-                $url=URL::current();
-                Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-                Session::flash('error','Server Error ');
-            }
-            return redirect()->back();
+    } catch (\Exception $ex) {
+        // Optional: Error::create(['url' => url()->current(), 'message' => $ex->getMessage()]);
+        session()->flash('error', 'Server Error: ' . $ex->getMessage());
     }
+
+    return redirect()->back();
+}
 
     /**
      * Remove the specified resource from storage.
@@ -183,26 +167,23 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
-    {
-        // Find the item by slug
-        $item = Service::where('slug', $slug)->first();
+   public function destroy($slug)
+{
+    try {
+        $item = Service::where('slug', $slug)->firstOrFail();
 
-        // Check if the item exists
-        if ($item) {
-
-                // Delete the item
-                $item->delete();
-
-                session()->flash('success', 'Service deleted successfully');
-
-        } else {
-
-            session()->flash('error', 'Service not found');
+        // Check if image exists in storage and delete it
+        if ($item->pic && Storage::disk('public')->exists($item->pic)) {
+            Storage::disk('public')->delete($item->pic);
         }
 
-
-        return redirect()->back();
+        $item->delete();
+        session()->flash('success', 'Service and associated image deleted successfully');
+        
+    } catch (\Exception $ex) {
+        session()->flash('error', 'Error: ' . $ex->getMessage());
     }
 
+    return redirect()->back();
+}
 }

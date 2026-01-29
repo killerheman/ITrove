@@ -17,7 +17,7 @@ class Service extends Model
 
         static::saving(function ($Service) {
             if (empty($Service->slug)) {
-                $Service->slug = Str::slug($Service->slug);
+                $Service->slug = Str::slug($Service->title);
             }
         });
     }

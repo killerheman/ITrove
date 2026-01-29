@@ -40,7 +40,7 @@
                            
                         </td>
                         <td>
-                            <img src="{{asset($service->pic)}}" height="50px" width="50px" />
+                           <img src="{{ asset('storage/' . $service->pic) }}" height="50px" width="50px" />
                         </td>
                         <td>{{ $service->title }}</td>
                         <td>{{ $service->meta_title }}</td>

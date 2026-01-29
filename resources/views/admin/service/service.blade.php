@@ -13,6 +13,21 @@
             </h3>
         </div>
         <div class="card-body">
+            @if (session('success'))
+    <div class="alert alert-success" style="padding: 15px; background-color: #d4edda; color: #155724; margin-bottom: 20px;">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger" style="padding: 15px; background-color: #f8d7da; color: #721c24; margin-bottom: 20px;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <form class="needs-validation"
                 action="{{ isset($editservice) ? route('admin.service.update', $editservice->id) : route('admin.service.store') }}"
                 method='post' enctype="multipart/form-data">

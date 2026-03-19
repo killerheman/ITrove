@@ -62,14 +62,14 @@
                         <li><a href="{{ $blogs->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a></li>
                     @endif
 
-                    {{-- Pagination Elements --}}
-                    @foreach ($blogs as $project)
-                        <li>
-                            <a href="{{ $project->url }}">
-                                {{ $project->currentPage() == $project->getPage() ? $project->getPage() : $project->getPage() }}
-                            </a>
-                        </li>
-                    @endforeach
+                 {{-- Pagination Elements --}}
+@if ($blogs->hasPages())
+    @foreach ($blogs->links()->elements[0] as $page => $url)
+        <li class="{{ $page == $blogs->currentPage() ? 'active' : '' }}">
+            <a href="{{ $url }}">{{ $page }}</a>
+        </li>
+    @endforeach
+@endif
 
                     {{-- Next Page Link --}}
                     @if ($blogs->hasMorePages())

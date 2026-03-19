@@ -86,25 +86,18 @@
                                         class="me-1" data-feather="check-square"></i><span
                                         class="align-middle">Edit</span>
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.service.destroy', $service->slug) }}"><i
-                                    class="me-1" data-feather="message-square"></i><span
-                                    class="align-middle">Delete</span>
-                                </a>
-                                    {{-- <a class="dropdown-item" href=""
-                                    onclick="event.preventDefault();document.getElementById('delete-form-{{ $sid }}').submit();"><i
-                                        class="me-1" data-feather="message-square"></i><span
-                                        class="align-middle">Delete</span>
-                                    </a> --}}
-                                </div>
-                            </div>
-                        </td>
+                                <a class="dropdown-item" href="javascript:void(0);" 
+           onclick="if(confirm('Are you sure?')) { document.getElementById('delete-form-{{ $service->slug }}').submit(); }">
+            <i class="me-1" data-feather="trash"></i>
+            <span class="align-middle">Delete</span>
+        </a>
+    </div>
+</div>
 
-                    </tr>
-
-                    <form id="delete-form-{{ $sid }}" action="{{ route('admin.service.destroy', $sid) }}"
-                        method="delete" style="display: none;">
-                        @csrf
-                    </form>
+<form id="delete-form-{{ $service->slug }}" action="{{ route('admin.service.destroy', $service->slug) }}" method="POST" style="display: none;">
+    @csrf
+    @method('DELETE')
+</form>
                 @endforeach
 
             </tbody>

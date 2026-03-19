@@ -52,7 +52,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                 <div class="content-box wow fadeInUp animated" data-wow-delay="00ms"
                     data-wow-duration="1500ms">
-                    <h1>Best IT Company in Lucknow</h1>
+                    <h1>Best IT Company</h1>
                     <h5>Build Something Innovative</h5>
                     <p>Let technology accelerate your business. One Stop Solution for all your IT Needs.</p>
                     <div class="btn-box">
@@ -142,13 +142,13 @@
                         <div class="sec-title style-two">
                             <h5>ABOUT COMPANY</h5>
                             {{-- <h2>Let Technology Accelerate Your Business</h2> --}}
-                            <h2>Top IT Companies in Lucknow</h2>
+                            <h2>Top IT Companies</h2>
                             <div class="divider"
                                 style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
                             </div>
                         </div>
                         <div class="text">
-                            <p>At <b>ITrove</b>, we pride ourselves on being <b>Lucknow's best IT company</b>, delivering cutting-edge technology solutions tailored to meet the diverse needs of businesses across industries. With years of expertise and a team of skilled professionals, we help organizations thrive in the digital age through innovative IT services.</p>
+                            <p>At <b>ITrove</b>, we pride ourselves on being <b>Best IT company</b>, delivering cutting-edge technology solutions tailored to meet the diverse needs of businesses across industries. With years of expertise and a team of skilled professionals, we help organizations thrive in the digital age through innovative IT services.</p>
                             <p>From <b>custom software development</b> to <b>web and mobile application design</b>, our solutions are crafted to enhance operational efficiency, drive growth, and improve user engagement. Whether you're a small startup or a large enterprise, we understand the challenges you face and work closely with you to create scalable, secure, and future-ready IT solutions.</p>
                         </div>
                         <div class="btn-box">
@@ -168,31 +168,24 @@
         <div class="sec-title style-two">
             <h5>OUR SERVICES</h5>
             <h2>Focus on your client with the <br />right back rub</h2>
-            <div class="divider"
-                style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
-            </div>
+            <div class="divider" style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});"></div>
         </div>
         <div class="three-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-
-                @foreach ($services as $service)
-                    <div class="service-block-five">
-                        <div class="inner-box">
-
-                            <figure class="image-box">
-                                <img
-                                    src="{{ asset($service->pic??'') }}" alt="Innovation trove" style="height:300px;">
-                            </figure>
-                            <h3><a href="{{route('service_details',$service->slug)}}">{{$service->title}}</a></h3>
-                            {{-- <p>{{$service->description??''}}</p> --}}
-                            <p style="text-align: justify";>{{ Str::limit($service->description ?? '', 400) }}</p>
-
-                            <div class="btn-box"><a href="{{route('service_details',$service->slug)}}">Read More</a></div>
-                        </div>
+            @foreach ($services as $service)
+                <div class="service-block-five">
+                    <div class="inner-box">
+                        <figure class="image-box">
+                            {{-- correct path: storage prefix  --}}
+                            <img src="{{ $service->pic ? asset('storage/' . $service->pic) : asset('frontend/assets/images/service/service-default.png') }}" 
+                                 alt="{{ $service->title }}" 
+                                 style="height:300px; width: 100%; object-fit: cover;">
+                        </figure>
+                        <h3><a href="{{route('service_details',$service->slug)}}">{{$service->title}}</a></h3>
+                        <p style="text-align: justify;">{{ Str::limit($service->description ?? '', 400) }}</p>
+                        <div class="btn-box"><a href="{{route('service_details',$service->slug)}}">Read More</a></div>
                     </div>
-                @endforeach
-
-
-
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -603,7 +596,7 @@
             <h5>CASE STUDIES</h5>
             <h2>Our successful works</h2>
             <div class="divider"
-                style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
+                style="background-image: url('{{ asset('frontend/assets/images/icons/divider-1.png') }}');">
             </div>
         </div>
     </div>
@@ -613,10 +606,12 @@
             <div class="project-block-four">
                 <div class="inner-box">
                     <figure class="image-box">
-                        <img src="{{ asset($work->thumbnail) }}"
-                            alt="">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
+                        <img src="{{ asset('storage/' . $work->thumbnail) }}"
+                             alt="{{ $work->title }}" 
+                             onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/gallery/project-7.jpg') }}';">
+                        
+                        <div class="icon-box">
+                            <img src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="icon">
                         </div>
                     </figure>
                     <div class="text">
@@ -630,8 +625,8 @@
                     <figure class="image-box">
                         <img src="{{ asset('frontend/assets/images/gallery/project-7.jpg') }}"
                             alt="Innovation trove">
-                        <div class="icon-box"><img
-                                src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="">
+                        <div class="icon-box">
+                            <img src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="icon">
                         </div>
                     </figure>
                     <div class="text">

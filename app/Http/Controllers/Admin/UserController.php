@@ -135,54 +135,50 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        Log::info('update'.json_encode($request->all()));
+   public function update(Request $request, $id)
+{
+    try {
+        $id = Crypt::decrypt($id); // Decrypt ID
+        $user = User::findOrFail($id);
+
         $request->validate([
             'first_name'=>'required',
-            'last_name'=>'nullable',
-            'phone'=>'nullable',
-            'email'=>'required',
-            'pic'=>'image|nullable',
+            'email'=>'required|email|unique:users,email,'.$id, // Unique check current user ko chhod kar
+            'pic'=>'image|nullable|max:2048',
             'roleid' => 'required'
         ]);
-        try
-        {
-            if($request->hasFile('pic'))
-            {
-                $fpic='user-'.time().'-'.rand(0,99).'.'.$request->pic->extension();
-                $request->pic->move(public_path('upload/ser/'),$fpic);
-                $oldpic=User::find($id)->pluck('pic')[0];
-                File::delete(public_path($oldpic));
-                User::find($id)->update(['pic' => 'upload/user/'.$fpic]);
-            }
-            $data = [
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'email' => $request->email
-            ];
-            $role = Role::find($request->roleid);
-            $res= User::find($id)->update($data);
 
-            if($res)
-            {
-                User::find($id)->syncRoles($role->name);
-                session()->flash('success','User updated Sucessfully');
+        if($request->hasFile('pic')) {
+            $fpic = 'user-'.time().'-'.rand(0,99).'.'.$request->pic->extension();
+            $request->pic->move(public_path('upload/user/'), $fpic);
+            
+            // Delete old file safely
+            if($user->pic && file_exists(public_path($user->pic))) {
+                File::delete(public_path($user->pic));
             }
-            else
-            {
-                session()->flash('error','User not updated ');
-            }
+            $user->pic = 'upload/user/'.$fpic;
         }
-        catch(Exception $ex)
-        {
-            $url=URL::current();
-            Error::create(['url'=>$url,'message'=>$ex->getMessage()]);
-            Session::flash('error','Server Error ');
-        }
-            return redirect()->back();
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->save();
+
+        // Update Role
+        $role = Role::find($request->roleid);
+        $user->syncRoles($role->name);
+
+        session()->flash('success','User updated Successfully');
+        return redirect()->back();
+
+    } catch(Exception $ex) {
+        $url = URL::current();
+        Error::create(['url'=>$url, 'message'=>$ex->getMessage()]);
+        Session::flash('error', 'Update Failed: ' . $ex->getMessage());
+        return redirect()->back();
     }
-
+}
     /**
      * Remove the specified resource from storage.
      *

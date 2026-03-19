@@ -35,12 +35,12 @@
                             <div class="sec-title style-two">
                                 <h5>WHO WE ARE</h5>
                                 <h3>Welcome to Innovation Trove!</h3>
-                                <h1>Best IT Company in Lucknow</h1>
+                                <h1>Best IT Company</h1>
                                 <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);">
                                 </div>
                             </div>
                             <div class="text">
-                                <p>Welcome to <b>Innovation Trove</b>, the <b>leading and Best IT company in Lucknow</b>, known for delivering top-notch software development and IT services. Whether you're a startup or an established business, we provide tailor-made digital solutions to meet your unique requirements. Our team of highly skilled professionals ensures that we stay ahead of the curve in the ever-evolving world of technology..</p>
+                                <p>Welcome to <b>Innovation Trove</b>, the <b>leading and Best IT company</b>, known for delivering top-notch software development and IT services. Whether you're a startup or an established business, we provide tailor-made digital solutions to meet your unique requirements. Our team of highly skilled professionals ensures that we stay ahead of the curve in the ever-evolving world of technology..</p>
                             </div>
                             <div class="video-inner">
                                 <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image"

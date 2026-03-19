@@ -75,7 +75,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'],function
     Route::post('blog-store',[BlogController::class,'store'])->name('blog-store');
     Route::post('blog-delete/{id}',[BlogController::class,'destroy'])->name('blog-delete');
     Route::get('blog-edit/{id}',[BlogController::class,'edit'])->name('blog-edit');
-    Route::patch('blog-update/{slug}',[BlogController::class,'update'])->name('blog-update');
+    Route::patch('blog-update/{id}',[BlogController::class,'update'])->name('blog-update');
     Route::resource('student',AdminStudentController::class);
     Route::resource('service',ServicesController::class);
     Route::resource('work',WorkController::class);

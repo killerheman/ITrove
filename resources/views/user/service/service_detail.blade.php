@@ -92,8 +92,13 @@
                         </div>
                     </div>
                     <div class="content-one">
-                        <figure class="image-box"><img src="{{asset($servicedetail->pic??'')}}" style="height:500px"alt="Innovation trove"></figure>
-                    </div>
+    <figure class="image-box">
+        {{-- Updated Image Path Logic --}}
+        <img src="{{ $servicedetail->pic ? asset('storage/' . $servicedetail->pic) : asset('frontend/assets/images/service/service-8.png') }}" 
+             style="height:500px; width:100%; object-fit: cover;" 
+             alt="{{ $servicedetail->title }}">
+    </figure>
+</div>
                     <div class="content-two">
                         {!!$servicedetail->full_description??''!!}
                     </div>

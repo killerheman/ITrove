@@ -21,13 +21,16 @@
             </h3>
         </div>
         <div class="card-body">
-            <form class="needs-validation"
-                action="{{ isset($editemployee) ? route('admin.user.update', $editemployee->id) : route('admin.user.store') }}"
-                method='post' enctype="multipart/form-data">
-                @if (isset($editemployee))
-                    @method('patch')
-                @endif
-                @csrf
+            <form class="needs-validation" 
+      action="{{ isset($editemployee) ? route('admin.user.update', Crypt::encrypt($editemployee->id)) : route('admin.user.store') }}" 
+      method="POST" 
+      enctype="multipart/form-data">
+    
+    @csrf
+    @if (isset($editemployee))
+        @method('PUT')
+    @endif
+              
                 <div class="row">
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="basic-addon-name">First Name</label>
@@ -58,18 +61,20 @@
                             aria-label="email" aria-describedby="basic-addon-name" required />
                     </div>
                     <div class="col-md-6 mb-1">
-                        <label class="form-label" for="desc">Role Name</label>
-                        <select class="form-control select2 form-select" id="select2-basic"  name='roleid' required>
-                        @if(isset($editemployee))
-                              <option selected hidden value='{{$editemployee->roles[0]->id ?? ''}}'>{{$editemployee->roles[0]->name ?? ''}}</option>
-                        @else
-                        <option selected disabled value="">--Select Role--</option>
-                        @endif
-                            @foreach ($roles as $role)
-                                <option value="{{$role->id}}">{{$role->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+    <label class="form-label" for="desc">Role Name</label>
+    <select class="form-control select2 form-select" id="select2-basic" name="roleid" required>
+        @if(!isset($editemployee))
+            <option selected disabled value="">--Select Role--</option>
+        @endif
+        
+        @foreach ($roles as $role)
+            <option value="{{ $role->id }}" 
+                {{ (isset($editemployee) && $editemployee->roles->first() && $editemployee->roles->first()->id == $role->id) ? 'selected' : '' }}>
+                {{ $role->name }}
+            </option>
+        @endforeach
+    </select>
+</div>
                     <div class="col-md-6 mb-1">
                         <label class="form-label" for="pic">Image Thumbnail</label>
                         <input type="file" name='pic' id="pic" class="form-control " aria-label="pic"
@@ -81,11 +86,16 @@
                         <button type="submit"
                             class="btn btn-primary waves-effect waves-float waves-light">{{ isset($editemployee) ? 'Update' : 'Add' }}</button>
                     </div>
-                    @if (isset($editemployee))
-                        <div class="col-sm-6">
-                            <img src="{{asset($editemployee->pic) }}" class="bg-light-info" alt="" style="height:100px;width:100px;">
-                        </div>
-                    @endif
+                   @if (isset($editemployee))
+    <div class="col-sm-6 mt-1">
+        <label class="form-label d-block">Current Profile Picture</label>
+        {{-- Database path 'upload/user/...' --}}
+        <img src="{{ $editemployee->pic ? asset($editemployee->pic) : asset('frontend/assets/images/users/default.png') }}" 
+             class="bg-light-info rounded border" 
+             alt="User Image" 
+             style="height:100px;width:100px; object-fit: cover;">
+    </div>
+@endif
                 </div>
 
             </form>
@@ -134,17 +144,17 @@
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 @php $eid=Crypt::encrypt($employee->id); @endphp
 
-                                                <a class="dropdown-item" href="{{ route('admin.user.edit', $eid) }}"><i
-                                                        class="me-1" data-feather="check-square"></i><span
-                                                        class="align-middle">Edit</span>
-                                                </a>
+                                               <a class="dropdown-item" href="{{ route('admin.user.edit', $eid) }}">
+    <i class="me-1" data-feather="check-square"></i>
+    <span class="align-middle">Edit</span>
+</a>
 
 
-                                                <a class="dropdown-item" href=""
-                                                onclick="event.preventDefault();document.getElementById('delete-form-{{ $eid }}').submit();"><i
-                                                    class="me-1" data-feather="message-square"></i><span
-                                                    class="align-middle">Delete</span>
-                                                </a>
+                                               <a class="dropdown-item" href="javascript:void(0);" 
+   onclick="if(confirm('Are you sure?')){ event.preventDefault(); document.getElementById('delete-form-{{ $eid }}').submit(); }">
+    <i class="me-1" data-feather="trash"></i>
+    <span class="align-middle">Delete</span>
+</a>
 
                                             </div>
                                         </div>
@@ -176,11 +186,11 @@
 
                         </tr>
 
-                        {{-- <form id="delete-form-{{ $eid }}" action="{{ route('admin.user.destroy', $eid) }}"
+                        <form id="delete-form-{{ $eid }}" action="{{ route('admin.user.destroy', $eid) }}"
                             method="post" style="display: none;">
                             @method('DELETE')
                             @csrf
-                        </form> --}}
+                        </form> 
                     @endforeach
 
                 </tbody>

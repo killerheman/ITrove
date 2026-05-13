@@ -46,6 +46,8 @@
     @include('admin.includes.foot')
     {{-- @include('sweetalert::alert') --}}
     @yield('script-area')
+    @stack('scripts')
+    @yield('scripts')
 
 </body>
 <!-- END: Body-->

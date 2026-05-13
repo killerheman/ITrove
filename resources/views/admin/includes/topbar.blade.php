@@ -126,7 +126,7 @@
                                     <span class="user-name text-bold-600">{{ Auth::user()->first_name ?? '' }}</span>
                                         <span class="user-status">{{ Auth::user()->roles[0]->name ?? '' }}</span></div><span><img
                                         class="round"
-                                        src="{{ asset(Auth::user()->pic) }}"
+                                        src="{{ Auth::user()->pic ? asset(Auth::user()->pic) : 'https://ui-avatars.com/api/?name='.urlencode(Auth::user()->first_name ?? 'Admin').'&background=7367f0&color=fff' }}" onerror="this.src='https://ui-avatars.com/api/?name=Admin&background=7367f0&color=fff';"
                                         alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">

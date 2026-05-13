@@ -79,6 +79,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'],function
     Route::resource('student',AdminStudentController::class);
     Route::resource('service',ServicesController::class);
     Route::resource('work',WorkController::class);
+    Route::get('work-data', [WorkController::class, 'getWorkData'])->name('work.data');
+    
     Route::resource('blog-category',BlogCategoryController::class);
 
 });

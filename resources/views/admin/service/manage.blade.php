@@ -1,110 +1,74 @@
 @extends('admin.includes.layout')
 
-@section('title', 'service Manage')
+@section('title', 'Service Manage')
 
 @section('head-area')
+    {{-- Yajra DataTables CSS (Agar layout mein nahi hai) --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 @endsection
 
 @section('content')
-
-{{-- Manahr Service --}}
 <div class="card">
     <div class="card-header">
         <h3>Manage Services</h3>
     </div>
-    <div class="card-body" style="overflow-y: auto;">
-        <table class="datatables-basic table datatable ">
-            <thead>
-                <tr>
-                    <th>Sr.No</th>
-                    <th>Icon Code</th>
-                    <th>Title</th>
-                    <th>Meta Title</th>
-                    <th>Meta Keyword</th>
-                    <th>Slug</th>
-                    <th>Meta Description</th>
-                    <th>Description</th>  
-                    <th>Action</th>
-
-                </tr>
-
-            </thead>
-            <tbody>
-                @foreach ($service as $service)
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table datatable-service table-bordered">
+                <thead>
                     <tr>
-                        <td>{{ $loop->index+1 }}</td>
-                        <td>
-                            <div class="icon-box">
-                                <i class="{{$service->pic}}"></i>
-                            </div>
-                           
-                        </td>
-                        <td>
-                           <img src="{{ asset('storage/' . $service->pic) }}" height="50px" width="50px" />
-                        </td>
-                        <td>{{ $service->title }}</td>
-                        <td>{{ $service->meta_title }}</td>
-                        <td>{{ $service->meta_keyword }}</td>
-                        <td>{{ $service->slug }}</td>
-                        <td>{{ $service->meta_description}}</td>
-                        <td>{{ $service->description }}</td>
-                        <td>
-                            {{-- <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
-                                <div class="mb-1 breadcrumb-right">
-                                    <div class="dropdown">
-                                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle"
-                                            type="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false"><i class="fa fa-car"></i></button>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            @php $eid=Crypt::encrypt($employee->id); @endphp
-
-                                            <a class="dropdown-item" href="{{ route('admin.user.edit', $eid) }}"><i
-                                                    class="me-1" data-feather="check-square"></i><span
-                                                    class="align-middle">Edit</span>
-                                            </a>
-
-
-                                            <a class="dropdown-item" href=""
-                                            onclick="event.preventDefault();document.getElementById('delete-form-{{ $eid }}').submit();"><i
-                                                class="me-1" data-feather="message-square"></i><span
-                                                class="align-middle">Delete</span>
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="feather icon-settings"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    @php $sid=Crypt::encrypt($service->id); @endphp
-
-                                    <a class="dropdown-item" href="{{ route('admin.service.edit', $service->slug) }}"><i
-                                        class="me-1" data-feather="check-square"></i><span
-                                        class="align-middle">Edit</span>
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0);" 
-           onclick="if(confirm('Are you sure?')) { document.getElementById('delete-form-{{ $service->slug }}').submit(); }">
-            <i class="me-1" data-feather="trash"></i>
-            <span class="align-middle">Delete</span>
-        </a>
-    </div>
-</div>
-
-<form id="delete-form-{{ $service->slug }}" action="{{ route('admin.service.destroy', $service->slug) }}" method="POST" style="display: none;">
-    @csrf
-    @method('DELETE')
-</form>
-                @endforeach
-
-            </tbody>
-        </table>
+                        <th>Sr.No</th>
+                        <th>Icon</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Meta Title</th>
+                        <th>Meta Keyword</th>
+                        <th>Slug</th>
+                        <th>Meta Description</th>
+                        <th>Description</th>  
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- Data JS se load hoga --}}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection
 
 @section('script-area')
+{{-- DataTables JS --}}
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $(function() {
+    $('.datatable-service').DataTable({ // Apni table class check karein
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('admin.service.index') }}", // Yeh sahi route hai
+        columns: [
+            { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+            { data: 'fa_icon_html', name: 'fa_icon_html' },
+            { data: 'image_html', name: 'image_html' },
+            { data: 'title', name: 'title' },
+            { data: 'meta_title', name: 'meta_title' },
+            { data: 'meta_keyword', name: 'meta_keyword' },
+            { data: 'slug', name: 'slug' },
+            { data: 'meta_description', name: 'meta_description' },
+            { data: 'description', name: 'description' },
+            { data: 'action', name: 'action', orderable: false, searchable: false },
+        ]
+    });
+});
+
+    // Delete Confirmation Function
+    function deleteService(slug) {
+        if(confirm('Are you sure you want to delete this service?')) {
+            document.getElementById('delete-form-' + slug).submit();
+        }
+    }
+</script>
 @endsection

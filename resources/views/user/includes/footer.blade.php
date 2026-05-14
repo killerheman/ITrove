@@ -1,4 +1,4 @@
-<section class="clients-style-three centred">
+{{-- <section class="clients-style-three centred">
     <div class="auto-container">
         <div class="inner-container">
             <ul class="clients-logo-list clearfix">
@@ -20,7 +20,7 @@
             </ul>
         </div>
     </div>
-</section>
+</section> --}}
 <footer class="main-footer footer-style-six">
     <div class="pattern-layer"
         style="background-image: url({{ asset('frontend/assets/images/shape/shape-60.png') }});">

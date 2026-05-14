@@ -120,10 +120,10 @@
                     <p>Copyright &copy; <a href="{{ route('home') }}">Innovation Trove</a>, All Rights Reserved.</p>
                 </div>
                 <ul class="social-links clearfix">
-                    <li><a href="https://www.facebook.com/profile.php?id=100089113158762"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/innovationtrove/"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/company/innovation-trove-llp"><i class="fab fa-linkedin"></i></a></li>
-                    <li><a href="https://x.com/InnovationTrove"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100089113158762" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/innovationtrove/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/innovation-trove-llp" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="https://x.com/InnovationTrove" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
                 </ul>
             </div>
         </div>

@@ -107,10 +107,10 @@
         </div>
         <div class="social-links">
             <ul class="clearfix">
-                <li><a href="https://x.com/InnovationTrove"><span class="fab fa-twitter"></span></a></li>
-                <li><a href="https://www.facebook.com/profile.php?id=100089113158762"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="https://www.linkedin.com/company/innovation-trove-llp"><span class="fab fa-linkedin"></span></a></li>
-                <li><a href="https://www.instagram.com/innovationtrove/"><span class="fab fa-instagram"></span></a></li>
+                <li><a href="https://x.com/InnovationTrove" target="_blank" rel="noopener noreferrer"><span class="fab fa-twitter"></span></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100089113158762" target="_blank" rel="noopener noreferrer"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="https://www.linkedin.com/company/innovation-trove-llp" target="_blank" rel="noopener noreferrer"><span class="fab fa-linkedin"></span></a></li>
+                <li><a href="https://www.instagram.com/innovationtrove/" target="_blank" rel="noopener noreferrer"><span class="fab fa-instagram"></span></a></li>
             </ul>
         </div>
     </nav>

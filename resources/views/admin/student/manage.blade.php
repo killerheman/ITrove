@@ -1,8 +1,8 @@
 @extends('admin.includes.layout')
 
-@section('title', 'Blog')
+@section('title', 'All Students')
 
-@section('head-area')
+@section('header-area')
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/form-validation.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/pickers/form-flat-pickr.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendors/css/forms/select/select2.min.css')}}">
@@ -11,8 +11,11 @@
 @section('content')
 
     <div class="card">
-        <div class="card-header">
-            <h3>Manage Students</h3>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title">Manage Students</h4>
+            <a href="{{ route('registerTrainingStudent') }}" target="_blank" class="btn btn-primary">
+                <i class="feather icon-plus"></i> Add New Student
+            </a>
         </div>
         <div class="card-body" style="overflow-y: auto;">
             <table class="datatables-basic table datatable table-hover">
@@ -111,12 +114,25 @@
 
 
 @section('script-area')
-    {{-- <script src="{{asset('BackEnd/assets/js/scripts/forms/form-validation.js')}}"></script> --}}
-    <script src="{{ asset('backend/assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendors/js/tables/datatable/responsive.bootstrap5.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
-    <script src="{{asset('backend/assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
-    <script src="{{asset('backend/assets/js/scripts/forms/form-select2.js')}}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.datatable').DataTable({
+                "order": [[0, "asc"]],
+                "dom": '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                "language": {
+                    "paginate": {
+                        "previous": "&nbsp;",
+                        "next": "&nbsp;"
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

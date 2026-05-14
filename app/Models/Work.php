@@ -16,7 +16,7 @@ class Work extends Model
 
         static::saving(function ($Work) {
             if (empty($Work->slug)) {
-                $Work->slug = Str::slug($Work->slug);
+                $Work->slug = Str::slug($Work->title);
             }
         });
     }

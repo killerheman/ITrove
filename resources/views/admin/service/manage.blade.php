@@ -2,15 +2,18 @@
 
 @section('title', 'Service Manage')
 
-@section('head-area')
+@section('header-area')
     {{-- Yajra DataTables CSS (Agar layout mein nahi hai) --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('backend/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
 @endsection
 
 @section('content')
 <div class="card">
-    <div class="card-header">
-        <h3>Manage Services</h3>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="card-title">Manage Services</h4>
+        <a href="{{ route('admin.service.create') }}" class="btn btn-primary">
+            <i class="feather icon-plus"></i> Add New Service
+        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -39,9 +42,8 @@
 @endsection
 
 @section('script-area')
-{{-- DataTables JS --}}
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+<script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
 
 <script>
     $(function() {

@@ -54,11 +54,14 @@
                         data-i18n="Starter kit">Blog</span></a>
                 <ul class="menu-content">
                     <ul class="menu-content">
+                        <li><a href="{{ route('admin.blog') }}#blogTable"><i></i><span class="menu-item"
+                                    data-i18n="Blog">List</span></a>
+                        </li>
                         <li><a href="{{ route('admin.blog') }}"><i></i><span class="menu-item"
                                     data-i18n="Blog">Add</span></a>
                         </li>
-                        <li><a href="{{route('admin.blog-category.index')}}"><i></i><span class="menu-item"
-                            data-i18n="Blog">Blog category</span></a>
+                        <li><a href="{{ route('admin.blog-category.index') }}"><i></i><span class="menu-item"
+                                    data-i18n="Blog">Blog category</span></a>
                         </li>
                     </ul>
                 </ul>
@@ -69,10 +72,10 @@
                 <ul class="menu-content">
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.student.index') }}"><i></i><span class="menu-item"
-                                    data-i18n="Blog">Pending Student</span></a>
+                                    data-i18n="Blog">List Students</span></a>
                         </li>
                         <li><a href="{{ route('admin.student.create') }}"><i></i><span class="menu-item"
-                                    data-i18n="Blog">Manage Students</span></a>
+                                    data-i18n="Blog">Pending Student</span></a>
                         </li>
                     </ul>
                 </ul>
@@ -83,10 +86,10 @@
                 <ul class="menu-content">
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.service.index') }}"><i></i><span class="menu-item"
-                                    data-i18n="Blog">Add</span></a>
+                                    data-i18n="Blog">List</span></a>
                         </li>
                         <li><a href="{{ route('admin.service.create') }}"><i></i><span class="menu-item"
-                                    data-i18n="Blog">Manage</span></a>
+                                    data-i18n="Blog">Add</span></a>
                         </li>
                     </ul>
                 </ul>
@@ -96,10 +99,10 @@
                 <ul class="menu-content">
                     <ul class="menu-content">
                         <li><a href="{{ route('admin.work.index') }}"><i></i><span class="menu-item"
-                                    data-i18n="work">Add</span></a>
+                                    data-i18n="work">List</span></a>
                         </li>
                         <li><a href="{{ route('admin.work.create') }}"><i></i><span class="menu-item"
-                            data-i18n="work">Manage</span></a>
+                            data-i18n="work">Add</span></a>
                          </li>
                     </ul>
                 </ul>
@@ -108,11 +111,11 @@
                 data-i18n="Starter kit">Pricing</span></a>
         <ul class="menu-content">
             <ul class="menu-content">
-                <li><a href="{{ route('admin.work.index') }}"><i></i><span class="menu-item"
-                            data-i18n="work">Add</span></a>
+                <li><a href="{{ route('admin.pricing.index') }}"><i></i><span class="menu-item"
+                            data-i18n="work">List</span></a>
                 </li>
-                <li><a href="{{ route('admin.work.create') }}"><i></i><span class="menu-item"
-                    data-i18n="work">Manage</span></a>
+                <li><a href="{{ route('admin.pricing.create') }}"><i></i><span class="menu-item"
+                    data-i18n="work">Add</span></a>
                  </li>
             </ul>
         </ul>

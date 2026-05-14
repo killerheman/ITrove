@@ -8,7 +8,6 @@ use App\Models\Work;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
-use Yajra\DataTables\DataTables;
 use Exception;
 
 class WorkController extends Controller
@@ -18,7 +17,7 @@ public function index(Request $request)
 {
     if ($request->ajax()) {
         $data = Work::latest()->get();
-        return DataTables::of($data)
+        return datatables()->of($data)
             ->addIndexColumn() // Sr.No ke liye
             ->addColumn('image', function($row){
                 return $row->image ? '<img src="'.asset('storage/'.$row->image).'" width="50">' : 'N/A';
@@ -56,13 +55,12 @@ public function index(Request $request)
             ->rawColumns(['image', 'thumbnail', 'screenshot_img', 'action', 'full_description'])
             ->make(true);
     }
-    return view('admin.work.work');
+    return view('admin.work.manage');
 }
     public function create()
 {
     $editwork = null; 
-    $work = Work::all(); // Ye line zaroori hai table dikhane ke liye
-    return view('admin.work.manage', compact('editwork'));
+    return view('admin.work.work', compact('editwork'));
 }
 
     public function store(Request $request)

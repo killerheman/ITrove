@@ -34,7 +34,12 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header"><h3>Manage works</h3></div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="card-title">Manage Works</h4>
+        <a href="{{ route('admin.work.create') }}" class="btn btn-primary">
+            <i class="feather icon-plus"></i> Add New Work
+        </a>
+    </div>
     <div class="card-body">
         <div class="table-responsive"> <!-- Zyada columns ke liye scroll zaroori hai -->
             <table class="table table-bordered yajra-datatable">
@@ -63,9 +68,8 @@
 @endsection
 
 @section('script-area')
-{{-- DataTables JS --}}
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+<script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
 
 <script>
 $(function () {

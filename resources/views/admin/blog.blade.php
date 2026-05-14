@@ -2,10 +2,10 @@
 
 @section('title', 'Blog Management')
 
-@section('head-area')
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/form-validation.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/pickers/form-flat-pickr.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/css/forms/select/select2.min.css') }}">
+@section('header-area')
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/plugins/forms/form-validation.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/plugins/forms/pickers/form-flat-pickr.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <style>
         .form-label { font-weight: 600; color: #5e5873; }
         .card-title { font-weight: 700 !important; color: #5e5873; }
@@ -117,8 +117,11 @@
     </div>
 
     <div class="card mt-3 shadow-sm">
-    <div class="card-header border-bottom">
+    <div class="card-header d-flex justify-content-between align-items-center border-bottom">
         <h4 class="card-title">Manage Existing Blogs</h4>
+        <a href="#blog_title" class="btn btn-primary">
+            <i class="feather icon-plus"></i> Add New Blog
+        </a>
     </div>
     <div class="card-body pt-2">
         <div class="table-responsive">
@@ -174,9 +177,9 @@
 
 @section('script-area')
     <!-- Datatable JS -->
-    <script src="{{ asset('backend/assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
     <script>

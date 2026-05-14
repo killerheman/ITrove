@@ -11,6 +11,7 @@ use App\Http\Controllers\User\FrontendController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\WorkController;
+use App\Http\Controllers\Admin\PriceController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -82,6 +83,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'],function
     Route::get('work-data', [WorkController::class, 'getWorkData'])->name('work.data');
     
     Route::resource('blog-category',BlogCategoryController::class);
+    Route::resource('pricing', PriceController::class);
 
 });
 

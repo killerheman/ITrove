@@ -15,11 +15,16 @@ return new class extends Migration
     {
         Schema::create('pricings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('price');
-            $table->string('discount');
-            $table->string('discount_amount');
-            $table->string('description');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('fa_icon')->nullable();
+            $table->string('pic')->nullable();
+            $table->string('slug')->unique();
+            $table->integer('sequence')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keyword')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->longText('full_description')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

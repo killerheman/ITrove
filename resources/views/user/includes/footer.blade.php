@@ -43,6 +43,10 @@
                                     <h4>Business Office</h4>
                                     <p>212 B Sahdeo mahto Marg, Boring Rd, opposite roll mafia, Sri Krishna Puri, Patna, Bihar 800001</p>
                                 </li>
+                                <li>
+                                    <h4>Branch Office</h4>
+                                    <p>Sita Vihar Colony, Jankipuram, <br/>Lucknow, India 226021</p>
+                                </li>
                             </ul>
                         </div>
                     </div>

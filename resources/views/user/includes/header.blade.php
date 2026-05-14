@@ -73,6 +73,11 @@
                     <nav class="main-menu clearfix">
                         <!--Keep This Empty / Menu will come through Javascript-->
                     </nav>
+                    <div class="nav-right-content clearfix">
+                        <div class="btn-box">
+                            <a href="{{ route('contact') }}" class="theme-btn btn-ten">Contact us</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

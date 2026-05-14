@@ -8,8 +8,6 @@ use App\Models\Service;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Facades\DataTables;
-
 class ServicesController extends Controller
 {
   
@@ -19,7 +17,7 @@ class ServicesController extends Controller
         // Data fetch karein
         $data = Service::orderBy('sequence', 'asc')->get();
         
-        return DataTables::of($data)
+        return datatables()->of($data)
             ->addIndexColumn()
             ->addColumn('fa_icon_html', function($row){
                 return '<i class="'.$row->fa_icon.'"></i>';
@@ -50,15 +48,13 @@ class ServicesController extends Controller
     }
 
     // Normal Page Load ke liye
-    $totalServices = Service::count() + 10;
-    return view('admin.service.service', compact('totalServices'));
+    return view('admin.service.manage');
 }
 
     public function create()
     {
-        $service = Service::orderBy('sequence', 'asc')->paginate(10);
         $totalServices = Service::count() + 10;
-        return view('admin.service.manage', compact('service', 'totalServices'));
+        return view('admin.service.service', compact('totalServices'));
     }
 
     public function store(Request $request)

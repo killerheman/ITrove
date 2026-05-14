@@ -15,8 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::where('payment_status', 0)->get();
-        return view('admin.student.pending', compact('students'));
+        $students = Student::get();
+        return view('admin.student.manage', compact('students'));
     }
 
     /**
@@ -26,8 +26,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $students = Student::get();
-        return view('admin.student.manage', compact('students'));
+        $students = Student::where('payment_status', 0)->get();
+        return view('admin.student.pending', compact('students'));
     }
 
     /**

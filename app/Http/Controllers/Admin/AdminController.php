@@ -39,6 +39,18 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $stats = [
+            'users' => \App\Models\User::count(),
+            'students' => \App\Models\Student::count(),
+            'blogs' => \App\Models\Blog::count(),
+            'services' => \App\Models\Service::count(),
+            'works' => \App\Models\Work::count(),
+            'pricing' => \App\Models\Pricing::count(),
+        ];
+
+        $recentStudents = \App\Models\Student::latest()->take(5)->get();
+        $recentWorks = \App\Models\Work::latest()->take(5)->get();
+
+        return view('admin.dashboard', compact('stats', 'recentStudents', 'recentWorks'));
     }
 }

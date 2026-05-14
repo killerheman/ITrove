@@ -2,9 +2,9 @@
 
 @section('title', 'Services Management')
 
-@section('head-area')
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/plugins/forms/form-validation.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/vendors/css/forms/select/select2.min.css') }}">
+@section('header-area')
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/css/plugins/forms/form-validation.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/app-assets/vendors/css/forms/select/select2.min.css') }}">
     <style>
         .form-label { font-weight: 600; color: #5e5873; }
         .card-title { font-weight: 700 !important; color: #5e5873; }
@@ -134,7 +134,7 @@
 @endsection
 
 @section('script-area')
-    <script src="{{ asset('backend/assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('backend/app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 
     <script>

@@ -43,7 +43,7 @@
                         <ul class="category-list clearfix">
                             @if($serviceData!='')
                                 @foreach ($serviceData as $data)
-                                  <li><a href="{{route('service_details',$data->slug)}}" class="{{ $loop->first ? 'current' : '' }}">{{$data->title??''}}<i class="fas fa-long-arrow-alt-right"></i></a></li>
+                                  <li><a href="{{route('service_details',$data->slug)}}" class="{{ $data->slug == $servicedetail->slug ? 'current' : '' }}">{{$data->title??''}}<i class="fas fa-long-arrow-alt-right"></i></a></li>
                                 @endforeach
                             @endif
 

@@ -9,7 +9,7 @@
                             <div class="icon-box"><i class="fas fa-headphones"></i></div>
                             <h3>Make a Call</h3>
                             <span>LET’S TALK WITH OUR EXPERTS</span>
-                            <p><a href="tel:0088827240">+91-9648391515 , 9648471515 </a>, Mon - Fri: 09.00 am to 06.00 pm</p>
+                            <p><a href="tel:9648391515">+91-9648391515 , 9648471515 </a>, Mon - Fri: 09.00 am to 06.00 pm</p>
                         </div>
                         <div class="single-item">
                             <div class="icon-box"><i class="far fa-envelope"></i></div>

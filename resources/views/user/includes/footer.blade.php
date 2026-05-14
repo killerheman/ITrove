@@ -1,21 +1,21 @@
 <section class="clients-style-three centred">
     <div class="auto-container">
-        <div class="inner-container d-none">
+        <div class="inner-container">
             <ul class="clients-logo-list clearfix">
                 <li class="clients-logo-box">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/images/logo/up.png')}}"  style="height:120px;width:120px"alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/up.png')}}"  style="height:120px;width:120px"alt=""></a>
                 </li>
                 <li class="clients-logo-box">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/images/logo/bihar.png')}}"  style="height:120px;width:120px"alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/bihar.png')}}"  style="height:120px;width:120px"alt=""></a>
                 </li>
                 <li class="clients-logo-box">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/images/logo/nei.jpeg')}}"  style="height:120px;width:120px"alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/nei.jpeg')}}"  style="height:120px;width:120px"alt=""></a>
                 </li>
                 <li class="clients-logo-box">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/images/logo/us.png')}}"  style="height:120px;width:120px" alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/us.png')}}"  style="height:120px;width:120px" alt=""></a>
                 </li>
                 <li class="clients-logo-box">
-                    <a href="index.html"><img src="{{ asset('frontend/assets/images/logo/south1.png')}}"  style="height:120px;width:120px"alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/south1.png')}}"  style="height:120px;width:120px"alt=""></a>
                 </li>
             </ul>
         </div>

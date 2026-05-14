@@ -12,7 +12,7 @@
                 <h1>About Us</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li>About Us</li>
                 </ul>
             </div>
         </div>
@@ -36,7 +36,7 @@
                                 <h5>WHO WE ARE</h5>
                                 <h3>Welcome to Innovation Trove!</h3>
                                 <h1>Best IT Company</h1>
-                                <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);">
+                                <div class="divider" style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
                                 </div>
                             </div>
                             <div class="text">
@@ -57,12 +57,12 @@
 
     <!-- works-style-two -->
     <section class="works-style-two centred bg-color-1">
-        <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-13.png);"></div>
+        <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-13.png') }});"></div>
         <div class="auto-container">
             <div class="sec-title style-two">
                 <h5>HOW WE WORKS</h5>
                 <h2>Easy and simple work process</h2>
-                <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);"></div>
+                <div class="divider" style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});"></div>
             </div>
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-6 col-sm-12 works-block">
@@ -266,9 +266,9 @@
 
     <!-- skills-section -->
     <section class="skills-section about-page">
-        <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-9.png);"></div>
+        <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-9.png') }});"></div>
         <div class="anim-icon">
-            <div class="icon icon-1 rotate-me" style="background-image: url(assets/images/shape/anim-icon-2.png);"></div>
+            <div class="icon icon-1 rotate-me" style="background-image: url({{ asset('frontend/assets/images/shape/anim-icon-2.png') }});"></div>
         </div>
         <div class="auto-container">
             <div class="sec-title centred">

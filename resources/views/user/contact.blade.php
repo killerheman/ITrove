@@ -3,7 +3,7 @@
 @section('content')
 <!-- Page Title -->
 <section class="page-title centred">
-    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-87.png);"></div>
+    <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-87.png') }});"></div>
     <div class="auto-container">
         <div class="content-box">
             <h1>Contact Us</h1>
@@ -17,12 +17,12 @@
 <!-- End Page Title -->
 <!-- contact-style-two -->
 <section class="contact-style-two sec-pad centred">
-    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-68.png);"></div>
+    <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-68.png') }});"></div>
     <div class="auto-container">
         <div class="sec-title style-two">
             <h5>SEND MESSAGE</h5>
             <h2>We’d love to hear from you <br />for your message</h2>
-            <div class="divider" style="background-image: url(assets/images/icons/divider-1.png);"></div>
+            <div class="divider" style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});"></div>
         </div>
         <div class="row clearfix">
             <div class="col-lg-10 col-md-12 col-sm-12 offset-lg-1 inner-column">

@@ -101,17 +101,16 @@
             <h4>Contact Info</h4>
             <ul>
                 <li>Munshipulia, Lucknow, India</li>
-                <li><a href="tel:+8801682648101">+91 8896@gmail.com</a></li>
-                <li><a href="mailto:info@example.com">info@innovationtrove.in</a></li>
+                <li><a href="tel:+919648391515">+91-9648391515</a></li>
+                <li><a href="mailto:info@innovationtrove.in">info@innovationtrove.in</a></li>
             </ul>
         </div>
         <div class="social-links">
             <ul class="clearfix">
-                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                <li><a href="https://x.com/InnovationTrove"><span class="fab fa-twitter"></span></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100089113158762"><span class="fab fa-facebook-square"></span></a></li>
+                <li><a href="https://www.linkedin.com/company/innovation-trove-llp"><span class="fab fa-linkedin"></span></a></li>
+                <li><a href="https://www.instagram.com/innovationtrove/"><span class="fab fa-instagram"></span></a></li>
             </ul>
         </div>
     </nav>

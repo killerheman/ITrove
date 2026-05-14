@@ -73,9 +73,9 @@ public function index(Request $request)
             'meta_description' => 'required',
             'short_description' => 'required',
             'full_description' => 'required',
-            'work_img' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'screenshot_img.*' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048'
+            'work_img' => 'required|image|mimes:jpeg,png,jpg,webp',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'screenshot_img.*' => 'nullable|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         try {
@@ -142,8 +142,8 @@ public function edit($id)
         'work_title' => 'required',
         'short_description' => 'required',
         'full_description' => 'required',
-        'work_img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        'work_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp',
     ]);
 
     try {

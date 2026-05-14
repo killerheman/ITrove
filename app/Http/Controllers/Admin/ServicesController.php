@@ -62,7 +62,8 @@ class ServicesController extends Controller
         $request->validate([
             'service_title' => 'required',
             'service_description' => 'required',
-            'service_img' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'service_img' => 'required|image|mimes:jpeg,png,jpg,webp',
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'sequence' => 'required|unique:services',
             'full_description' => 'required',
         ]);
@@ -73,11 +74,17 @@ class ServicesController extends Controller
                 $path = $request->file('service_img')->store('services', 'public');
             }
 
+            $thumbPath = null;
+            if($request->hasFile('thumbnail_img')){
+                $thumbPath = $request->file('thumbnail_img')->store('services/thumbnails', 'public');
+            }
+
             Service::create([
                 'title' => $request->service_title,
                 'description' => $request->service_description,
                 'fa_icon' => $request->fa_icon,
                 'pic' => $path,
+                'thumbnail_img' => $thumbPath,
                 'meta_title' => $request->meta_title,
                 'sequence' => $request->sequence,
                 'slug' => Str::slug($request->slug ?? $request->service_title),
@@ -105,13 +112,15 @@ class ServicesController extends Controller
         $request->validate([
             'service_title' => 'required',
             'service_description' => 'required',
-            'service_img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'service_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'full_description' => 'required',
         ]);
 
         try {
             $item = Service::findOrFail($id);
             $path = $item->pic;
+            $thumbPath = $item->thumbnail_img;
 
             if ($request->hasFile('service_img')) {
                 if ($item->pic && Storage::disk('public')->exists($item->pic)) {
@@ -120,9 +129,17 @@ class ServicesController extends Controller
                 $path = $request->file('service_img')->store('services', 'public');
             }
 
+            if ($request->hasFile('thumbnail_img')) {
+                if ($item->thumbnail_img && Storage::disk('public')->exists($item->thumbnail_img)) {
+                    Storage::disk('public')->delete($item->thumbnail_img);
+                }
+                $thumbPath = $request->file('thumbnail_img')->store('services/thumbnails', 'public');
+            }
+
             $item->update([
                 'title' => $request->service_title,
                 'pic' => $path,
+                'thumbnail_img' => $thumbPath,
                 'fa_icon' => $request->fa_icon,
                 'description' => $request->service_description,
                 'meta_title' => $request->meta_title,

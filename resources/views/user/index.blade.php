@@ -142,7 +142,7 @@
                         <div class="sec-title style-two">
                             <h5>ABOUT COMPANY</h5>
                             {{-- <h2>Let Technology Accelerate Your Business</h2> --}}
-                            <h2>Top IT Companies</h2>
+                            <h2>Empowering Businesses with Cutting-Edge IT Solutions</h2>
                             <div class="divider"
                                 style="background-image: url({{ asset('frontend/assets/images/icons/divider-1.png') }});">
                             </div>

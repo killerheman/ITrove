@@ -65,3 +65,16 @@
 <link href="{{ asset('frontend/assets/css/color.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
+
+<style>
+    .page-title {
+        padding: 130px 0 60px !important; /* Increased top padding to avoid header overlap */
+    }
+    .page-title .content-box h1 {
+        font-size: 40px !important; /* Slightly smaller for better fit */
+        margin-bottom: 15px !important;
+    }
+    .page-title .bread-crumb {
+        margin-top: 10px !important;
+    }
+</style>

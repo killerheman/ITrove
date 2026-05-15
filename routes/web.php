@@ -45,7 +45,7 @@ Route::get('/project-details/{slug}',[FrontendController::class,'projectDetails'
 Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::post('news-letter',[FrontendController::class,'news_letter'])->name('newsletter');
 Route::get('blog',[FrontendController::class,'blog'])->name('blog');
-Route::get('blog-details/{id}',[FrontendController::class,'blogDetails'])->name('blog-details');
+Route::get('blog-details/{slug}',[FrontendController::class,'blogDetails'])->name('blog-details');
 
 //Policy URL
 Route::get('/privacy-policy',[FrontendController::class,'privacyPolicy'])->name('privacy-policy');

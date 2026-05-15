@@ -264,10 +264,8 @@ class FrontendController extends Controller
         return view('user.blog.blog',compact('blogs'));
     }
 
-    public function blogDetails($id){
-
-        $blogdetails=Blog::where('id',decrypt($id))->firstOrFail();
-        // return $blogdetail;
+    public function blogDetails($slug){
+        $blogdetails=Blog::where('slug',$slug)->firstOrFail();
         return view('user.blog.blog_description',compact('blogdetails'));
     }
     

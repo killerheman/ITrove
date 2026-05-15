@@ -28,7 +28,7 @@
                     <div class="inner-box">
                         <figure class="image-box">
                             <img src="{{asset($blog->blog_img)}}" alt="">
-                            <a href="{{route('blog-details',encrypt($blog->id))}}"><i class="fas fa-link"></i></a>
+                            <a href="{{route('blog-details',$blog->slug)}}"><i class="fas fa-link"></i></a>
                         </figure>
                         <div class="lower-content">
                             <div class="inner">
@@ -38,8 +38,8 @@
                                     {{-- <li><i class="far fa-folder-open"></i><a href="blog-details.html">Technology News</a></li> --}}
                                     {{-- <li><i class="far fa-user"></i><a href="blog-details.html">Admin</a></li> --}}
                                 </ul>
-                                <h3><a href="{{route('blog-details',encrypt($blog->id))}}">{{$blog->blog_title}}</a></h3>
-                                <div class="btn-box"><a href="{{route('blog-details',encrypt($blog->id))}}">Read More +</a></div>
+                                <h3><a href="{{route('blog-details',$blog->slug)}}">{{$blog->blog_title}}</a></h3>
+                                <div class="btn-box"><a href="{{route('blog-details',$blog->slug)}}">Read More +</a></div>
                             </div>
                         </div>
                     </div>

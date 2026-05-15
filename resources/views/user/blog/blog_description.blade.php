@@ -1,15 +1,19 @@
 @extends('user.includes.master')
-@section('title', 'Home')
+@section('title', $blogdetails->blog_title)
+@section('meta_title', $blogdetails->meta_title)
+@section('meta_description', $blogdetails->meta_description)
+@section('meta_keywords', $blogdetails->meta_keyword)
 @section('content')
   <!-- Page Title -->
   <section class="page-title centred">
-    <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-87.png);"></div>
+    <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-87.png') }});"></div>
     <div class="auto-container">
         <div class="content-box">
-            <h1>Blog Details</h1>
+            <h1>{{ $blogdetails->blog_title }}</h1>
             <ul class="bread-crumb clearfix">
                 <li><a href="{{route('home')}}">Home</a></li>
-                <li><a href="#">Blog Details</a></li>
+                <li><a href="{{route('blog')}}">Blogs</a></li>
+                <li>Blog Details</li>
             </ul>
         </div>
     </div>
@@ -23,47 +27,18 @@
                 <div class="blog-details-content">
                     <div class="inner-box">
                         <figure class="image-box">
-                            <img src="{{asset($blogdetails->blog_img??'')}}" alt=""  style="width:100%;">
+                            <img src="{{asset($blogdetails->blog_img??'')}}" alt="{{ $blogdetails->blog_title }}"  style="width:100%;">
                         </figure>
                         <div class="lower-content">
                             <span class="post-date">{{$blogdetails->create_date ? \Carbon\Carbon::parse($blogdetails->create_date)->format('M d, Y') : ''}}
                             </span>
                             <ul class="post-info clearfix">
-                                <li><i class="far fa-folder-open"></i><a href="blog-details.html">Technology</a>,<a href="blog-details.html">License</a>,<a href="blog-details.html">Manintainl</a>,<a href="blog-details.html">Software</a></li>
-                                <li><i class="far fa-user"></i><a href="blog-details.html">Admin</a></li>
+                                <li><i class="far fa-folder-open"></i> {{ $blogdetails->blogCategory->category_name ?? 'Technology' }}</li>
+                                <li><i class="far fa-user"></i> Admin</li>
                             </ul>
-                            <h2>Algorithm tells robots where nearby humans are headed</h2>
+                            <h2>{{ $blogdetails->blog_title }}</h2>
                             <div class="text">
-                                <p>Equal blame belongs too those who fail in their through weakness will shrinking duty the obligation of business it will frequently occur that pleasures have to be repudiated annoyances accepted the wise man therefore always holds in these matters this principle selection rejects greater pleasures, or else he endures pains to avoid worse.</p>
-                                <h3>Increment business profitability by 40%?</h3>
-                                <p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it but who has any right to find fault with a man who chooses to enjoy a that annoying consequences, or one who avoids a pain that produces.</p>
-                                <p>Their through weakness will shrinking duty the obligations of business it will frequently occur that pleasures have to repudiated annoyances accepted the wise man therefore always holds in these matters this principle selection rejects greater pleasures.</p>
-                                <blockquote>
-                                    <div class="icon-box"><i class="fas fa-quote-left"></i></div>
-                                    <h4>Business it will frequently occur that gerater pleasures have repudiated chooses to enjoy a pleasure that has no annoying.</h4>
-                                    <span class="designation">K. L. Dertram Irvin</span>
-                                </blockquote>
-                                <p>Find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one avoidspain that produces no resultant teachings of the great explorer of the truth one who avoids a pain that produces no resultant pleasure.</p>
-                                <p>Praising pain was born will you a complete account of the system expound the actual teachings except to obtain some advantage from it but who has any right to find fault.</p>
-                            </div>
-                            <div class="content-one clearfix">
-                                <h3>Assessment of simulated intelligence</h3>
-                                <div class="inner">
-                                    <div class="single-item">
-                                        <h5>1975 - Machine Learning</h5>
-                                        <span>52% in business</span>
-                                    </div>
-                                    <div class="single-item">
-                                        <h5>1990 - Deep Learning</h5>
-                                        <span>25% in business</span>
-                                    </div>
-                                </div>
-                                <figure class="image-box"><img src="assets/images/news/news-1.png" alt=""></figure>
-                            </div>
-                            <div class="lower-text">
-                                <h3>AI in Industries</h3>
-                                <p>Denouncing pleasure and praising pain was born will you a complete account of the system, and expound the actual teachings except to obtain some advantage.</p>
-                                <p>Praising pain was born will you a complete account of the system expound the actual teachings except to obtain some advantage from it but who has any right to find fault.</p>
+                                {!! $blogdetails->blog_description !!}
                             </div>
                         </div>
                     </div>

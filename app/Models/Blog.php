@@ -15,7 +15,7 @@ class Blog extends Model
         parent::boot();
         static::saving(function ($Blog) {
             if (empty($Blog->slug)) {
-                $Blog->slug = Str::slug($Blog->slug);
+                $Blog->slug = Str::slug($Blog->blog_title);
             }
         });
     }

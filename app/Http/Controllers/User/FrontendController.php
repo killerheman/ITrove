@@ -266,7 +266,10 @@ class FrontendController extends Controller
 
     public function blogDetails($slug){
         $blogdetails=Blog::where('slug',$slug)->firstOrFail();
-        return view('user.blog.blog_description',compact('blogdetails'));
+        $categories = \App\Models\BlogCategory::withCount('blogs')->get();
+        $recent_blogs = Blog::latest()->take(5)->get();
+        $latest_works = Work::latest()->take(6)->get();
+        return view('user.blog.blog_description',compact('blogdetails', 'categories', 'recent_blogs', 'latest_works'));
     }
     
     public function privacyPolicy()

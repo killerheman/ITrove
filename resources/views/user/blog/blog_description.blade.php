@@ -161,39 +161,28 @@
                         </div>
                         <div class="widget-content">
                             <ul class="category-list clearfix">
-                                <li><a href="blog-details.html"><span>05</span>AGI</a></li>
-                                <li><a href="blog-details.html"><span>02</span>Cloud robotics‎</a></li>
-                                <li><a href="blog-details.html"><span>07</span>ASI</a></li>
-                                <li><a href="blog-details.html"><span>11</span>Chatbots‎</a></li>
-                                <li><a href="blog-details.html"><span>01</span>Data science</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a href="#"><span>{{ $category->blogs_count }}</span>{{ $category->category_name }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="sidebar-widget post-widget">
                         <div class="widget-title">
-                            <h3>Tranding Post</h3>
+                            <h3>Recent Post</h3>
                         </div>
                         <div class="post-inner">
+                            @foreach ($recent_blogs as $recent)
                             <div class="post">
-                                <figure class="post-thumb"><a href="blog-details.html"><img src="assets/images/news/post-1.jpg" alt=""></a></figure>
-                                <h4><a href="blog-details.html">Present status of Man-made reasoning Infographic.</a></h4>
-                                <div class="category"><a href="blog-details.html"><i class="far fa-folder-open"></i>Technology News</a></div>
+                                <figure class="post-thumb">
+                                    <a href="{{ route('blog-details', $recent->slug) }}">
+                                        <img src="{{ asset($recent->blog_img) }}" alt="{{ $recent->blog_title }}" style="width: 80px; height: 80px; object-fit: cover;">
+                                    </a>
+                                </figure>
+                                <h4><a href="{{ route('blog-details', $recent->slug) }}">{{ Str::limit($recent->blog_title, 40) }}</a></h4>
+                                <div class="category"><i class="far fa-folder-open"></i>{{ $recent->blogCategory->category_name ?? 'News' }}</div>
                             </div>
-                            <div class="post">
-                                <figure class="post-thumb"><a href="blog-details.html"><img src="assets/images/news/post-2.jpg" alt=""></a></figure>
-                                <h4><a href="blog-details.html">Bteach as the champs in the worldwide office award</a></h4>
-                                <div class="category"><a href="blog-details.html"><i class="far fa-folder-open"></i>Technology News</a></div>
-                            </div>
-                            <div class="post">
-                                <figure class="post-thumb"><a href="blog-details.html"><img src="assets/images/news/post-3.jpg" alt=""></a></figure>
-                                <h4><a href="blog-details.html">Reinforcement Learning With Prediction-Based Rewards</a></h4>
-                                <div class="category"><a href="blog-details.html"><i class="far fa-folder-open"></i>Technology News</a></div>
-                            </div>
-                            <div class="post">
-                                <figure class="post-thumb"><a href="blog-details.html"><img src="assets/images/news/post-4.jpg" alt=""></a></figure>
-                                <h4><a href="blog-details.html">Interpretable Machine Learning Through Teaching</a></h4>
-                                <div class="category"><a href="blog-details.html"><i class="far fa-folder-open"></i>Technology News</a></div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="sidebar-widget project-widget">
@@ -202,12 +191,15 @@
                         </div>
                         <div class="widget-content">
                             <ul class="project-list clearfix">
-                                <li><figure class="image"><a href="assets/images/news/gallery-1.jpg" class="lightbox-image" data-fancybox="gallery"><img src="assets/images/news/gallery-1.jpg" alt=""></a></figure></li>
-                                <li><figure class="image"><a href="assets/images/news/gallery-2.jpg" class="lightbox-image" data-fancybox="gallery"><img src="assets/images/news/gallery-2.jpg" alt=""></a></figure></li>
-                                <li><figure class="image"><a href="assets/images/news/gallery-3.jpg" class="lightbox-image" data-fancybox="gallery"><img src="assets/images/news/gallery-3.jpg" alt=""></a></figure></li>
-                                <li><figure class="image"><a href="assets/images/news/gallery-4.jpg" class="lightbox-image" data-fancybox="gallery"><img src="assets/images/news/gallery-4.jpg" alt=""></a></figure></li>
-                                <li><figure class="image"><a href="assets/images/news/gallery-5.jpg" class="lightbox-image" data-fancybox="gallery"><img src="assets/images/news/gallery-5.jpg" alt=""></a></figure></li>
-                                <li><figure class="image"><a href="assets/images/news/gallery-6.jpg" class="lightbox-image" data-fancybox="gallery"><img src="assets/images/news/gallery-6.jpg" alt=""></a></figure></li>
+                                @foreach ($latest_works as $work)
+                                <li>
+                                    <figure class="image">
+                                        <a href="{{ route('project-details', $work->slug) }}">
+                                            <img src="{{ asset('storage/' . $work->thumbnail) }}" alt="{{ $work->title }}" style="width: 100px; height: 80px; object-fit: cover;">
+                                        </a>
+                                    </figure>
+                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -217,18 +209,9 @@
                         </div>
                         <div class="widget-content">
                             <ul class="tags-list clearfix">
-                                <li><a href="blog-details.html">Analysis</a></li>
-                                <li><a href="blog-details.html">Consulting</a></li>
-                                <li><a href="blog-details.html">Hi-Tech</a></li>
-                                <li><a href="blog-details.html">Data</a></li>
-                                <li><a href="blog-details.html">Industries</a></li>
-                                <li><a href="blog-details.html">Engineering</a></li>
-                                <li><a href="blog-details.html">Solutions</a></li>
-                                <li><a href="blog-details.html">Manintainl</a></li>
-                                <li><a href="blog-details.html">Infographic</a></li>
-                                <li><a href="blog-details.html">Global</a></li>
-                                <li><a href="blog-details.html">Software</a></li>
-                                <li><a href="blog-details.html">Strategy</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a href="#">{{ $category->category_name }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

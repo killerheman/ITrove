@@ -1,7 +1,7 @@
 @extends('user.includes.master')
-@section('meta_title','Find Best IT Firm and top IT companies in Lucknow - Innovation trove')
-@section('meta_keywords','Best IT company in Lucknow,Top it companies in Lucknow,Lucknow\'s best company')
-@section('meta_description','Explore the top IT companies in Lucknow and find the best IT company for your needs. Discover the Lucknow best company offering innovative tech solutions and exceptional service.')
+@section('meta_title','Best IT Company in Lucknow | Top Software & Web Solutions - Innovation Trove')
+@section('meta_keywords','Best IT company in Lucknow, Top IT firms in Lucknow, Software development company Lucknow, Web development Lucknow, Innovation Trove')
+@section('meta_description','Innovation Trove is the best IT company in Lucknow, providing cutting-edge software development, web applications, and tailored digital solutions. Empower your business with ITrove.')
 @section('title', 'Best IT company in Lucknow')
 @section('content')
  <!-- banner-section -->

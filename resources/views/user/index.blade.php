@@ -608,7 +608,7 @@
                     <figure class="image-box">
                         <img src="{{ asset('storage/' . $work->thumbnail) }}"
                              alt="{{ $work->title }}" 
-                             style="height: 300px; width: 100%; object-fit: cover;"
+                             style="height: 300px; width: 100%; object-fit: contain; background: #f8f9fa;"
                              onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/gallery/project-7.jpg') }}';">
                         
                         <div class="icon-box">

@@ -47,13 +47,13 @@
                             <h5>Share this post with your friends</h5>
                         </div>
                         <ul class="social-links pull-right clearfix">
-                            <li><a href="blog-details.html"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="blog-details.html"><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href="blog-details.html"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="blog-details.html"><i class="fab fa-dribbble"></i></a></li>
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}&media={{ urlencode(asset($blogdetails->blog_img)) }}&description={{ urlencode($blogdetails->blog_title) }}" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($blogdetails->blog_title) }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
-                    <div class="author-box">
+                    {{-- <div class="author-box">
                         <figure class="author-thumb">
                             <div class="shape" style="background-image: url(assets/images/shape/shape-67.png);"></div>
                             <img src="assets/images/news/author-1.png" alt="">
@@ -63,7 +63,7 @@
                             <span class="designation">intellegents for company</span>
                             <p>Chris Orwig is a celebrated photographer, author, and writer who brings passion to everything he does.</p>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <div class="comment-box">
                         <div class="group-title">
                             <h2>Comments</h2>

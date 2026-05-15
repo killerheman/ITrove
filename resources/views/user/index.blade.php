@@ -771,7 +771,7 @@
                         data-wow-duration="1500ms">
                         <div class="inner-box">
                             <figure class="image-box">
-                                <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="">
+                                <img src="{{ asset($blog->blog_img) }}" alt="{{ $blog->blog_title }}" style="height: 250px; width: 100%; object-fit: contain; background: #f8f9fa;">
                                 <a href="{{ route('blog-details', $blog->slug) }}"><i class="fas fa-link"></i></a>
                             </figure>
                             <div class="lower-content">

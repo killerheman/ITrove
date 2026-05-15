@@ -66,7 +66,7 @@
 
 .project-block-three .image-box {
     position: relative;
-    height: 250px;
+    height: 300px;
     overflow: hidden;
     border-radius: 15px 15px 0 0; /* Match parent radius */
 }

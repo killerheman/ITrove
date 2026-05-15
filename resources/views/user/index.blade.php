@@ -608,6 +608,7 @@
                     <figure class="image-box">
                         <img src="{{ asset('storage/' . $work->thumbnail) }}"
                              alt="{{ $work->title }}" 
+                             style="height: 300px; width: 100%; object-fit: cover;"
                              onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/gallery/project-7.jpg') }}';">
                         
                         <div class="icon-box">
@@ -771,18 +772,18 @@
                         <div class="inner-box">
                             <figure class="image-box">
                                 <img src="{{ asset('frontend/assets/images/news/news-4.jpg') }}" alt="">
-                                <a href="{{ route('blog-details', $blog->id) }}"><i class="fas fa-link"></i></a>
+                                <a href="{{ route('blog-details', $blog->slug) }}"><i class="fas fa-link"></i></a>
                             </figure>
                             <div class="lower-content">
                                 <div class="category"><i class="far fa-folder-open"></i><a
-                                        href="{{ route('blog-details', $blog->id) }}">Technology News</a></div>
-                                <h3><a href="{{ route('blog-details', $blog->id) }}">{{ $blog->blog_title }}</a>
+                                        href="{{ route('blog-details', $blog->slug) }}">Technology News</a></div>
+                                <h3><a href="{{ route('blog-details', $blog->slug) }}">{{ $blog->blog_title }}</a>
                                 </h3>
                                 @isset($blog->created_at)
                                 <span class="post-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
                                 @endisset
 
-                                <div class="link-box"><a href="{{ route('blog-details', $blog->id) }}"><i
+                                <div class="link-box"><a href="{{ route('blog-details', $blog->slug) }}"><i
                                             class="fas fa-long-arrow-alt-right"></i></a></div>
                             </div>
                         </div>

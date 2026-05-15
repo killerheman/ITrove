@@ -52,7 +52,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                 <div class="content-box wow fadeInUp animated" data-wow-delay="00ms"
                     data-wow-duration="1500ms">
-                    <h1 style="font-size: 55px;">Leading IT Solutions & Software Company</h1>
+                    <h1 style="font-size: 48px;">Leading IT Solutions & Software Company</h1>
                     <h5>Build Something Innovative</h5>
                     <p>Let technology accelerate your business. One Stop Solution for all your IT Needs.</p>
                     <div class="btn-box">

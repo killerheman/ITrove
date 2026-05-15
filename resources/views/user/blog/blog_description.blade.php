@@ -64,7 +64,7 @@
                             <p>Chris Orwig is a celebrated photographer, author, and writer who brings passion to everything he does.</p>
                         </div>
                     </div>
-                    <div class="comment-box">
+                    {{-- <div class="comment-box">
                         <div class="group-title">
                             <h2>Comments</h2>
                         </div>
@@ -137,7 +137,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">

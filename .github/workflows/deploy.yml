@@ -1,4 +1,4 @@
-name: CI/CD Production Deployment
+name: Hostinger Shared Hosting CI/CD Deployment
 
 on:
   push:
@@ -8,15 +8,17 @@ on:
 
 jobs:
   # ==========================================
-  # 1. CI TEST & VALIDATION STAGE
+  # 1. BUILD & VALIDATE STAGE
   # ==========================================
-  ci-test:
-    name: Build & Validate
+  build:
+    name: Build & Prepare Release
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -33,20 +35,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - name: Install Composer Dependencies
+      - name: Install Production Composer Dependencies
         run: |
           composer install --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
 
-      - name: Validate Blade Syntax & Config
-        run: |
-          php artisan -V
-
   # ==========================================
-  # 2. CD PRODUCTION DEPLOYMENT STAGE
+  # 2. DEPLOYMENT TO HOSTINGER SHARED HOSTING
   # ==========================================
-  deploy:
-    name: Deploy to Production Server
-    needs: ci-test
+  deploy-ftp:
+    name: Deploy to Hostinger via FTPS / FTP
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
 
@@ -54,60 +52,28 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Option A: Deploy via SSH (VPS / DigitalOcean / AWS / Forge / Hostinger VPS)
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        if: "${{ env.DEPLOY_SSH == 'true' }}"
-        env:
-          DEPLOY_SSH: ${{ secrets.SSH_HOST != '' }}
+      - name: Setup PHP for Vendor Build
+        uses: shivammathur/setup-php@v2
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT || 22 }}
-          script_stop: true
-          script: |
-            cd ${{ secrets.DEPLOY_PATH || '/var/www/html' }}
-            
-            # Put application into maintenance mode
-            php artisan down || true
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, bcmath, zip
+          coverage: none
 
-            # Pull latest changes from master
-            git fetch origin master
-            git reset --hard origin/master
+      - name: Install Production Dependencies
+        run: |
+          composer install --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
 
-            # Install/update production dependencies
-            composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
-
-            # Run database migrations safely
-            php artisan migrate --force
-
-            # Optimize & Cache Laravel
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
-            php artisan event:cache
-
-            # Set correct storage permissions
-            chmod -R 775 storage bootstrap/cache
-
-            # Bring application back online
-            php artisan up
-
-            echo "🚀 Innovation Trove successfully deployed to Production!"
-
-      # Option B: Deploy via FTP (cPanel / Shared Hosting / Hostinger Shared)
-      - name: Deploy via FTP (if FTP credentials configured)
+      # Sync files securely to Hostinger public_html
+      - name: Sync Files to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        if: "${{ env.DEPLOY_FTP == 'true' }}"
-        env:
-          DEPLOY_FTP: ${{ secrets.FTP_SERVER != '' && secrets.SSH_HOST == '' }}
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR || '/public_html/' }}
+          server: ${{ secrets.HOSTINGER_FTP_HOST || secrets.FTP_SERVER }}
+          username: ${{ secrets.HOSTINGER_FTP_USER || secrets.FTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD || secrets.FTP_PASSWORD }}
+          port: ${{ secrets.HOSTINGER_FTP_PORT || 21 }}
+          server-dir: ${{ secrets.HOSTINGER_SERVER_DIR || 'public_html/' }}
+          protocol: ftp
+          dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
@@ -115,4 +81,7 @@ jobs:
             **/tests/**
             .env
             .env.example
+            .env.backup
+            .editorconfig
             README.md
+            phpunit.xml

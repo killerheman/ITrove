@@ -16,28 +16,38 @@ class WorkController extends Controller
 public function index(Request $request)
 {
     if ($request->ajax()) {
-        $data = Work::latest()->get();
+        $data = Work::orderBy('featured_order', 'asc')->orderBy('id', 'asc')->get();
         return datatables()->of($data)
-            ->addIndexColumn() // Sr.No ke liye
+            ->addIndexColumn()
             ->addColumn('image', function($row){
-                return $row->image ? '<img src="'.asset('storage/'.$row->image).'" width="50">' : 'N/A';
+                $src = Str::startsWith($row->image, ['http', 'frontend/']) ? asset($row->image) : asset('storage/'.$row->image);
+                return $row->image ? '<img src="'.$src.'" width="50" style="border-radius:4px;">' : 'N/A';
             })
             ->addColumn('thumbnail', function($row){
-                return $row->thumbnail ? '<img src="'.asset('storage/'.$row->thumbnail).'" width="50">' : 'N/A';
+                $thumb = $row->thumbnail ?? $row->image;
+                $src = Str::startsWith($thumb, ['http', 'frontend/']) ? asset($thumb) : asset('storage/'.$thumb);
+                return $thumb ? '<img src="'.$src.'" width="50" style="border-radius:4px;">' : 'N/A';
+            })
+            ->addColumn('featured_order', function($row){
+                return '<span class="badge badge-light-warning font-weight-bold">Order: '.($row->featured_order ?? 100).'</span>';
+            })
+            ->addColumn('live_url', function($row){
+                return $row->live_url ? '<a href="'.$row->live_url.'" target="_blank" class="badge badge-light-success">Live Link ↗</a>' : '<span class="badge badge-light-secondary">No URL</span>';
             })
             ->addColumn('screenshot_img', function($row){
                 $imgs = json_decode($row->screenshot_img, true);
                 $output = '';
                 if(!empty($imgs)){
                     foreach($imgs as $img){
-                        $output .= '<img src="'.asset('storage/'.$img).'" width="40" class="mr-1">';
+                        $src = Str::startsWith($img, ['http', 'frontend/']) ? asset($img) : asset('storage/'.$img);
+                        $output .= '<img src="'.$src.'" width="40" class="mr-1 rounded">';
                     }
                 } else { $output = 'N/A'; }
                 return $output;
             })
            ->addColumn('short_description', function($row){
-    return Str::limit($row->short_description, 60);
-})
+                return Str::limit(strip_tags($row->short_description ?? ''), 60);
+            })
             ->addColumn('action', function($row){
                 $sid = Crypt::encrypt($row->id);
                 return '
@@ -55,7 +65,7 @@ public function index(Request $request)
             ->addColumn('category', function($row){
                 return '<span class="badge badge-light-primary font-weight-bold">'.($row->category ?? 'Enterprise ERP').'</span>';
             })
-            ->rawColumns(['image', 'thumbnail', 'screenshot_img', 'category', 'action', 'full_description'])
+            ->rawColumns(['image', 'thumbnail', 'screenshot_img', 'category', 'featured_order', 'live_url', 'action', 'full_description'])
             ->make(true);
     }
     return view('admin.work.manage');
@@ -100,7 +110,9 @@ public function index(Request $request)
 
             Work::create([
                 'title' => $request->work_title,
-                'category' => $request->category ?? 'Enterprise ERP',
+                'category' => $request->category ?? 'SaaS & Enterprise ERP',
+                'featured_order' => $request->featured_order ?? 100,
+                'live_url' => $request->live_url,
                 'image' => $wpath,
                 'thumbnail' => $tpath,
                 'screenshot_img' => $screenshotImages,
@@ -125,15 +137,9 @@ public function index(Request $request)
 public function edit($id)
 {
     try {
-        // ID ko decrypt karein
-        $realId = \Illuminate\Support\Facades\Crypt::decrypt($id);
-        
-        // Data dhundein
+        $realId = Crypt::decrypt($id);
         $editwork = Work::findOrFail($realId);
-        
-        // Neeche ki table ke liye data
-        $work = Work::all(); 
-
+        $work = Work::orderBy('featured_order', 'asc')->get(); 
        return view('admin.work.work', compact('editwork', 'work'));
         
     } catch (\Exception $e) {
@@ -154,7 +160,6 @@ public function edit($id)
         $realId = Crypt::decrypt($id);
         $editwork = Work::findOrFail($realId);
 
-        // Nayi images ke liye variables
         $workImagePath = $editwork->image;
         $thumbnailPath = $editwork->thumbnail;
 
@@ -177,7 +182,9 @@ public function edit($id)
         // Final Update Query
         $editwork->update([
             'title'             => $request->work_title,
-            'category'          => $request->category ?? $editwork->category ?? 'Enterprise ERP',
+            'category'          => $request->category ?? $editwork->category ?? 'SaaS & Enterprise ERP',
+            'featured_order'    => $request->featured_order ?? $editwork->featured_order ?? 100,
+            'live_url'          => $request->live_url,
             'technology'        => $request->technology,
             'slug'              => $request->slug ?? Str::slug($request->work_title),
             'meta_keyword'      => $request->meta_keyword,
@@ -185,8 +192,8 @@ public function edit($id)
             'meta_description'  => $request->meta_description,
             'short_description' => $request->short_description,
             'full_description'  => $request->full_description,
-            'image'             => $workImagePath, // Yahan variable use karein
-            'thumbnail'         => $thumbnailPath, // Yahan variable use karein
+            'image'             => $workImagePath,
+            'thumbnail'         => $thumbnailPath,
         ]);
 
         return redirect()->route('admin.work.index')->with('success', 'Work Updated Successfully');

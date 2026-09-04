@@ -26,10 +26,10 @@ class FrontendController extends Controller
 
     public function home()
     {
-        $services=Service::get();
-        $works=Work::get();
-        $blogs=Blog::get();
-        return view('user.index',compact('services','works','blogs'));
+        $services = Service::orderBy('sequence', 'asc')->get();
+        $works = Work::orderBy('featured_order', 'asc')->orderBy('id', 'asc')->get();
+        $blogs = Blog::latest()->get();
+        return view('user.index', compact('services', 'works', 'blogs'));
     }
 
     public function contact()

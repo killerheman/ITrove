@@ -46,18 +46,13 @@
                 <thead>
                     <tr>
                         <th>Sr.No</th>
+                        <th>Order</th>
+                        <th>Live Link</th>
                         <th>Image</th>
-                        <th>Thumbnail</th>
-                        <th>Screenshots</th>
                         <th>Title</th>
                         <th>Category</th>
                         <th>Technology</th>
-                        <th>Slug</th>
-                        <th>Meta Title</th>
-                        <th>Meta Keyword</th>
-                        <th>Meta Description</th>
                         <th>Short Description</th>  
-                        <th>Full Description</th>  
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -78,25 +73,20 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         autoWidth: false,
-        scrollX: true, // Horizontal scroll enable karne ke liye
+        scrollX: true,
         width: '100%',
         ajax: "{{ route('admin.work.index') }}",
         columns: [
-        {data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5%'},
-        {data: 'image', name: 'image', width: '10%'},
-        {data: 'thumbnail', name: 'thumbnail', width: '10%'},
-        {data: 'screenshot_img', name: 'screenshot_img', width: '15%'},
-        {data: 'title', name: 'title'},
-        {data: 'category', name: 'category'},
-        {data: 'technology', name: 'technology'},
-        {data: 'slug', name: 'slug'},
-        {data: 'meta_title', name: 'meta_title'},
-        {data: 'meta_keyword', name: 'meta_keyword'},
-        {data: 'meta_description', name: 'meta_description'},
-        {data: 'short_description', name: 'short_description'},
-        {data: 'full_description', name: 'full_description'},
-        {data: 'action', name: 'action', orderable: false, searchable: false},
-    ]
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5%'},
+            {data: 'featured_order', name: 'featured_order', width: '10%'},
+            {data: 'live_url', name: 'live_url', width: '10%'},
+            {data: 'image', name: 'image', width: '8%'},
+            {data: 'title', name: 'title'},
+            {data: 'category', name: 'category'},
+            {data: 'technology', name: 'technology'},
+            {data: 'short_description', name: 'short_description'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
     });
 });
 

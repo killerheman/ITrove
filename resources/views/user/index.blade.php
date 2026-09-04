@@ -321,30 +321,41 @@
     <div class="outer-container">
         <div class="four-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
             @foreach ($works as $work)
+            @php
+                $workImg = $work->thumbnail ?? $work->image;
+                $imgUrl = $workImg 
+                    ? (Str::startsWith($workImg, ['http', 'frontend/']) ? asset($workImg) : asset('storage/' . $workImg))
+                    : asset('frontend/assets/images/gallery/project-1.jpg');
+            @endphp
             <div class="project-block-four">
-                <div class="inner-box" style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
-                    <figure class="image-box" style="position: relative; height: 260px; overflow: hidden; background: #f8f9fa;">
-                        <img src="{{ asset('storage/' . $work->thumbnail) }}"
+                <div class="inner-box" style="background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.06); border: 1px solid #edf2f7; transition: all 0.3s ease;">
+                    <figure class="image-box" style="position: relative; height: 240px; overflow: hidden; background: #f8f9fa;">
+                        <span style="position: absolute; top: 12px; left: 12px; background: rgba(0,2,121,0.85); backdrop-filter: blur(4px); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; z-index: 2;">
+                            {{ $work->category ?? 'Enterprise Platform' }}
+                        </span>
+                        @if($work->live_url)
+                            <a href="{{ $work->live_url }}" target="_blank" rel="noopener noreferrer" style="position: absolute; bottom: 12px; right: 12px; background: #28a745; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-decoration: none; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                <i class="fas fa-circle mr-1" style="font-size: 7px; color: #a3ffc2;"></i> Live ↗
+                            </a>
+                        @endif
+                        <img src="{{ $imgUrl }}"
                              alt="{{ $work->title }}" 
                              style="height: 100%; width: 100%; object-fit: cover;"
-                             onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/gallery/project-7.jpg') }}';">
-                        <div class="icon-box">
-                            <a href="{{ route('project-details', $work->slug) }}"><img src="{{ asset('frontend/assets/images/icons/icon-16.png') }}" alt="View Case Study"></a>
-                        </div>
+                             onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/gallery/project-1.jpg') }}';">
                     </figure>
                     <div class="text p-4">
-                        <div class="mb-2">
-                            @foreach(explode(',', $work->technology) as $tech)
-                                <span class="tech-pill">{{ trim($tech) }}</span>
-                            @endforeach
-                        </div>
-                        <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">
-                            <a href="{{ route('project-details', $work->slug) }}" style="color: #1a1a1a;">{{ $work->title }}</a>
+                        <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 24px;">
+                            <a href="{{ route('project-details', $work->slug) }}" style="color: #1c2d52;">{{ $work->title }}</a>
                         </h4>
-                        <p style="font-size: 13px; line-height: 20px; color: #666; margin-bottom: 12px;">
-                            {{ Str::limit(strip_tags($work->short_description ?? ''), 110) }}
+                        <p style="font-size: 13px; line-height: 20px; color: #666; margin-bottom: 15px;">
+                            {{ Str::limit(strip_tags($work->short_description ?? ''), 100) }}
                         </p>
-                        <a href="{{ route('project-details', $work->slug) }}" style="color: #000279; font-weight: 700; font-size: 13px;">Read Case Study <i class="fas fa-arrow-right ml-1"></i></a>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                            <a href="{{ route('project-details', $work->slug) }}" style="color: #000279; font-weight: 700; font-size: 13px;">Case Study <i class="fas fa-arrow-right ml-1"></i></a>
+                            @if($work->live_url)
+                                <a href="{{ $work->live_url }}" target="_blank" rel="noopener noreferrer" style="color: #28a745; font-weight: 700; font-size: 12px;">Visit Site ↗</a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

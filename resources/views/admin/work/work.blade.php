@@ -27,7 +27,7 @@
                 {{-- Title --}}
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="work_title">Title</label>
-                    <input type="text" id="basic-addon-name" value="{{ $editwork->title ?? '' }}" name='work_title' class="form-control"
+                    <input type="text" id="work_title" value="{{ $editwork->title ?? '' }}" name='work_title' class="form-control"
                         placeholder="Enter Title" required />
                 </div>
 
@@ -35,14 +35,26 @@
                 <div class="col-md-6 mb-1">
                     <label class="form-label" for="category">Category</label>
                     <select name='category' id="category" class="form-control" required>
-                        <option value="Enterprise ERP" {{ (isset($editwork) && $editwork->category == 'Enterprise ERP') ? 'selected' : '' }}>Enterprise ERP</option>
-                        <option value="Healthcare & MedTech" {{ (isset($editwork) && $editwork->category == 'Healthcare & MedTech') ? 'selected' : '' }}>Healthcare & MedTech</option>
-                        <option value="Fintech & SaaS" {{ (isset($editwork) && $editwork->category == 'Fintech & SaaS') ? 'selected' : '' }}>Fintech & SaaS</option>
-                        <option value="Mobile Apps" {{ (isset($editwork) && $editwork->category == 'Mobile Apps') ? 'selected' : '' }}>Mobile Apps</option>
-                        <option value="E-Commerce & Retail" {{ (isset($editwork) && $editwork->category == 'E-Commerce & Retail') ? 'selected' : '' }}>E-Commerce & Retail</option>
-                        <option value="Cloud & DevOps" {{ (isset($editwork) && $editwork->category == 'Cloud & DevOps') ? 'selected' : '' }}>Cloud & DevOps</option>
-                        <option value="Web App & SaaS" {{ (isset($editwork) && $editwork->category == 'Web App & SaaS') ? 'selected' : '' }}>Web App & SaaS</option>
+                        <option value="LNMU University Portals & ERP" {{ (isset($editwork) && $editwork->category == 'LNMU University Portals & ERP') ? 'selected' : '' }}>LNMU University Portals & ERP</option>
+                        <option value="College & Institute Portals" {{ (isset($editwork) && $editwork->category == 'College & Institute Portals') ? 'selected' : '' }}>College & Institute Portals</option>
+                        <option value="SaaS & Enterprise ERP" {{ (isset($editwork) && $editwork->category == 'SaaS & Enterprise ERP') ? 'selected' : '' }}>SaaS & Enterprise ERP</option>
+                        <option value="Mobile Apps & Smart Automation" {{ (isset($editwork) && $editwork->category == 'Mobile Apps & Smart Automation') ? 'selected' : '' }}>Mobile Apps & Smart Automation</option>
+                        <option value="E-Commerce & Digital Platforms" {{ (isset($editwork) && $editwork->category == 'E-Commerce & Digital Platforms') ? 'selected' : '' }}>E-Commerce & Digital Platforms</option>
                     </select>
+                </div>
+
+                {{-- Featured Display Order (Priority on Top) --}}
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="featured_order">Display Priority / Order <span class="text-danger">(Lower Number = Shown on Top, e.g. 1, 2, 3)</span></label>
+                    <input type="number" id="featured_order" value="{{ $editwork->featured_order ?? 100 }}" name='featured_order' class="form-control"
+                        placeholder="e.g. 1 for Top, 2 for 2nd..." min="1" />
+                </div>
+
+                {{-- Live Project / Website URL --}}
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="live_url">Live Project / Website URL <span class="text-muted">(optional)</span></label>
+                    <input type="url" id="live_url" value="{{ $editwork->live_url ?? '' }}" name='live_url' class="form-control"
+                        placeholder="https://example.com" />
                 </div>
                 
                 {{-- MAIN IMAGE --}}

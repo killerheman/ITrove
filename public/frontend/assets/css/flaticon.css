@@ -108,3 +108,6 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
 .flaticon-virtual-reality:before {
     content: "\f11e";
 }
+.flaticon-server:before {
+    content: "\f10b";
+}

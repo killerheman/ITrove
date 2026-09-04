@@ -46,11 +46,15 @@ class AdminController extends Controller
             'services' => \App\Models\Service::count(),
             'works' => \App\Models\Work::count(),
             'pricing' => \App\Models\Pricing::count(),
+            'contacts' => \App\Models\contact::count(),
+            'enquiries' => \App\Models\Enquiry::count(),
         ];
 
         $recentStudents = \App\Models\Student::latest()->take(5)->get();
         $recentWorks = \App\Models\Work::latest()->take(5)->get();
+        $recentContacts = \App\Models\contact::latest()->take(5)->get();
+        $recentEnquiries = \App\Models\Enquiry::latest()->take(5)->get();
 
-        return view('admin.dashboard', compact('stats', 'recentStudents', 'recentWorks'));
+        return view('admin.dashboard', compact('stats', 'recentStudents', 'recentWorks', 'recentContacts', 'recentEnquiries'));
     }
 }

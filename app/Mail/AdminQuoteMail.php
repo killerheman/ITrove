@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AdminContactMail extends Mailable
+class AdminQuoteMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -22,16 +22,16 @@ class AdminContactMail extends Mailable
 
     public function envelope()
     {
-        $name = is_object($this->data) ? ($this->data->name ?? 'User') : ($this->data['name'] ?? 'User');
+        $name = is_object($this->data) ? ($this->data->name ?? 'Client') : ($this->data['name'] ?? 'Client');
         return new Envelope(
-            subject: '[New Contact Lead] Message from ' . $name . ' | Innovation Trove',
+            subject: '[New Quote Lead] Project Quote Request from ' . $name . ' | Innovation Trove',
         );
     }
 
     public function content()
     {
         return new Content(
-            view: 'mail.admincontact',
+            view: 'mail.adminquote',
             with: ['data' => $this->data],
         );
     }

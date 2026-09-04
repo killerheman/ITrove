@@ -30,6 +30,20 @@
                     <input type="text" id="basic-addon-name" value="{{ $editwork->title ?? '' }}" name='work_title' class="form-control"
                         placeholder="Enter Title" required />
                 </div>
+
+                {{-- Category --}}
+                <div class="col-md-6 mb-1">
+                    <label class="form-label" for="category">Category</label>
+                    <select name='category' id="category" class="form-control" required>
+                        <option value="Enterprise ERP" {{ (isset($editwork) && $editwork->category == 'Enterprise ERP') ? 'selected' : '' }}>Enterprise ERP</option>
+                        <option value="Healthcare & MedTech" {{ (isset($editwork) && $editwork->category == 'Healthcare & MedTech') ? 'selected' : '' }}>Healthcare & MedTech</option>
+                        <option value="Fintech & SaaS" {{ (isset($editwork) && $editwork->category == 'Fintech & SaaS') ? 'selected' : '' }}>Fintech & SaaS</option>
+                        <option value="Mobile Apps" {{ (isset($editwork) && $editwork->category == 'Mobile Apps') ? 'selected' : '' }}>Mobile Apps</option>
+                        <option value="E-Commerce & Retail" {{ (isset($editwork) && $editwork->category == 'E-Commerce & Retail') ? 'selected' : '' }}>E-Commerce & Retail</option>
+                        <option value="Cloud & DevOps" {{ (isset($editwork) && $editwork->category == 'Cloud & DevOps') ? 'selected' : '' }}>Cloud & DevOps</option>
+                        <option value="Web App & SaaS" {{ (isset($editwork) && $editwork->category == 'Web App & SaaS') ? 'selected' : '' }}>Web App & SaaS</option>
+                    </select>
+                </div>
                 
                 {{-- MAIN IMAGE --}}
                 <div class="col-md-6 mb-1">

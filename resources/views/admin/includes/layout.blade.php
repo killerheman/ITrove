@@ -14,7 +14,7 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static   menu-collapsed"
+<body class="vertical-layout vertical-menu-modern 2-columns navbar-floating footer-static menu-expanded"
     data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 
     <!-- BEGIN: Header-->

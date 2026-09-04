@@ -4,9 +4,11 @@
     <div class="header-lower">
         <div class="auto-container">
             <div class="outer-box clearfix">
-                <div class="col-1 logo-box pull-left">
-                    <figure class="logo"><a href="{{ route('home') }}">
-                            <img src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt=""></a>
+                <div class="logo-box pull-left">
+                    <figure class="logo">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt="Innovation Trove" style="max-height: 52px; width: auto;">
+                        </a>
                     </figure>
                 </div>
                 <div class="menu-area pull-right clearfix">
@@ -19,41 +21,30 @@
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
-                                <li class="current"><a href="{{route('home')}}">Home</a>
+                                <li class="{{ Request::is('/') ? 'current' : '' }}">
+                                    <a href="{{ route('home') }}">Home</a>
                                 </li>
-                                <li class=""><a href="{{route('about')}}">About Us</a>
+                                <li class="{{ Request::is('about') ? 'current' : '' }}">
+                                    <a href="{{ route('about') }}">About Us</a>
                                 </li>
-                                <li class=""><a href="{{ route('services') }}">Services</a>
+                                <li class="{{ Request::is('services') || Request::is('service-details*') ? 'current' : '' }}">
+                                    <a href="{{ route('services') }}">Services</a>
                                 </li>
-                                <li class=""><a href="{{ route('works') }}">Works</a>
+                                <li class="{{ Request::is('works') || Request::is('project-details*') ? 'current' : '' }}">
+                                    <a href="{{ route('works') }}">Works / Portfolio</a>
                                 </li>
-                                <li class=""><a href="{{route('blog')}}">Blog</a>
+                                <li class="{{ Request::is('blog*') ? 'current' : '' }}">
+                                    <a href="{{ route('blog') }}">Blog</a>
+                                </li>
+                                <li class="{{ Request::is('contact-us') ? 'current' : '' }}">
+                                    <a href="{{ route('contact') }}">Contact</a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                     <div class="nav-right-content clearfix">
-                        {{-- <div class="search-box-outer">
-                            <div class="dropdown">
-                                <button class="search-box-btn" type="button" id="dropdownMenu3"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                        class="fas fa-search"></i></button>
-                                <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu3">
-                                    <div class="form-container">
-                                        <form method="post" action="#">
-                                            <div class="form-group">
-                                                <input type="search" name="search-field" value=""
-                                                    placeholder="Search...." required="">
-                                                <button type="submit" class="search-btn"><span
-                                                        class="fas fa-search"></span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="btn-box">
-                            <a href="{{ route('contact') }}" class="theme-btn btn-ten">Contact us</a>
+                            <a href="{{ route('get-quote') }}" class="theme-btn btn-ten">Get a Quote</a>
                         </div>
                     </div>
                 </div>
@@ -66,8 +57,7 @@
         <div class="auto-container">
             <div class="outer-box clearfix">
                 <figure class="sticky-logo pull-left">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/logo6.png') }}"
-                            alt=""></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/logo6.png') }}" alt="Innovation Trove" style="max-height: 48px; width: auto;"></a>
                 </figure>
                 <div class="menu-area pull-right clearfix">
                     <nav class="main-menu clearfix">
@@ -75,7 +65,7 @@
                     </nav>
                     <div class="nav-right-content clearfix">
                         <div class="btn-box">
-                            <a href="{{ route('contact') }}" class="theme-btn btn-ten">Contact us</a>
+                            <a href="{{ route('get-quote') }}" class="theme-btn btn-ten">Get a Quote</a>
                         </div>
                     </div>
                 </div>
@@ -91,25 +81,27 @@
     <div class="close-btn"><i class="fas fa-times"></i></div>
 
     <nav class="menu-box">
-        <div class="nav-logo"><a href="{{ route('home') }}"><img
-                    src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt="Innovation Trove"
-                    title="Logo"></a></div>
+        <div class="nav-logo">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('frontend/assets/images/logo/logo1.png') }}" alt="Innovation Trove" title="Logo" style="max-height: 52px; width: auto;">
+            </a>
+        </div>
         <div class="menu-outer">
             <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
         </div>
         <div class="contact-info">
             <h4>Contact Info</h4>
             <ul>
-                <li>Munshipulia, Lucknow, India</li>
-                <li><a href="tel:+919648391515">+91-9648391515</a></li>
-                <li><a href="mailto:info@innovationtrove.in">info@innovationtrove.in</a></li>
+                <li><i class="fas fa-map-marker-alt mr-2"></i> Jaigaon (HQ), Jalpaiguri, WB | Patna, Bihar</li>
+                <li><i class="fas fa-phone mr-2"></i> <a href="tel:+919648061515">+91-9648061515</a> / <a href="tel:+97517126364">+975-17126364</a></li>
+                <li><i class="far fa-envelope mr-2"></i> <a href="mailto:info@innovationtrove.in">info@innovationtrove.in</a></li>
             </ul>
         </div>
         <div class="social-links">
             <ul class="clearfix">
                 <li><a href="https://x.com/InnovationTrove" target="_blank" rel="noopener noreferrer"><span class="fab fa-twitter"></span></a></li>
                 <li><a href="https://www.facebook.com/profile.php?id=100089113158762" target="_blank" rel="noopener noreferrer"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="https://www.linkedin.com/company/innovation-trove-llp" target="_blank" rel="noopener noreferrer"><span class="fab fa-linkedin"></span></a></li>
+                <li><a href="https://www.linkedin.com/company/innovation-trove-llp" target="_blank" rel="noopener noreferrer"><span class="fab fa-linkedin-in"></span></a></li>
                 <li><a href="https://www.instagram.com/innovationtrove/" target="_blank" rel="noopener noreferrer"><span class="fab fa-instagram"></span></a></li>
             </ul>
         </div>

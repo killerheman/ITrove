@@ -50,6 +50,7 @@
                         <th>Thumbnail</th>
                         <th>Screenshots</th>
                         <th>Title</th>
+                        <th>Category</th>
                         <th>Technology</th>
                         <th>Slug</th>
                         <th>Meta Title</th>
@@ -72,7 +73,7 @@
 <script src="{{ asset('backend/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
 
 <script>
-$(function () {
+$(document).ready(function() {
     $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
@@ -86,6 +87,7 @@ $(function () {
         {data: 'thumbnail', name: 'thumbnail', width: '10%'},
         {data: 'screenshot_img', name: 'screenshot_img', width: '15%'},
         {data: 'title', name: 'title'},
+        {data: 'category', name: 'category'},
         {data: 'technology', name: 'technology'},
         {data: 'slug', name: 'slug'},
         {data: 'meta_title', name: 'meta_title'},

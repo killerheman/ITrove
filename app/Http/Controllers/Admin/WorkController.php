@@ -52,7 +52,10 @@ public function index(Request $request)
                         '.csrf_field().' '.method_field('DELETE').'
                     </form>';
             })
-            ->rawColumns(['image', 'thumbnail', 'screenshot_img', 'action', 'full_description'])
+            ->addColumn('category', function($row){
+                return '<span class="badge badge-light-primary font-weight-bold">'.($row->category ?? 'Enterprise ERP').'</span>';
+            })
+            ->rawColumns(['image', 'thumbnail', 'screenshot_img', 'category', 'action', 'full_description'])
             ->make(true);
     }
     return view('admin.work.manage');
@@ -97,6 +100,7 @@ public function index(Request $request)
 
             Work::create([
                 'title' => $request->work_title,
+                'category' => $request->category ?? 'Enterprise ERP',
                 'image' => $wpath,
                 'thumbnail' => $tpath,
                 'screenshot_img' => $screenshotImages,
@@ -173,6 +177,7 @@ public function edit($id)
         // Final Update Query
         $editwork->update([
             'title'             => $request->work_title,
+            'category'          => $request->category ?? $editwork->category ?? 'Enterprise ERP',
             'technology'        => $request->technology,
             'slug'              => $request->slug ?? Str::slug($request->work_title),
             'meta_keyword'      => $request->meta_keyword,

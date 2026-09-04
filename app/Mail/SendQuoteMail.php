@@ -23,14 +23,14 @@ class SendQuoteMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Send Quote Mail',
+            subject: 'We Received Your Project Quote Request | Innovation Trove',
         );
     }
 
     public function content()
     {
         return new Content(
-            markdown: 'mail.send-quote',
+            view: 'mail.send-quote',
             with: ['data' => $this->data],
         );
     }

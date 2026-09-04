@@ -9,5 +9,5 @@ class Enquiry extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'phone', 'email', 'message', 'service'];
+    protected $fillable = ['name', 'phone', 'email', 'service', 'description', 'message'];
 }

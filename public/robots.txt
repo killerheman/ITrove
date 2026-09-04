@@ -1,2 +1,38 @@
+# Innovation Trove — robots.txt
+# Canonical host: https://innovationtrove.in
+
 User-agent: *
-Disallow:
+Allow: /
+
+# --- Disallow sensitive system & admin directories ---
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /login
+
+# --- AI Answer Engines & Search Bots — explicitly allowed for GEO/AIO visibility ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# --- Sitemap (single canonical host) ---
+Sitemap: https://innovationtrove.in/sitemap.xml

@@ -1,129 +1,117 @@
-{{-- <section class="clients-style-three centred">
-    <div class="auto-container">
-        <div class="inner-container">
-            <ul class="clients-logo-list clearfix">
-                <li class="clients-logo-box">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/up.png')}}"  style="height:120px;width:120px"alt=""></a>
-                </li>
-                <li class="clients-logo-box">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/bihar.png')}}"  style="height:120px;width:120px"alt=""></a>
-                </li>
-                <li class="clients-logo-box">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/nei.jpeg')}}"  style="height:120px;width:120px"alt=""></a>
-                </li>
-                <li class="clients-logo-box">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/us.png')}}"  style="height:120px;width:120px" alt=""></a>
-                </li>
-                <li class="clients-logo-box">
-                    <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo/south1.png')}}"  style="height:120px;width:120px"alt=""></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section> --}}
 <footer class="main-footer footer-style-six">
-    <div class="pattern-layer"
-        style="background-image: url({{ asset('frontend/assets/images/shape/shape-60.png') }});">
-    </div>
+    <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-60.png') }});"></div>
     <div class="auto-container">
         <div class="footer-top-two">
             <div class="row clearfix">
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
+                <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
                     <div class="footer-widget contact-widget">
                         <div class="widget-title">
-                            <h3>Location</h3>
+                            <h3>Global IT Partner</h3>
                         </div>
                         <div class="widget-content">
+                            <p style="color: #cfd8dc; line-height: 24px; margin-bottom: 20px;">
+                                <strong>Innovation Trove</strong> is an agile software development company engineering custom web applications, SaaS platforms, mobile solutions, and enterprise ERPs for forward-thinking businesses across the <strong>USA, UK, Europe, and India</strong>.
+                            </p>
                             <ul class="info-list clearfix">
                                 <li>
                                     <h4>Head Office Location</h4>
-                                    <p>Daragaon, Near Petrol Pump, Jaigaon <br/>Jalpaiguri,West bengal (736182)</p>
+                                    <p>Daragaon, Near Petrol Pump, Jaigaon, Jalpaiguri, West Bengal (736182)</p>
                                 </li>
                                 <li>
-                                    <h4>Business Office</h4>
-                                    <p>212 B Sahdeo mahto Marg, Boring Rd, opposite roll mafia, Sri Krishna Puri, Patna, Bihar 800001</p>
-                                </li>
-                                <li>
-                                    <h4>Branch Office</h4>
-                                    <p>Sita Vihar Colony, Jankipuram, <br/>Lucknow, India 226021</p>
+                                    <h4>Regional Delivery Center</h4>
+                                    <p>Patna: 212 B Sahdeo Mahto Marg, Boring Rd, Bihar (800001)</p>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                     <div class="footer-widget links-widget">
                         <div class="widget-title">
-                            <h3>Service Link</h3>
+                            <h3>Core Services</h3>
                         </div>
                         <div class="widget-content">
                             <ul class="links-list clearfix">
-                                @foreach (App\Models\Service::take(10)->get() as $ser)
-                                <li><a href="{{route('service_details',$ser->slug)}}">{{$ser->title}}</a></li>
+                                @foreach (App\Models\Service::take(7)->get() as $ser)
+                                    <li><a href="{{ route('service_details', $ser->slug) }}">{{ $ser->title }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                    <div class="footer-widget contact-widget">
+
+                <div class="col-lg-2 col-md-6 col-sm-12 footer-column">
+                    <div class="footer-widget links-widget">
                         <div class="widget-title">
-                            <h3>Contact Us</h3>
+                            <h3>Quick Links</h3>
                         </div>
                         <div class="widget-content">
-                            <ul class="info-list clearfix">
-                                <li>
-                                    <h4>Phone No.</h4>
-                                    <p><a href="tel:9434601912">+91-9648391515 , 9648471515 </a></p>
-                                </li>
-                                <li>
-                                    <h4>Email Address</h4>
-                                    <p><a href="mailto:info@innovationtrove.in">info@innovationtrove.in</a></p>
-                                </li>
+                            <ul class="links-list clearfix">
+                                <li><a href="{{ route('about') }}">About Innovation Trove</a></li>
+                                <li><a href="{{ route('works') }}">Portfolio & Case Studies</a></li>
+                                <li><a href="{{ route('services') }}">All IT Services</a></li>
+                                <li><a href="{{ route('get-quote') }}">Hire Dedicated Developers</a></li>
+                                <li><a href="{{ route('contact') }}">Contact Our Engineers</a></li>
+                                <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('terms-of-service') }}">Terms of Service</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                     <div class="footer-widget subscribe-widget">
                         <div class="widget-title">
-                            <h3>Newsletter</h3>
+                            <h3>Direct Inquiries</h3>
                         </div>
                         <div class="widget-content">
-                            <div class="text">
-                                <p>Subscribe To Our Update Newsletter For Our Latest Update.</p>
-                            </div>
-                            <form action="{{route('newsletter')}}" method="post" class="subscribe-form">
+                            <ul class="info-list clearfix mb-4" style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 12px;">
+                                    <span style="color: #fb9506; font-weight: 600; display: block; font-size: 13px;">PHONE & WHATSAPP:</span>
+                                    <a href="tel:+919648061515" style="color: #fff; font-size: 14px; font-weight: 600; display: block; line-height: 22px;">+91-9648061515 (India)</a>
+                                    <a href="tel:+919648471515" style="color: #fff; font-size: 14px; font-weight: 600; display: block; line-height: 22px;">+91-9648471515 (India)</a>
+                                    <a href="tel:+97517126364" style="color: #fff; font-size: 14px; font-weight: 600; display: block; line-height: 22px;">+975-17126364 (Bhutan)</a>
+                                </li>
+                                <li style="margin-bottom: 12px;">
+                                    <span style="color: #fb9506; font-weight: 600; display: block; font-size: 13px;">CLIENT & INQUIRY EMAILS:</span>
+                                    <a href="mailto:info@innovationtrove.in" style="color: #fff; font-size: 14px; display: block; line-height: 22px;">info@innovationtrove.in</a>
+                                    <a href="mailto:innovationtrove@gmail.com" style="color: #fff; font-size: 14px; display: block; line-height: 22px;">innovationtrove@gmail.com</a>
+                                </li>
+                                <li>
+                                    <span style="color: #fb9506; font-weight: 600; display: block; font-size: 13px;">GLOBAL SUPPORT:</span>
+                                    <span style="color: #cfd8dc; font-size: 13px;">24/7 Dedicated Agile Support & Overlapping Time Zones</span>
+                                </li>
+                            </ul>
+
+                            <form action="{{ route('newsletter') }}" method="post" class="subscribe-form">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" placeholder="Your Email Address"
-                                        >
+                                    <input type="email" name="email" placeholder="Enter Business Email" required>
                                     <button type="submit" class="theme-btn btn-ten">Subscribe</button>
                                 </div>
                             </form>
-                            <a href="https://resultjano.com" rel="dofollow" style="color: transparent;background-color: transparent;pointer-events: none;cursor: default;text-decoration: non;">Sarkari Results</a>
-                            <a href="https://esenotes.com" rel="dofollow" style="color: transparent;background-color: transparent;pointer-events: none;cursor: default;text-decoration: none;">Ese Notes</a>
-                            <a href="https://nowshare.in" target="_blank" rel="noopener">
-                                <img src="https://nowshare.in/tools/visitor/image?style=minimal-pill&start=10000&site_id=innovationtrove.in&id=t7k6bjkv0" alt="Visitor Counter" style="max-width: 100%;">
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <div class="bottom-inner">
-                <figure class="footer-logo"><a href="{{ route('home') }}"><img
-                            src="{{ asset('frontend/assets/images/logo/logo6.png') }}"
-                            alt=""></a></figure>
+            <div class="bottom-inner d-flex justify-content-between align-items-center flex-wrap">
+                <figure class="footer-logo">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('frontend/assets/images/logo/logo6.png') }}" alt="Innovation Trove">
+                    </a>
+                </figure>
                 <div class="copyright">
-                    <p>Copyright &copy; <a href="{{ route('home') }}">Innovation Trove</a>, All Rights Reserved.</p>
+                    <p>Copyright &copy; {{ date('Y') }} <a href="{{ route('home') }}">Innovation Trove LLP</a>. All Rights Reserved. Enterprise Software & Web Development.</p>
                 </div>
                 <ul class="social-links clearfix">
-                    <li><a href="https://www.facebook.com/profile.php?id=100089113158762" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/innovationtrove/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/company/innovation-trove-llp" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a></li>
-                    <li><a href="https://x.com/InnovationTrove" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100089113158762" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/innovationtrove/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/innovation-trove-llp" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="https://x.com/InnovationTrove" target="_blank" rel="noopener noreferrer" title="Twitter / X"><i class="fab fa-twitter"></i></a></li>
                 </ul>
             </div>
         </div>

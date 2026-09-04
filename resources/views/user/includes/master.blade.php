@@ -81,6 +81,7 @@
 
     @include('sweetalert::alert')
     @include('user.includes.foot')
+    @yield('scripts')
 
 </body><!-- End of .page_wrapper -->
 

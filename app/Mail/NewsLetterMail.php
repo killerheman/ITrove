@@ -23,14 +23,14 @@ class NewsLetterMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'News Letter Mail',
+            subject: 'Welcome to Innovation Trove | Technology & Engineering Insights',
         );
     }
 
     public function content()
     {
         return new Content(
-            markdown: 'mail.news_letter', // Use the path of your Markdown view
+            view: 'mail.news_letter',
             with: ['data' => $this->data],
         );
     }

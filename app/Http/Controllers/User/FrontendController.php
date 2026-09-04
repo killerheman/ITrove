@@ -16,7 +16,9 @@ use App\Mail\UserContactMail;
 use App\Mail\NewsLetterMail;
 use App\Mail\AdminContactMail;
 use App\Mail\SendQuoteMail;
+use App\Mail\AdminQuoteMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class FrontendController extends Controller
@@ -50,13 +52,19 @@ class FrontendController extends Controller
            'subject'=>$request->subject,
            'message'=>$request->message
         ]);
-        Mail::to($request->email)->send(new UserContactMail($data));
-        Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
+
+        try {
+            Mail::to($request->email)->send(new UserContactMail($data));
+            Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail($data));
+        } catch (\Throwable $e) {
+            Log::error('Contact form mail error: ' . $e->getMessage());
+        }
+
         if($data) {
-            return redirect()->back()->with('toast_success','Your message has been sent successfully.');
+            return redirect()->back()->with('toast_success','Thank you! Your message has been sent successfully. We have sent a confirmation email to your inbox and our team will get back to you shortly.');
         }
         else {
-            return redirect()->back()->with('toast_error', 'Something went wrong..');
+            return redirect()->back()->with('toast_error', 'Something went wrong. Please try again.');
         }
     }
 
@@ -81,12 +89,19 @@ class FrontendController extends Controller
            'service'=>$request->service,
            'description'=>$request->description,
         ]);
-        Mail::to($request->email)->send(new SendQuoteMail($data));
+
+        try {
+            Mail::to($request->email)->send(new SendQuoteMail($data));
+            Mail::to('sharmahcool5@gmail.com')->send(new AdminQuoteMail($data));
+        } catch (\Throwable $e) {
+            Log::error('Quote form mail error: ' . $e->getMessage());
+        }
+
         if($data) {
-            return redirect()->back()->with('toast_success','Your quote has been sent successfully.');
+            return redirect()->back()->with('toast_success','Thank you! Your project quote request has been submitted successfully. We have sent a confirmation email to your inbox and our engineering team will get back to you shortly.');
         }
         else {
-            return redirect()->back()->with('toast_error', 'Something went wrong..');
+            return redirect()->back()->with('toast_error', 'Something went wrong. Please try again.');
         }
     }
 
@@ -110,8 +125,18 @@ class FrontendController extends Controller
         return view('user.service.service_detail',compact('servicedetail','serviceData'));
     }
     public function works(){
-        $works=Work::paginate(10);
-        return view('user.works',compact('works'));
+        $works = Work::orderByRaw('CASE WHEN live_url IS NOT NULL AND live_url != "" THEN 0 ELSE 1 END')
+            ->orderBy('featured_order', 'asc')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $categories = Work::whereNotNull('category')
+            ->select('category', \Illuminate\Support\Facades\DB::raw('count(*) as count'))
+            ->groupBy('category')
+            ->orderBy('category', 'asc')
+            ->get();
+
+        return view('user.works', compact('works', 'categories'));
     }
     public function about(){
         return view('user.about');
@@ -119,16 +144,30 @@ class FrontendController extends Controller
     // News letter
     public function news_letter(Request $request){
         $validate=$request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|max:255',
         ]);
-        $data=NewsLetter::create(['email'=>$request->email]);
-        $mail=Mail::to($request->email)->send(new NewsLetterMail($data));
-        if($data) {
-            return redirect()->back()->with('toast_success','Thank you for subscribe');
+
+        $exists = NewsLetter::where('email', $request->email)->first();
+        if (!$exists) {
+            $data = NewsLetter::create(['email' => $request->email]);
+        } else {
+            $data = $exists;
         }
-        else {
-            return redirect()->back()->with('toast_error', 'Something went wrong..');
+
+        try {
+            Mail::to($request->email)->send(new NewsLetterMail($data));
+            Mail::to('sharmahcool5@gmail.com')->send(new AdminContactMail((object)[
+                'name' => 'Newsletter Subscriber',
+                'email' => $request->email,
+                'phone' => 'N/A',
+                'subject' => 'New Newsletter Subscription',
+                'message' => 'New subscriber: ' . $request->email,
+            ]));
+        } catch (\Throwable $e) {
+            Log::error('Newsletter mail error: ' . $e->getMessage());
         }
+
+        return redirect()->back()->with('toast_success', 'Thank you! You have successfully subscribed to Innovation Trove updates.');
     }
     public function registerTrainingStudent()
     {

@@ -13,46 +13,28 @@ class UserContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public $data;
+
     public function __construct($data)
     {
-        //
-        $this->data=$data;
+        $this->data = $data;
     }
 
-    /**
-     * Get the message envelope.
-     *
-     * @return \Illuminate\Mail\Mailables\Envelope
-     */
     public function envelope()
     {
         return new Envelope(
-            subject: 'User Contact Mail',
+            subject: 'Thank You for Contacting Innovation Trove',
         );
     }
 
-    /**
-     * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
-     */
-
-
-    public function build()
+    public function content()
     {
-        return $this->markdown('mail.usercontact')->with(['data' => $this->data]);
+        return new Content(
+            view: 'mail.usercontact',
+            with: ['data' => $this->data],
+        );
     }
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array
-     */
+
     public function attachments()
     {
         return [];

@@ -62,8 +62,8 @@ class ServicesController extends Controller
         $request->validate([
             'service_title' => 'required',
             'service_description' => 'required',
-            'service_img' => 'required|image|mimes:jpeg,png,jpg,webp',
-            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'service_img' => 'required|image|mimes:jpeg,png,jpg,webp,gif',
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif',
             'sequence' => 'required|unique:services',
             'full_description' => 'required',
         ]);
@@ -112,8 +112,8 @@ class ServicesController extends Controller
         $request->validate([
             'service_title' => 'required',
             'service_description' => 'required',
-            'service_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
-            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'service_img' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif',
+            'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,webp,gif',
             'full_description' => 'required',
         ]);
 

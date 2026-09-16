@@ -71,7 +71,7 @@
                     <div class="col-md-6 mb-1">
                         <label class="form-label">Thumbnail Image</label>
                         <div class="custom-file">
-                            <input type="file" name='thumbnail_img' class="custom-file-input" id="thumb">
+                            <input type="file" name='thumbnail_img' class="custom-file-input" id="thumb" accept="image/jpeg,image/png,image/jpg,image/webp,image/gif">
                             <label class="custom-file-label" for="thumb">Choose thumbnail...</label>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="col-md-6 mb-1">
                         <label class="form-label">Main Service Image</label>
                         <div class="custom-file">
-                            <input type="file" name='service_img' class="custom-file-input" id="mainImg">
+                            <input type="file" name='service_img' class="custom-file-input" id="mainImg" accept="image/jpeg,image/png,image/jpg,image/webp,image/gif">
                             <label class="custom-file-label" for="mainImg">Choose service image...</label>
                         </div>
                     </div>

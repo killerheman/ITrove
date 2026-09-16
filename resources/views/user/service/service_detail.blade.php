@@ -14,20 +14,25 @@
     
     .service-hero-frame {
         position: relative;
-        border-radius: 18px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 2, 121, 0.08);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
         border: 1px solid #eef2f6;
-        background: #ffffff;
+        background: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
     }
     .service-hero-frame img {
         width: 100%;
-        height: 380px;
-        object-fit: cover;
+        max-height: 420px;
+        height: auto;
+        object-fit: contain;
         transition: transform 0.6s ease;
     }
     .service-hero-frame:hover img {
-        transform: scale(1.03);
+        transform: scale(1.02);
     }
     .hero-floating-badge {
         position: absolute;
@@ -422,9 +427,6 @@
                         <img src="{{ asset('storage/' . $servicedetail->pic) }}" 
                              alt="{{ $servicedetail->title }}"
                              onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/service/service-1.jpg') }}';">
-                        <div class="hero-floating-badge">
-                            <i class="fas fa-certificate text-warning mr-1"></i> Enterprise Grade &bull; Full Lifecycle Engineering
-                        </div>
                     </div>
 
                     <!-- Key Value Metrics Bar -->

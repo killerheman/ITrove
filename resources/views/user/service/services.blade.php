@@ -71,10 +71,15 @@
                 <div class="service-block-one wow fadeInUp animated h-100" data-wow-delay="00ms" data-wow-duration="1500ms">
                     <div class="inner-box h-100 d-flex flex-column justify-content-between p-4 bg-white">
                         <div>
-                            <figure class="image-box mb-3 text-center" style="height: 200px; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 12px; overflow: hidden;">
-                                <img src="{{ $data->pic ? asset('storage/' . $data->pic) : asset('frontend/assets/images/service/service-1.png') }}" 
+                            @php
+                                $serviceImg = !empty($data->thumbnail_img) 
+                                    ? asset('storage/' . $data->thumbnail_img) 
+                                    : ($data->pic ? asset('storage/' . $data->pic) : asset('frontend/assets/images/service/service-1.png'));
+                            @endphp
+                            <figure class="image-box mb-3 text-center" style="height: 200px; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 12px; overflow: hidden; padding: 8px;">
+                                <img src="{{ $serviceImg }}" 
                                      alt="{{ $data->title }}"
-                                     style="max-height: 180px; width: auto; object-fit: contain;"
+                                     style="max-height: 180px; max-width: 100%; width: auto; height: auto; object-fit: contain;"
                                      onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/service/service-1.png') }}';">
                             </figure>
 

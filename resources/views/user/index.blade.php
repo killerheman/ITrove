@@ -188,10 +188,15 @@
                 <div class="service-block-five">
                     <div class="inner-box" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                         <div>
-                            <figure class="image-box">
-                                <img src="{{ asset('storage/' . $service->pic) }}" 
+                            @php
+                                $serviceThumb = !empty($service->thumbnail_img) 
+                                    ? asset('storage/' . $service->thumbnail_img) 
+                                    : asset('storage/' . $service->pic);
+                            @endphp
+                            <figure class="image-box" style="height: 240px; width: 100%; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 12px; overflow: hidden; padding: 10px;">
+                                <img src="{{ $serviceThumb }}" 
                                      alt="{{ $service->title }}" 
-                                     style="height:260px; width: 100%; object-fit: cover;"
+                                     style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; border-radius: 8px;"
                                      onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/service/service-1.jpg') }}';">
                             </figure>
                             <h3 style="font-size: 20px; font-weight: 700; margin-top: 15px; margin-bottom: 10px;">

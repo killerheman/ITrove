@@ -352,20 +352,20 @@
         color: inherit !important;
     }
 
-    /* Service Block One - Flawless Vector Card Styling */
+    /* Service Block One - Responsive Card Styling */
     .service-block-one .inner-box .icon-box i {
-        font-size: 42px !important;
-        line-height: 90px !important;
-        color: #ff009c !important;
+        font-size: 32px !important;
+        line-height: 1 !important;
+        color: #000279 !important;
     }
     .service-block-one .inner-box:hover .icon-box i {
-        color: #ff009c !important;
+        color: #fb9506 !important;
     }
     .service-block-one .inner-box:hover h3 a {
-        color: #ff009c !important;
+        color: #fb9506 !important;
     }
     .service-block-one .inner-box:hover p {
-        color: #ffffff !important;
+        color: #555555 !important;
     }
 
     /* Contact Info Card Enhancements */

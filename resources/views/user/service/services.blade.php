@@ -8,31 +8,116 @@
 
 @section('head')
 <style>
+    /* Reset Theme Absolute Positioning & Max-Width Constraints */
     .service-block-one .inner-box {
-        border-radius: 18px !important;
-        box-shadow: 0 4px 20px rgba(0, 2, 121, 0.05);
-        border: 1px solid #edf2f7;
-        transition: all 0.35s ease;
-        overflow: hidden;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(0, 2, 121, 0.06) !important;
+        border: 1px solid #edf2f7 !important;
+        transition: all 0.35s ease-in-out !important;
+        overflow: hidden !important;
+        position: relative !important;
+        background: #ffffff !important;
+    }
+    .service-block-one .inner-box::before,
+    .service-block-one .inner-box::after {
+        display: none !important;
     }
     .service-block-one .inner-box:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 35px rgba(0, 2, 121, 0.12);
-        border-color: #000279;
+        transform: translateY(-6px) !important;
+        box-shadow: 0 15px 35px rgba(0, 2, 121, 0.12) !important;
+        border-color: #000279 !important;
     }
-    .service-block-one .image-box img {
-        transition: transform 0.5s ease;
+
+    /* Force image box into relative document flow */
+    .service-block-one .inner-box .image-box {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 200px !important;
+        margin-bottom: 20px !important;
+        background: #f8fafc !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 12px !important;
+    }
+    .service-block-one .inner-box .image-box img {
+        max-height: 170px !important;
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        transition: transform 0.5s ease !important;
     }
     .service-block-one .inner-box:hover .image-box img {
-        transform: scale(1.04);
+        transform: scale(1.05) !important;
     }
+
+    /* Full width content text container */
+    .service-block-one .inner-box .text {
+        max-width: 100% !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+    .service-block-one .inner-box .icon-box {
+        width: auto !important;
+        height: auto !important;
+        line-height: 1 !important;
+        border: none !important;
+        background: transparent !important;
+        margin-bottom: 12px !important;
+        display: inline-block !important;
+    }
+    .service-block-one .inner-box .icon-box::before,
+    .service-block-one .inner-box .icon-box::after {
+        display: none !important;
+    }
+    .service-block-one .inner-box .icon-box i {
+        font-size: 32px !important;
+        line-height: 1 !important;
+        color: #000279 !important;
+    }
+
     .service-block-one .text h3 a {
-        color: #000279;
-        font-weight: 700;
-        transition: color 0.2s ease;
+        color: #000279 !important;
+        font-weight: 700 !important;
+        transition: color 0.2s ease !important;
+        text-decoration: none !important;
     }
     .service-block-one .text h3 a:hover {
-        color: #fb9506;
+        color: #fb9506 !important;
+    }
+    .service-block-one .inner-box p,
+    .service-block-one .inner-box:hover p {
+        color: #555555 !important;
+    }
+
+    /* Mobile Responsive Optimizations */
+    @media (max-width: 575.98px) {
+        .service-block-one .inner-box {
+            padding: 1.25rem !important;
+        }
+        .service-block-one .inner-box .image-box {
+            height: 170px !important;
+            margin-bottom: 15px !important;
+        }
+        .service-block-one .inner-box .image-box img {
+            max-height: 140px !important;
+        }
+        .service-block-one .text h3 {
+            font-size: 18px !important;
+            line-height: 24px !important;
+        }
+        .service-block-one .text p {
+            font-size: 13.5px !important;
+            line-height: 22px !important;
+        }
     }
 </style>
 @endsection
@@ -76,16 +161,15 @@
                                     ? asset('storage/' . $data->thumbnail_img) 
                                     : ($data->pic ? asset('storage/' . $data->pic) : asset('frontend/assets/images/service/service-1.png'));
                             @endphp
-                            <figure class="image-box mb-3 text-center" style="height: 200px; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 12px; overflow: hidden; padding: 8px;">
+                            <figure class="image-box text-center">
                                 <img src="{{ $serviceImg }}" 
-                                     alt="{{ $data->title }}"
-                                     style="max-height: 180px; max-width: 100%; width: auto; height: auto; object-fit: contain;"
+                                     alt="{{ $data->title ?? 'Service' }}"
                                      onerror="this.onerror=null;this.src='{{ asset('frontend/assets/images/service/service-1.png') }}';">
                             </figure>
 
                             <div class="text text-left">
-                                <div class="icon-box mb-2">
-                                    <i class="{{ $data->fa_icon ?? 'fas fa-laptop-code' }}" style="font-size: 32px; color: #000279;"></i>
+                                <div class="icon-box">
+                                    <i class="{{ $data->fa_icon ?? 'fas fa-laptop-code' }}"></i>
                                 </div>
                                 <h3 style="font-size: 20px; margin-bottom: 8px;">
                                     <a href="{{ route('service_details', $data->slug) }}">{{ $data->title ?? '' }}</a>

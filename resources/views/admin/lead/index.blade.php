@@ -122,6 +122,59 @@
         70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
         100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
     }
+
+    /* Custom Professional Filter Controls */
+    .custom-filter-select {
+        height: 42px !important;
+        font-size: 13.5px !important;
+        font-weight: 600 !important;
+        color: #1e293b !important;
+        background-color: #ffffff !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        padding: 6px 12px !important;
+        line-height: 1.5 !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+        transition: all 0.2s ease-in-out !important;
+    }
+    .custom-filter-select:focus {
+        border-color: #4f46e5 !important;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+        outline: none !important;
+    }
+    .custom-search-input {
+        height: 42px !important;
+        font-size: 13.5px !important;
+        font-weight: 500 !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-right: none !important;
+        border-top-left-radius: 8px !important;
+        border-bottom-left-radius: 8px !important;
+        padding: 8px 14px !important;
+    }
+    .custom-search-input:focus {
+        border-color: #4f46e5 !important;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+    }
+    .custom-search-btn {
+        height: 42px !important;
+        padding: 0 20px !important;
+        font-weight: 700 !important;
+        font-size: 13.5px !important;
+        border-top-right-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+        background: linear-gradient(135deg, #000279 0%, #4c1d95 100%) !important;
+        border: none !important;
+        color: #ffffff !important;
+        box-shadow: 0 3px 10px rgba(0, 2, 121, 0.2) !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+    .custom-search-btn:hover {
+        background: linear-gradient(135deg, #000255 0%, #3b0764 100%) !important;
+        color: #ffffff !important;
+    }
 </style>
 @endsection
 
@@ -305,41 +358,43 @@
                         </li>
                     </ul>
                 </div>
-                <div class="card-body pt-2 pb-1">
-                    <form method="GET" action="{{ route('admin.lead.index') }}" class="row">
+                <div class="card-body p-2">
+                    <form method="GET" action="{{ route('admin.lead.index') }}" class="row align-items-end">
                         <input type="hidden" name="view" value="{{ $viewType }}">
                         
                         <div class="col-md-3 col-sm-6 mb-1">
-                            <label class="font-weight-bold small text-uppercase text-muted">Status</label>
-                            <select name="status" class="form-control form-control-sm" onchange="this.form.submit()">
-                                <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>All Statuses</option>
-                                <option value="New" {{ request('status') == 'New' ? 'selected' : '' }}>New Lead</option>
-                                <option value="Contacted" {{ request('status') == 'Contacted' ? 'selected' : '' }}>Contacted</option>
-                                <option value="Follow-up Scheduled" {{ request('status') == 'Follow-up Scheduled' ? 'selected' : '' }}>Follow-up Scheduled</option>
-                                <option value="Demo Scheduled" {{ request('status') == 'Demo Scheduled' ? 'selected' : '' }}>Demo Scheduled</option>
-                                <option value="Proposal Sent" {{ request('status') == 'Proposal Sent' ? 'selected' : '' }}>Proposal Sent</option>
-                                <option value="Won" {{ request('status') == 'Won' ? 'selected' : '' }}>Won / Converted</option>
-                                <option value="Lost" {{ request('status') == 'Lost' ? 'selected' : '' }}>Lost</option>
-                                <option value="Junk" {{ request('status') == 'Junk' ? 'selected' : '' }}>Junk / Invalid</option>
+                            <label class="custom-filter-label">Status Stage</label>
+                            <select name="status" class="form-control custom-filter-select" onchange="this.form.submit()">
+                                <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>⚡ All Lead Statuses</option>
+                                <option value="New" {{ request('status') == 'New' ? 'selected' : '' }}>🔵 New Lead</option>
+                                <option value="Contacted" {{ request('status') == 'Contacted' ? 'selected' : '' }}>ℹ️ Contacted / Discussion</option>
+                                <option value="Contact Tomorrow" {{ request('status') == 'Contact Tomorrow' ? 'selected' : '' }}>🗓️ Contact Tomorrow</option>
+                                <option value="Demo Scheduled" {{ request('status') == 'Demo Scheduled' ? 'selected' : '' }}>🟣 POS Demo Scheduled</option>
+                                <option value="Demo Completed" {{ request('status') == 'Demo Completed' ? 'selected' : '' }}>✅ Demo Completed</option>
+                                <option value="Account Created" {{ request('status') == 'Account Created' ? 'selected' : '' }}>💻 POS Account Created</option>
+                                <option value="Proposal Sent" {{ request('status') == 'Proposal Sent' ? 'selected' : '' }}>🟧 Proposal Sent</option>
+                                <option value="Won" {{ request('status') == 'Won' || request('status') == 'Account Activated / Paid' ? 'selected' : '' }}>🎉 Won / Account Activated</option>
+                                <option value="Lost" {{ request('status') == 'Lost' ? 'selected' : '' }}>❌ Lost / Uninterested</option>
+                                <option value="Junk" {{ request('status') == 'Junk' ? 'selected' : '' }}>🚫 Junk / Invalid</option>
                             </select>
                         </div>
 
                         <div class="col-md-3 col-sm-6 mb-1">
-                            <label class="font-weight-bold small text-uppercase text-muted">Priority</label>
-                            <select name="priority" class="form-control form-control-sm" onchange="this.form.submit()">
+                            <label class="custom-filter-label">Priority Filter</label>
+                            <select name="priority" class="form-control custom-filter-select" onchange="this.form.submit()">
                                 <option value="all" {{ request('priority') == 'all' ? 'selected' : '' }}>All Priorities</option>
-                                <option value="Hot" {{ request('priority') == 'Hot' ? 'selected' : '' }}>🔥 Hot</option>
-                                <option value="Warm" {{ request('priority') == 'Warm' ? 'selected' : '' }}>⚡ Warm</option>
-                                <option value="Cold" {{ request('priority') == 'Cold' ? 'selected' : '' }}>❄️ Cold</option>
+                                <option value="Hot" {{ request('priority') == 'Hot' ? 'selected' : '' }}>🔥 Hot Priority</option>
+                                <option value="Warm" {{ request('priority') == 'Warm' ? 'selected' : '' }}>⚡ Warm Priority</option>
+                                <option value="Cold" {{ request('priority') == 'Cold' ? 'selected' : '' }}>❄️ Cold Priority</option>
                             </select>
                         </div>
 
                         <div class="col-md-6 col-sm-12 mb-1">
-                            <label class="font-weight-bold small text-uppercase text-muted">Search Leads</label>
-                            <div class="input-group input-group-merge">
-                                <input type="text" name="search" class="form-control form-control-sm" placeholder="Search Lead Name, Phone, City, Requirement note..." value="{{ request('search') }}">
+                            <label class="custom-filter-label">Search Leads & Keywords</label>
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control custom-search-input" placeholder="Search Lead Name, Phone, City, Requirement Note..." value="{{ request('search') }}">
                                 <div class="input-group-append">
-                                    <button class="btn btn-sm btn-primary" type="submit"><i class="feather icon-search"></i> Search</button>
+                                    <button class="btn custom-search-btn" type="submit"><i class="feather icon-search"></i> Search</button>
                                 </div>
                             </div>
                         </div>

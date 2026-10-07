@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\PriceController;
+use App\Http\Controllers\Admin\LeadController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -54,7 +55,8 @@ Route::get('/data-deletion',[FrontendController::class,'dataDeletion'])->name('d
 
 //Backend Routes
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
-Route::post('/login', [AdminController::class, 'login'])->name('login');
+Route::get('/login', [AdminController::class, 'admin'])->name('login');
+Route::post('/login', [AdminController::class, 'login']);
 
 Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'],function(){
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -84,6 +86,12 @@ Route::group(['prefix'=>'admin','as'=>'admin.', 'middleware' => 'auth'],function
     
     Route::resource('blog-category',BlogCategoryController::class);
     Route::resource('pricing', PriceController::class);
+
+    // Lead Management Routes
+    Route::resource('lead', LeadController::class);
+    Route::post('lead/{id}/status', [LeadController::class, 'updateStatus'])->name('lead.updateStatus');
+    Route::post('lead/{id}/activity', [LeadController::class, 'addActivity'])->name('lead.addActivity');
+    Route::get('lead-send-digest', [LeadController::class, 'sendDailyDigest'])->name('lead.sendDigest');
 
 });
 

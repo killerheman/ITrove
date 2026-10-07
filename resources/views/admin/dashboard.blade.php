@@ -36,6 +36,9 @@
                 </p>
             </div>
             <div class="mt-2 mt-md-0">
+                <a href="{{ route('admin.lead.index') }}" class="btn btn-success text-white mr-1 shadow-sm font-weight-bold">
+                    <i class="feather icon-phone-call mr-1"></i> Lead CRM @if($stats['leads_today'] > 0) <span class="badge badge-danger ml-50">{{ $stats['leads_today'] }} Today</span> @endif
+                </a>
                 <a href="{{ route('admin.work.create') }}" class="btn btn-warning text-white mr-1 shadow-sm">
                     <i class="feather icon-plus mr-1"></i> Add Case Study
                 </a>
@@ -143,6 +146,82 @@
                         <div>
                             <h2 class="text-bold-700 mb-0">{{ $stats['students'] }}</h2>
                             <p class="text-muted mb-0">Enrolled Students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lead CRM Quick View Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm" style="border-radius: 12px; border-left: 5px solid #25d366;">
+                    <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0" style="font-weight: 700; color: #000279;">
+                            <i class="feather icon-phone-call mr-1 text-success"></i> WhatsApp & Ad Lead Enquiries
+                        </h4>
+                        <div>
+                            <a href="{{ route('admin.lead.index', ['view' => 'today']) }}" class="badge badge-light-danger p-50 mr-1 font-weight-bold" style="font-size: 12px;">
+                                📌 {{ $stats['leads_today'] }} Contact Today
+                            </a>
+                            <a href="{{ route('admin.lead.index') }}" class="btn btn-sm btn-primary waves-effect waves-light font-weight-bold">
+                                View Lead Center <i class="feather icon-arrow-right ml-25"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body pt-2 pb-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Lead Name</th>
+                                        <th>Campaign / Product</th>
+                                        <th>Status</th>
+                                        <th>Priority</th>
+                                        <th>Next Contact Date</th>
+                                        <th>Quick WhatsApp Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($recentLeads as $lead)
+                                        <tr class="{{ $lead->isScheduledToday() ? 'table-warning' : ($lead->isOverdue() ? 'table-danger' : '') }}">
+                                            <td>
+                                                <div class="font-weight-bold text-dark">{{ $lead->name }}</div>
+                                                <small class="text-muted"><i class="feather icon-phone mr-25"></i>{{ $lead->phone }}</small>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-light-primary font-weight-bold">{{ $lead->product_campaign }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge {{ $lead->status_badge_class }}">{{ $lead->status }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge {{ $lead->priority_badge_class }}">{{ $lead->priority }}</span>
+                                            </td>
+                                            <td>
+                                                @if($lead->next_followup_date)
+                                                    <small class="font-weight-bold {{ $lead->isScheduledToday() ? 'text-danger' : '' }}">
+                                                        {{ $lead->isScheduledToday() ? '📌 TODAY' : $lead->next_followup_date->format('d M, h:i A') }}
+                                                    </small>
+                                                @else
+                                                    <small class="text-muted">Not set</small>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ $lead->whatsapp_url }}" target="_blank" rel="noopener" class="btn btn-xs btn-success font-weight-bold">
+                                                    <i class="feather icon-message-circle mr-1"></i> Chat
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center text-muted py-2">
+                                                No leads added yet. <a href="{{ route('admin.lead.index') }}" class="font-weight-bold">Add first lead now</a>.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

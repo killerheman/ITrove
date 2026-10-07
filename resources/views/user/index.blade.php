@@ -10,7 +10,7 @@
 <section class="banner-style-six">
     <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-50.png') }});"></div>
     <div class="auto-container">
-        <div class="row clearfix align-items-center">
+        <div class="row clearfix align-items-start">
             <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                 <div class="image-box">
                     <figure class="image image-1"><img src="{{ asset('frontend/assets/images/banner/banner-11.png') }}" alt="Innovation Trove"></figure>
@@ -38,18 +38,20 @@
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                 <div class="content-box wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
-                    <span class="badge badge-pill px-3 py-2 mb-3" style="background: rgba(255,255,255,0.15); color: #ffffff; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.3);">
-                        🚀 AGILE SOFTWARE ENGINEERING & DEV TEAMS
-                    </span>
-                    <h1 style="font-size: 44px; line-height: 54px; font-weight: 800; color: #ffffff; margin-bottom: 18px;">
+                    <div class="mb-2">
+                        <span class="badge badge-pill px-3 py-2" style="background: rgba(255,255,255,0.18); color: #ffffff; font-size: 12px; font-weight: 700; letter-spacing: 0.8px; border: 1px solid rgba(255,255,255,0.35); text-transform: uppercase; backdrop-filter: blur(4px);">
+                            🚀 AGILE SOFTWARE ENGINEERING & DEV TEAMS
+                        </span>
+                    </div>
+                    <h1 style="font-size: 36px; line-height: 44px; font-weight: 800; color: #ffffff; margin-bottom: 12px; letter-spacing: -0.3px;">
                         Engineering Scalable Web, Mobile & SaaS Solutions for Global Visionaries
                     </h1>
-                    <p style="font-size: 17px; line-height: 28px; color: #ffffff; margin-bottom: 25px;">
+                    <p style="font-size: 15px; line-height: 24px; color: rgba(255,255,255,0.92); margin-bottom: 18px; max-width: 540px;">
                         Partner with an elite IT agency and dedicated development team. We architect custom software, high-performance web platforms, SaaS products, and mobile apps for ambitious startups and established enterprises across the <strong>USA, UK, Europe, and India</strong>.
                     </p>
                     <div class="btn-box d-flex flex-wrap align-items-center">
-                        <a href="{{ route('get-quote') }}" class="theme-btn btn-ten mr-3 mb-2">Hire Developers / Get Quote</a>
-                        <a href="{{ route('works') }}" class="theme-btn btn-seven mb-2" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 2px solid rgba(255,255,255,0.5);">View Our Portfolio</a>
+                        <a href="{{ route('get-quote') }}" class="theme-btn btn-ten mr-3 mb-2" style="padding: 11px 26px; font-size: 14px; font-weight: 700;">Hire Developers / Get Quote</a>
+                        <a href="{{ route('works') }}" class="theme-btn btn-seven mb-2" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 2px solid rgba(255,255,255,0.4); padding: 11px 24px; font-size: 14px; font-weight: 600;">View Our Portfolio</a>
                     </div>
                 </div>
             </div>

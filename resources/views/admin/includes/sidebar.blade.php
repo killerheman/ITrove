@@ -29,6 +29,21 @@
                 </a>
             </li>
 
+            <!-- LEAD MANAGEMENT & CRM -->
+            <li class="navigation-header"><span>LEADS & AD CAMPAIGNS</span></li>
+            <li class="nav-item {{ Request::is('admin/lead*') ? 'active' : '' }}">
+                <a href="{{ route('admin.lead.index') }}">
+                    <i class="feather icon-phone-call"></i>
+                    <span class="menu-title">Lead Management</span>
+                    @php
+                        $todayLeadsCount = \App\Models\Lead::whereDate('next_followup_date', \Carbon\Carbon::today())->whereNotIn('status', ['Won', 'Lost', 'Junk'])->count();
+                    @endphp
+                    @if($todayLeadsCount > 0)
+                        <span class="badge badge-danger badge-pill float-right font-weight-bold">{{ $todayLeadsCount }}</span>
+                    @endif
+                </a>
+            </li>
+
             <!-- AGENCY CORE CONTENT -->
             <li class="navigation-header"><span>AGENCY PORTFOLIO & SERVICES</span></li>
             

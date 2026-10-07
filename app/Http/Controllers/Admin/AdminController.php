@@ -48,13 +48,16 @@ class AdminController extends Controller
             'pricing' => \App\Models\Pricing::count(),
             'contacts' => \App\Models\contact::count(),
             'enquiries' => \App\Models\Enquiry::count(),
+            'total_leads' => \App\Models\Lead::count(),
+            'leads_today' => \App\Models\Lead::whereDate('next_followup_date', \Carbon\Carbon::today())->whereNotIn('status', ['Won', 'Lost', 'Junk'])->count(),
         ];
 
         $recentStudents = \App\Models\Student::latest()->take(5)->get();
         $recentWorks = \App\Models\Work::latest()->take(5)->get();
         $recentContacts = \App\Models\contact::latest()->take(5)->get();
         $recentEnquiries = \App\Models\Enquiry::latest()->take(5)->get();
+        $recentLeads = \App\Models\Lead::latest()->take(5)->get();
 
-        return view('admin.dashboard', compact('stats', 'recentStudents', 'recentWorks', 'recentContacts', 'recentEnquiries'));
+        return view('admin.dashboard', compact('stats', 'recentStudents', 'recentWorks', 'recentContacts', 'recentEnquiries', 'recentLeads'));
     }
 }

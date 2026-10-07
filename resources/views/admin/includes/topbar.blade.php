@@ -42,81 +42,102 @@
                             </div>
                         </li>
 
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label"
-                                href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span
-                                    class="badge badge-pill badge-primary badge-up">5</span></a>
-                            <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                        @php
+                            $notifTodayLeads = \App\Models\Lead::whereDate('next_followup_date', \Carbon\Carbon::today())
+                                ->whereNotIn('status', ['Won', 'Lost', 'Junk'])
+                                ->latest()
+                                ->take(4)
+                                ->get();
+
+                            $notifOverdueLeads = \App\Models\Lead::where('next_followup_date', '<', \Carbon\Carbon::today())
+                                ->whereNotIn('status', ['Won', 'Lost', 'Junk'])
+                                ->latest()
+                                ->take(3)
+                                ->get();
+
+                            $notifRecentContacts = \App\Models\contact::latest()->take(3)->get();
+                            
+                            $totalNotifCount = $notifTodayLeads->count() + $notifOverdueLeads->count();
+                        @endphp
+
+                        <li class="dropdown dropdown-notification nav-item">
+                            <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+                                <i class="ficon feather icon-bell"></i>
+                                @if($totalNotifCount > 0)
+                                    <span class="badge badge-pill badge-danger badge-up pulse-animation">{{ $totalNotifCount }}</span>
+                                @endif
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right shadow-lg" style="width: 360px; border-radius: 12px; border: none;">
                                 <li class="dropdown-menu-header">
-                                    <div class="dropdown-header m-0 p-1">
-                                        <h5 class="white">5 New App
-                                            Notifications</h5>
+                                    <div class="dropdown-header m-0 p-1" style="background: linear-gradient(135deg, #000279 0%, #4c1d95 100%);">
+                                        <h5 class="white font-weight-bold mb-0">
+                                            {{ $totalNotifCount }} Pending Notifications
+                                        </h5>
+                                        <small class="white-50">Real-time Lead & Inquiry Alerts</small>
                                     </div>
                                 </li>
-                                <li class="scrollable-container media-list">
-                                  <a class="d-flex justify-content-between"
-                                        href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i
-                                                    class="feather icon-plus-square font-medium-5 primary"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="primary media-heading">You have new order!</h6><small
-                                                    class="notification-text"> Are your going to meet me
-                                                    tonight?</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">9 hours
-                                                    ago</time></small>
-                                        </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i
-                                                    class="feather icon-download-cloud font-medium-5 success"></i>
+                                <li class="scrollable-container media-list" style="max-height: 340px; overflow-y: auto;">
+                                    
+                                    {{-- TODAY LEADS NOTIFICATIONS --}}
+                                    @foreach($notifTodayLeads as $nLead)
+                                        <a class="d-flex justify-content-between border-bottom-light" href="{{ route('admin.lead.index', ['view' => 'today']) }}">
+                                            <div class="media d-flex align-items-start p-1">
+                                                <div class="media-left mr-1">
+                                                    <i class="feather icon-phone-call font-medium-5 danger"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="danger media-heading font-weight-bold mb-25">Follow-up Today: {{ $nLead->name }}</h6>
+                                                    <small class="notification-text text-dark d-block">{{ $nLead->product_campaign }} • Phone: {{ $nLead->phone }}</small>
+                                                    <span class="badge badge-light-danger font-weight-bold p-25 mt-25">📌 Contact Scheduled Today</span>
+                                                </div>
                                             </div>
-                                            <div class="media-body">
-                                                <h6 class="success media-heading red darken-1">99% Server load</h6>
-                                                <small class="notification-text">You got new order of goods.</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">5 hour
-                                                    ago</time></small>
+                                        </a>
+                                    @endforeach
+
+                                    {{-- OVERDUE LEADS NOTIFICATIONS --}}
+                                    @foreach($notifOverdueLeads as $oLead)
+                                        <a class="d-flex justify-content-between border-bottom-light" href="{{ route('admin.lead.index', ['view' => 'overdue']) }}">
+                                            <div class="media d-flex align-items-start p-1 bg-light-warning">
+                                                <div class="media-left mr-1">
+                                                    <i class="feather icon-alert-triangle font-medium-5 warning"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="warning media-heading font-weight-bold mb-25">Overdue: {{ $oLead->name }}</h6>
+                                                    <small class="notification-text text-dark d-block">{{ $oLead->product_campaign }} • Phone: {{ $oLead->phone }}</small>
+                                                    <span class="badge badge-light-warning font-weight-bold p-25 mt-25">⚠️ Follow-up Overdue</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+
+                                    {{-- RECENT CONTACT MESSAGES --}}
+                                    @foreach($notifRecentContacts as $rContact)
+                                        <a class="d-flex justify-content-between border-bottom-light" href="{{ route('admin.dashboard') }}">
+                                            <div class="media d-flex align-items-start p-1">
+                                                <div class="media-left mr-1">
+                                                    <i class="feather icon-mail font-medium-5 primary"></i>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="primary media-heading font-weight-bold mb-25">Web Inquiry: {{ $rContact->name }}</h6>
+                                                    <small class="notification-text text-muted d-block">{{ Str::limit($rContact->subject ?? $rContact->message ?? 'New contact message', 35) }}</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+
+                                    @if($totalNotifCount == 0 && count($notifRecentContacts) == 0)
+                                        <div class="text-center p-2 text-muted">
+                                            <i class="feather icon-check-circle font-large-1 text-success d-block mb-1"></i>
+                                            All notifications cleared! No pending lead tasks.
                                         </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i
-                                                    class="feather icon-alert-triangle font-medium-5 danger"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="danger media-heading yellow darken-3">Warning notifixation
-                                                </h6><small class="notification-text">Server have 99% CPU
-                                                    usage.</small>
-                                            </div><small>
-                                                <time class="media-meta"
-                                                    datetime="2015-06-11T18:29:20+08:00">Today</time></small>
-                                        </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i
-                                                    class="feather icon-check-circle font-medium-5 info"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="info media-heading">Complete the task</h6><small
-                                                    class="notification-text">Cake sesame snaps cupcake</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Last
-                                                    week</time></small>
-                                        </div>
-                                    </a><a class="d-flex justify-content-between" href="javascript:void(0)">
-                                        <div class="media d-flex align-items-start">
-                                            <div class="media-left"><i
-                                                    class="feather icon-file font-medium-5 warning"></i></div>
-                                            <div class="media-body">
-                                                <h6 class="warning media-heading">Generate monthly report</h6><small
-                                                    class="notification-text">Chocolate cake oat cake tiramisu
-                                                    marzipan</small>
-                                            </div><small>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Last
-                                                    month</time></small>
-                                        </div>
+                                    @endif
+
+                                </li>
+                                <li class="dropdown-menu-footer">
+                                    <a class="dropdown-item p-1 text-center font-weight-bold text-primary" href="{{ route('admin.lead.index') }}">
+                                        View All Lead Notifications & Pipeline ➔
                                     </a>
                                 </li>
-                                <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center"
-                                        href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
                         </li>
                         <li class="dropdown dropdown-user nav-item"><a

@@ -528,6 +528,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label class="font-weight-bold">Estimated Deal Value (₹)</label>
+                                                        <input type="number" name="estimated_value" class="form-control" placeholder="e.g. 3499" min="0" step="any" value="{{ $lead->estimated_value > 0 ? (float)$lead->estimated_value : '' }}">
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label class="font-weight-bold">Next Follow-Up Date & Time</label>
                                                         <input type="datetime-local" name="next_followup_date" class="form-control" value="{{ $lead->next_followup_date ? $lead->next_followup_date->format('Y-m-d\TH:i') : '' }}">
                                                     </div>
@@ -824,7 +828,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">Estimated Deal Value (₹)</label>
-                        <input type="number" name="estimated_value" class="form-control" placeholder="e.g. 35000" min="0" step="500">
+                        <input type="number" name="estimated_value" class="form-control" placeholder="e.g. 3499" min="0" step="any">
                     </div>
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">Schedule Next Contact / Follow-up Date</label>

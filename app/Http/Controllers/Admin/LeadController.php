@@ -181,6 +181,9 @@ class LeadController extends Controller
         if ($request->filled('priority')) {
             $lead->priority = $request->priority;
         }
+        if ($request->has('estimated_value')) {
+            $lead->estimated_value = $request->estimated_value ?? 0;
+        }
         if ($request->filled('next_followup_date')) {
             $lead->next_followup_date = $request->next_followup_date;
         }

@@ -490,101 +490,7 @@
                                         </div>
                                     </td>
                                 </tr>
-
-                                <!-- Quick Update Status Modal -->
-                                <div class="modal fade" id="updateStatusModal{{ $lead->id }}" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-primary text-white">
-                                                <h5 class="modal-title text-white font-weight-bold"><i class="feather icon-edit mr-1"></i> Update Lead: {{ $lead->name }}</h5>
-                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form action="{{ route('admin.lead.updateStatus', $lead->id) }}" method="POST">
-                                                @csrf
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label class="font-weight-bold">Lead Status Stage</label>
-                                                        <select name="status" class="form-control" required>
-                                                            <option value="New" {{ $lead->status == 'New' ? 'selected' : '' }}>🔵 New Lead</option>
-                                                            <option value="Contacted" {{ $lead->status == 'Contacted' ? 'selected' : '' }}>ℹ️ Contacted / In Discussion</option>
-                                                            <option value="Contact Tomorrow" {{ $lead->status == 'Contact Tomorrow' ? 'selected' : '' }}>🗓️ Contact Tomorrow / Next Date</option>
-                                                            <option value="Demo Scheduled" {{ $lead->status == 'Demo Scheduled' ? 'selected' : '' }}>🟣 POS Demo Scheduled</option>
-                                                            <option value="Demo Completed" {{ $lead->status == 'Demo Completed' ? 'selected' : '' }}>✅ Demo Completed</option>
-                                                            <option value="Account Created" {{ $lead->status == 'Account Created' ? 'selected' : '' }}>💻 POS Account Created (Trial)</option>
-                                                            <option value="Proposal Sent" {{ $lead->status == 'Proposal Sent' ? 'selected' : '' }}>🟧 Quotation / Proposal Sent</option>
-                                                            <option value="Account Activated / Paid" {{ $lead->status == 'Account Activated / Paid' || $lead->status == 'Won' ? 'selected' : '' }}>🎉 Account Activated & Paid (Won)</option>
-                                                            <option value="Lost" {{ $lead->status == 'Lost' ? 'selected' : '' }}>❌ Lost / Uninterested</option>
-                                                            <option value="Junk" {{ $lead->status == 'Junk' ? 'selected' : '' }}>🚫 Junk / Invalid Number</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="font-weight-bold">Priority Level</label>
-                                                        <select name="priority" class="form-control">
-                                                            <option value="Hot" {{ $lead->priority == 'Hot' ? 'selected' : '' }}>🔥 Hot (Immediate Buy Intent)</option>
-                                                            <option value="Warm" {{ $lead->priority == 'Warm' ? 'selected' : '' }}>⚡ Warm (Interested)</option>
-                                                            <option value="Cold" {{ $lead->priority == 'Cold' ? 'selected' : '' }}>❄️ Cold (Exploring Options)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="font-weight-bold">Estimated Deal Value (₹)</label>
-                                                        <input type="number" name="estimated_value" class="form-control" placeholder="e.g. 3499" min="0" step="any" value="{{ $lead->estimated_value > 0 ? (float)$lead->estimated_value : '' }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="font-weight-bold">Next Follow-Up Date & Time</label>
-                                                        <input type="datetime-local" name="next_followup_date" class="form-control" value="{{ $lead->next_followup_date ? $lead->next_followup_date->format('Y-m-d\TH:i') : '' }}">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="font-weight-bold">Call / Interaction Note</label>
-                                                        <textarea name="note" class="form-control" rows="3" placeholder="Summary of phone conversation, WhatsApp message, customer queries..."></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary font-weight-bold"><i class="feather icon-save mr-1"></i> Save Changes</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Lead History Log Modal -->
-                                <div class="modal fade" id="historyModal{{ $lead->id }}" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-dark text-white">
-                                                <h5 class="modal-title text-white font-weight-bold"><i class="feather icon-clock mr-1"></i> Activity Timeline: {{ $lead->name }}</h5>
-                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body p-2">
-                                                <div class="d-flex justify-content-between border-bottom pb-1 mb-2">
-                                                    <div><strong>Phone:</strong> {{ $lead->phone }}</div>
-                                                    <div><strong>Campaign:</strong> {{ $lead->product_campaign }}</div>
-                                                    <div><strong>Created:</strong> {{ $lead->created_at->format('d M Y') }}</div>
-                                                </div>
-                                                <h6 class="font-weight-bold mb-1">Activity Log:</h6>
-                                                <div class="timeline" style="border-left: 2px solid #e2e8f0; padding-left: 15px; margin-left: 5px;">
-                                                    @forelse($lead->activities as $act)
-                                                        <div class="mb-2 position-relative">
-                                                            <div style="font-size: 13px;" class="font-weight-bold text-primary">{{ $act->activity_type }} <span class="text-muted small">({{ $act->created_at->format('d M Y, h:i A') }})</span></div>
-                                                            <div class="text-dark">{{ $act->note }}</div>
-                                                        </div>
-                                                    @empty
-                                                        <div class="text-muted">No activity records logged yet.</div>
-                                                    @endforelse
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @empty
+                             @empty
                                 <tr>
                                     <td colspan="7" class="text-center py-4 text-muted">
                                         <i class="feather icon-inbox font-large-2 d-block mb-1"></i>
@@ -847,4 +753,238 @@
         </div>
     </div>
 </div>
+
+@php
+    $allPageLeads = collect($leads->items());
+    foreach($kanbanStages as $stageLeads) {
+        $allPageLeads = $allPageLeads->merge($stageLeads);
+    }
+    $allPageLeads = $allPageLeads->unique('id');
+@endphp
+
+@foreach($allPageLeads as $lead)
+    <!-- Update Lead Modal -->
+    <div class="modal fade" id="updateStatusModal{{ $lead->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content" style="border-radius: 14px;">
+                <div class="modal-header bg-primary text-white" style="border-radius: 14px 14px 0 0;">
+                    <h5 class="modal-title text-white font-weight-bold"><i class="feather icon-edit mr-1"></i> Update Lead: {{ $lead->name }}</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('admin.lead.updateStatus', $lead->id) }}" method="POST">
+                    @csrf
+                    <div class="modal-body row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Lead Full Name <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control" value="{{ $lead->name }}" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">WhatsApp / Phone Number <span class="text-danger">*</span></label>
+                            <input type="text" name="phone" class="form-control" value="{{ $lead->phone }}" placeholder="e.g. 9876543210" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Email Address</label>
+                            <input type="email" name="email" class="form-control" value="{{ $lead->email }}" placeholder="client@example.com">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Company / Business Name</label>
+                            <input type="text" name="company_name" class="form-control" value="{{ $lead->company_name }}" placeholder="e.g. Sharma Departmental Store / School / Enterprise">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">City / Location</label>
+                            <input type="text" name="city" class="form-control" value="{{ $lead->city }}" placeholder="e.g. Jaipur, Delhi, Mumbai">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Product / Campaign <span class="text-danger">*</span></label>
+                            <select name="product_campaign" class="form-control" required>
+                                <option value="ITrove POS" {{ $lead->product_campaign == 'ITrove POS' ? 'selected' : '' }}>🛒 ITrove POS System</option>
+                                <option value="ITrove School" {{ $lead->product_campaign == 'ITrove School' ? 'selected' : '' }}>🏫 ITrove School ERP</option>
+                                <option value="ITrove Agency" {{ $lead->product_campaign == 'ITrove Agency' ? 'selected' : '' }}>💼 ITrove Agency / Custom Web App</option>
+                                <option value="Other" {{ !in_array($lead->product_campaign, ['ITrove POS', 'ITrove School', 'ITrove Agency']) ? 'selected' : '' }}>Other Custom Software</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Lead Source <span class="text-danger">*</span></label>
+                            <select name="lead_source" class="form-control" required>
+                                <option value="WhatsApp Ad" {{ $lead->lead_source == 'WhatsApp Ad' ? 'selected' : '' }}>💬 WhatsApp Ad</option>
+                                <option value="Facebook/Instagram Ad" {{ $lead->lead_source == 'Facebook/Instagram Ad' ? 'selected' : '' }}>📱 Facebook / Instagram Ad</option>
+                                <option value="Google Ad" {{ $lead->lead_source == 'Google Ad' ? 'selected' : '' }}>🔍 Google Ad</option>
+                                <option value="Website Form" {{ $lead->lead_source == 'Website Form' ? 'selected' : '' }}>🌐 Website Contact Form</option>
+                                <option value="Direct Call" {{ $lead->lead_source == 'Direct Call' ? 'selected' : '' }}>📞 Direct Phone Call</option>
+                                <option value="Referral" {{ $lead->lead_source == 'Referral' ? 'selected' : '' }}>🤝 Referral</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Priority Level <span class="text-danger">*</span></label>
+                            <select name="priority" class="form-control" required>
+                                <option value="Hot" {{ $lead->priority == 'Hot' ? 'selected' : '' }}>🔥 Hot (Immediate Buy Intent)</option>
+                                <option value="Warm" {{ $lead->priority == 'Warm' ? 'selected' : '' }}>⚡ Warm (Interested)</option>
+                                <option value="Cold" {{ $lead->priority == 'Cold' ? 'selected' : '' }}>❄️ Cold (Exploring Options)</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Lead Status Stage <span class="text-danger">*</span></label>
+                            <select name="status" class="form-control" required>
+                                <option value="New" {{ $lead->status == 'New' ? 'selected' : '' }}>🔵 New Lead</option>
+                                <option value="Contacted" {{ $lead->status == 'Contacted' ? 'selected' : '' }}>ℹ️ Contacted / In Discussion</option>
+                                <option value="Contact Tomorrow" {{ $lead->status == 'Contact Tomorrow' ? 'selected' : '' }}>🗓️ Contact Tomorrow / Next Date</option>
+                                <option value="Demo Scheduled" {{ $lead->status == 'Demo Scheduled' ? 'selected' : '' }}>🟣 POS Demo Scheduled</option>
+                                <option value="Demo Completed" {{ $lead->status == 'Demo Completed' ? 'selected' : '' }}>✅ Demo Completed</option>
+                                <option value="Account Created" {{ $lead->status == 'Account Created' ? 'selected' : '' }}>💻 POS Account Created (Trial)</option>
+                                <option value="Proposal Sent" {{ $lead->status == 'Proposal Sent' ? 'selected' : '' }}>🟧 Quotation / Proposal Sent</option>
+                                <option value="Account Activated / Paid" {{ $lead->status == 'Account Activated / Paid' || $lead->status == 'Won' ? 'selected' : '' }}>🎉 Account Activated & Paid (Won)</option>
+                                <option value="Lost" {{ $lead->status == 'Lost' ? 'selected' : '' }}>❌ Lost / Uninterested</option>
+                                <option value="Junk" {{ $lead->status == 'Junk' ? 'selected' : '' }}>🚫 Junk / Invalid Number</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Estimated Deal Value (₹)</label>
+                            <input type="number" name="estimated_value" class="form-control" placeholder="e.g. 3499" min="0" step="any" value="{{ $lead->estimated_value > 0 ? (float)$lead->estimated_value : '' }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-bold">Next Follow-Up Date & Time</label>
+                            <input type="datetime-local" name="next_followup_date" class="form-control" value="{{ $lead->next_followup_date ? $lead->next_followup_date->format('Y-m-d\TH:i') : '' }}">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label class="font-weight-bold">Call / Interaction Note</label>
+                            <textarea name="note" class="form-control" rows="3" placeholder="Summary of phone conversation, WhatsApp message, customer queries..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary font-weight-bold"><i class="feather icon-save mr-1"></i> Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Details & History Log Modal -->
+    <div class="modal fade" id="historyModal{{ $lead->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content" style="border-radius: 14px;">
+                <div class="modal-header bg-dark text-white" style="border-radius: 14px 14px 0 0;">
+                    <div class="d-flex align-items-center">
+                        <i class="feather icon-info font-medium-3 mr-1 text-primary"></i>
+                        <h5 class="modal-title text-white font-weight-bold mb-0">Lead Details & Activity Log: {{ $lead->name }}</h5>
+                    </div>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-2">
+                    <!-- SECTION 1: Complete Lead Profile Information -->
+                    <div class="card border mb-2 shadow-none" style="border-radius: 10px; background-color: #f8fafc;">
+                        <div class="card-header bg-light p-1 border-bottom d-flex justify-content-between align-items-center">
+                            <h6 class="font-weight-bold text-primary mb-0"><i class="feather icon-user mr-50"></i> Lead Profile Details</h6>
+                            <div>
+                                <span class="badge badge-pill {{ $lead->status_badge_class }} mr-50">{{ $lead->status }}</span>
+                                <span class="badge badge-pill {{ $lead->priority_badge_class }}">{{ $lead->priority }} Priority</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-1 text-dark" style="font-size: 13px;">
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">FULL NAME:</span>
+                                    <strong>{{ $lead->name }}</strong>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">PHONE / WHATSAPP:</span>
+                                    <strong>{{ $lead->phone }}</strong>
+                                    <a href="{{ $lead->whatsapp_url }}" target="_blank" class="ml-1 text-success font-weight-bold" style="font-size: 12px;">
+                                        <i class="feather icon-message-circle mr-25"></i> WhatsApp
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">EMAIL ADDRESS:</span>
+                                    <span>{{ $lead->email ?: 'Not provided' }}</span>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">COMPANY / BUSINESS:</span>
+                                    <span>{{ $lead->company_name ?: 'Individual / N/A' }}</span>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">CITY / LOCATION:</span>
+                                    <span>{{ $lead->city ?: 'Not specified' }}</span>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">PRODUCT / CAMPAIGN:</span>
+                                    <span class="badge badge-light-primary font-weight-bold">{{ $lead->product_campaign }}</span>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">LEAD SOURCE:</span>
+                                    <span>{{ $lead->lead_source }}</span>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">ESTIMATED DEAL VALUE:</span>
+                                    <strong class="text-success">₹{{ number_format($lead->estimated_value ?? 0, 0) }}</strong>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">SCHEDULED FOLLOW-UP:</span>
+                                    @if($lead->next_followup_date)
+                                        <span class="{{ $lead->isScheduledToday() ? 'text-danger font-weight-bold' : ($lead->isOverdue() ? 'text-danger font-weight-bold' : '') }}">
+                                            {{ $lead->next_followup_date->format('d M Y, h:i A') }}
+                                        </span>
+                                    @else
+                                        <span class="text-muted">Not scheduled</span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <span class="text-muted d-block small font-weight-bold">CREATED AT:</span>
+                                    <span>{{ $lead->created_at->format('d M Y, h:i A') }}</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <span class="text-muted d-block small font-weight-bold">INITIAL REQUIREMENT / NOTE:</span>
+                                    <div class="p-1 border rounded bg-white text-dark mt-25" style="white-space: pre-wrap;">{{ $lead->notes ?: 'No initial requirement note.' }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: Updates & Activity Timeline Log -->
+                    <div class="px-50">
+                        <h6 class="font-weight-bold text-dark mb-1 d-flex align-items-center">
+                            <i class="feather icon-clock text-info mr-50"></i> Updates & Activity History Log
+                        </h6>
+                        <div class="timeline p-1 rounded border bg-white" style="border-left: 3px solid #3b82f6 !important; max-height: 250px; overflow-y: auto;">
+                            @forelse($lead->activities as $act)
+                                <div class="mb-1 border-bottom pb-1 position-relative">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="font-weight-bold text-primary" style="font-size: 13px;">
+                                            <i class="feather icon-activity mr-25"></i> {{ $act->activity_type }}
+                                        </span>
+                                        <span class="text-muted small">
+                                            <i class="feather icon-calendar mr-25"></i> {{ $act->created_at->format('d M Y, h:i A') }}
+                                        </span>
+                                    </div>
+                                    <div class="text-dark mt-25" style="font-size: 13px; line-height: 1.4;">
+                                        {{ $act->note }}
+                                    </div>
+                                    @if($act->next_followup_date)
+                                        <div class="small text-muted mt-25">
+                                            📌 Next follow-up set for: <strong>{{ $act->next_followup_date->format('d M Y, h:i A') }}</strong>
+                                        </div>
+                                    @endif
+                                </div>
+                            @empty
+                                <div class="text-muted text-center py-2">
+                                    <i class="feather icon-info d-block font-medium-2 mb-25"></i>
+                                    No activity records or updates logged yet.
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-dismiss="modal" data-toggle="modal" data-target="#updateStatusModal{{ $lead->id }}">
+                        <i class="feather icon-edit mr-25"></i> Edit / Update Lead
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
 @endsection

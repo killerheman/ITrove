@@ -170,41 +170,100 @@ class LeadController extends Controller
         $lead = Lead::findOrFail($id);
 
         $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:30',
+            'email' => 'nullable|email|max:255',
+            'company_name' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:100',
+            'product_campaign' => 'required|string',
+            'lead_source' => 'required|string',
             'status' => 'required|string',
-            'priority' => 'nullable|string',
+            'priority' => 'required|string',
+            'estimated_value' => 'nullable|numeric|min:0',
             'next_followup_date' => 'nullable|date',
             'note' => 'nullable|string',
         ]);
 
         $oldStatus = $lead->status;
+        $oldPriority = $lead->priority;
+        $oldName = $lead->name;
+        $oldPhone = $lead->phone;
+        $oldEmail = $lead->email;
+        $oldCompany = $lead->company_name;
+        $oldCity = $lead->city;
+        $oldCampaign = $lead->product_campaign;
+        $oldSource = $lead->lead_source;
+        $oldVal = $lead->estimated_value;
+
+        $lead->name = $request->name;
+        $lead->phone = $request->phone;
+        $lead->email = $request->email;
+        $lead->company_name = $request->company_name;
+        $lead->city = $request->city;
+        $lead->product_campaign = $request->product_campaign;
+        $lead->lead_source = $request->lead_source;
         $lead->status = $request->status;
-        if ($request->filled('priority')) {
-            $lead->priority = $request->priority;
-        }
-        if ($request->has('estimated_value')) {
-            $lead->estimated_value = $request->estimated_value ?? 0;
-        }
-        if ($request->filled('next_followup_date')) {
-            $lead->next_followup_date = $request->next_followup_date;
-        }
+        $lead->priority = $request->priority;
+        $lead->estimated_value = $request->estimated_value ?? 0;
+        $lead->next_followup_date = $request->next_followup_date;
         $lead->last_contacted_at = Carbon::now();
         $lead->save();
 
-        // Create activity record
-        $noteText = "Status changed from {$oldStatus} to {$lead->status}.";
+        // Track specific field changes for activity log
+        $changes = [];
+        if ($oldStatus !== $lead->status) {
+            $changes[] = "Status changed from '{$oldStatus}' to '{$lead->status}'";
+        }
+        if ($oldPriority !== $lead->priority) {
+            $changes[] = "Priority changed from '{$oldPriority}' to '{$lead->priority}'";
+        }
+        if ($oldName !== $lead->name) {
+            $changes[] = "Name updated to '{$lead->name}'";
+        }
+        if ($oldPhone !== $lead->phone) {
+            $changes[] = "Phone updated to '{$lead->phone}'";
+        }
+        if ($oldEmail !== $lead->email) {
+            $changes[] = "Email updated to '" . ($lead->email ?? 'N/A') . "'";
+        }
+        if ($oldCompany !== $lead->company_name) {
+            $changes[] = "Company updated to '" . ($lead->company_name ?? 'N/A') . "'";
+        }
+        if ($oldCity !== $lead->city) {
+            $changes[] = "City updated to '" . ($lead->city ?? 'N/A') . "'";
+        }
+        if ($oldCampaign !== $lead->product_campaign) {
+            $changes[] = "Product/Campaign updated to '{$lead->product_campaign}'";
+        }
+        if ($oldSource !== $lead->lead_source) {
+            $changes[] = "Lead Source updated to '{$lead->lead_source}'";
+        }
+        if ((float)$oldVal != (float)$lead->estimated_value) {
+            $changes[] = "Deal value updated to ₹" . number_format($lead->estimated_value, 0);
+        }
+
+        $activityType = ($oldStatus !== $lead->status) ? 'Status Update' : 'Lead Details Update';
+        
+        $noteText = "";
+        if (!empty($changes)) {
+            $noteText .= implode(' • ', $changes) . ". ";
+        }
         if ($request->filled('note')) {
-            $noteText .= " Note: " . $request->note;
+            $noteText .= "Note: " . $request->note;
+        }
+        if (empty(trim($noteText))) {
+            $noteText = "Lead details updated.";
         }
 
         LeadActivity::create([
             'lead_id' => $lead->id,
             'user_id' => auth()->id(),
-            'activity_type' => 'Status Update',
+            'activity_type' => $activityType,
             'note' => $noteText,
             'next_followup_date' => $lead->next_followup_date,
         ]);
 
-        return redirect()->back()->with('success', 'Lead status updated!');
+        return redirect()->back()->with('success', 'Lead updated successfully!');
     }
 
     public function addActivity(Request $request, $id)
